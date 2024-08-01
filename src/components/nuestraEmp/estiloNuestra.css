@@ -1,0 +1,43 @@
+.container-nuestraEmp {
+  height: 100dvh;
+  background-color: var(--color-fondo);
+  padding: var(--padding-generico-x-y);
+  font-size: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-textosNuestra {
+  overflow: hidden;
+}
+.titulo {
+  display: inline;
+  font-size: clamp(1.2rem, 2.5vw, 3rem);
+  vertical-align: middle;
+  color: var(--color-fuente-roja);
+  margin: 0 clamp(10px, 1.5vw, 50px) 0 0;
+}
+.texto-nuestra {
+  line-height: 1.2;
+  display: inline;
+  font-size: clamp(1.2rem, 3vw, 3.5rem);
+  vertical-align: middle;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+.split span {
+  display: inline-block;
+  transform: translateY(200px);
+}
+@media screen and (width <= 960px) {
+  .container-nuestraEmp {
+    height: 70dvh;
+  }
+}
+@media screen and (width <= 530px) {
+  .container-nuestraEmp {
+    height: 60dvh;
+  }
+}

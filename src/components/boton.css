@@ -1,0 +1,34 @@
+.btn-descarga {
+  border-radius: 100%;
+  border: 3px solid #f3f3f3;
+  padding: 4.7rem 4.4rem 4.4rem 4.4rem;
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 7.5px 3px 25px 0 #f3f3f3;
+  -moz-box-shadow: 7.5px 3px 25px 0 #f3f3f3;
+  box-shadow: 7.5px 3px 25px 0 #f3f3f3;
+
+  transition: 600ms all;
+}
+
+.btn-descarga:hover {
+  -webkit-box-shadow: 4.5px 3px 21px 14.5px #f3f3f3;
+  -moz-box-shadow: 4.5px 3px 21px 14.5px #f3f3f3;
+  box-shadow: 4.5px 3px 21px 14.5px #f3f3f3;
+  animation-play-state: paused;
+}
+
+.btn-descarga:active {
+  border: 3px solid #ffd181;
+  -webkit-box-shadow: 7.5px 3px 28px 25.5px #ffc052;
+  -moz-box-shadow: 7.5px 3px 28px 25.5px #ffc052;
+  box-shadow: 7.5px 3px 28px 25.5px #ffc052;
+  animation-play-state: paused;
+}
+@media screen and (width <= 530px) {
+  .btn-descarga {
+    padding: 4.3rem 4rem 4rem 4rem;
+  }
+}
