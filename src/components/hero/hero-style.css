@@ -33,7 +33,8 @@
   .title-hero_ligth {
     font-weight: 200;
   }
-  .line-span {
+  .line-span-hero {
+    opacity: 0;
     height: 2px;
     background-color: #fff;
     width: 70px;

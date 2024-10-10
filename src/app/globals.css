@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
 }
+
 :root {
   font-size: clamp(1.2rem, 2vw, 2.5rem);
   --color-fondo: #f3f3f3;
@@ -16,6 +17,8 @@
   --padding-generico-y: clamp(2rem, 7vw, 12rem) 0;
   --padding-chico: 2rem;
   --padding-generico-x-y: clamp(1rem, 3vw, 3.5rem) clamp(2rem, 7vw, 12rem);
+  --padding-generico-x-y-pages-top: clamp(4rem, 10vw, 6rem)
+    clamp(2rem, 7vw, 12rem);
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -25,4 +28,5 @@
 /* font-size: clamp(1.2rem, 2vw, 2.5rem)--->textos medios
    font-size: clamp(1.2rem, 3vw, 3.5rem)--->Textos grandes
    font-size: clamp(1.2rem, 3.5vw, 4.5rem)--->Textos extra grandes
+   font-size: clamp(1.2rem, 2vw, 2.5rem)----->menuNav
 */

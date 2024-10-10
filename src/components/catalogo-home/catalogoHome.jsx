@@ -6,7 +6,7 @@ import Image from "next/image";
 import logoDownload from "../../../public/imagenes/flecha.svg";
 import "./catalogoSection.css";
 import { useGSAP } from "@gsap/react";
-import ButtonL from "../buttonL";
+import ButtonL from "../buttons/buttonL";
 import CategoryList from "../categoryList-home/categoryList";
 import FooterM from "../footer/footer";
 

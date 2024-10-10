@@ -54,6 +54,9 @@
     margin-top: 3rem;
     padding-right: 2rem;
   }
+  .contImg-logo {
+    margin-right: 5rem;
+  }
 }
 @media screen and (width <= 1000px) {
   .cont-catalogo {

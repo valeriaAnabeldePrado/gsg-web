@@ -1,0 +1,110 @@
+/*----------------- ESTILOS PAGE PRODUCTOS MAIN--------------- */
+.container-main-productos {
+  padding: clamp(4rem, 10vw, 6rem) clamp(2rem, 7vw, 12rem) 1rem
+    clamp(2rem, 7vw, 12rem);
+  background-color: var(--color-fondo);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2vw;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.imgGaleria {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/3;
+}
+
+.imageInfo {
+  text-align: start;
+  margin-top: 10px;
+}
+.imageInfo > h3 {
+  font-size: clamp(1rem, 2vw, 2.5rem);
+}
+.imgUno {
+  grid-column: 1/ 1;
+  grid-row: 1/1;
+}
+.imgUnoH,
+.imgDosH,
+.imgDiezH {
+  height: 20vw;
+}
+.imgDos {
+  grid-column: 1/1;
+  grid-row: 2/2;
+}
+
+.imgTres {
+  grid-column: 2/2;
+  grid-row: span 2;
+}
+.imgTresH,
+.imgSieteH,
+.imgOchoH {
+  height: 50vw;
+}
+.imgCuatro {
+  grid-column: 3/3;
+  grid-row: span 2;
+}
+.imgCuatroH,
+.imgNueveH {
+  height: 40vw;
+}
+.imgCinco {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+.imgCincoH {
+  height: 25vw;
+}
+.imgSeis {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+.imgSeisH {
+  height: 25vw;
+}
+
+.imgSiete {
+  grid-column: 1/ 1;
+  grid-row: span 5;
+}
+
+.imgOcho {
+  grid-column: 2/2;
+  grid-row: span 5;
+}
+.imgNueve {
+  grid-column: 3/3;
+  grid-row: span 5;
+}
+.imgDiez {
+  grid-column: 3/3;
+  grid-row: span 4;
+}
+
+.textGallery {
+  grid-column: 1/3;
+  grid-row: span 5;
+}

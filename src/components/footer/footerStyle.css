@@ -24,6 +24,7 @@
 }
 .oficinas {
   text-align: end;
+  background-color: aqua;
 }
 .h2-footer {
   font-size: clamp(1.2rem, 3.5vw, 4.5rem);

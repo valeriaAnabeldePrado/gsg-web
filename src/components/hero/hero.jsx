@@ -61,6 +61,7 @@ const Hero = () => {
       timeline.fromTo(".logo", { opacity: 0 }, { opacity: 1, duration: 2 });
       timeline.to(".uno", { opacity: 1 });
       timeline.to(".dos", { opacity: 1 });
+      timeline.to(".line-span-hero", { opacity: 1 });
       timeline.to(".tres", { opacity: 1 });
     });
     mm.add("(min-width: 801px)", () => {
@@ -118,7 +119,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="relative w-screen h-screen">
+      <div className="relative w-screen h-screen ">
         <div ref={divRef} className="heroDesk">
           <canvas
             id="hero-lightpass"
@@ -153,7 +154,7 @@ const Hero = () => {
             <h2 className="title-hero uno">Distinción</h2>
             <h2 className="title-hero_ligth dos">Innovación</h2>
             <div className="flex items-center">
-              <span className="line-span "></span>
+              <span className="line-span-hero "></span>
               <h2 className="title-hero_ligth mx-5 tres">Minimalismo</h2>
             </div>
           </section>
