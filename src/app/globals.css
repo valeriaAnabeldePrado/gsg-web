@@ -8,7 +8,7 @@
 }
 
 :root {
-  font-size: clamp(1.2rem, 2vw, 2.5rem);
+  /* font-size: clamp(1.2rem, 2vw, 2.5rem); */
   --color-fondo: #f3f3f3;
   --color-fuente: #2a2a2a;
   --color-fuente-roja: #f53e16;
