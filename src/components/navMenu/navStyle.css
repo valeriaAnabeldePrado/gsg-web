@@ -88,7 +88,6 @@
   text-decoration: none;
   color: #fff;
   font-family: "Roboto", sans-serif;
-  font-size: 2.4rem;
   position: relative;
   font-weight: 200;
   font-style: italic;
@@ -141,8 +140,8 @@
 .nav-link {
   text-decoration: none;
   color: var(--color-fuente-roja);
-  font-size: 0.8rem;
   font-weight: 400;
+  font-size: clamp(1.2rem, 1.5vw, 2.3rem);
   transition: all 600ms ease;
 }
 
@@ -164,10 +163,6 @@
   .cont-nav {
     padding: 0.8rem;
   }
-
-  .nav-link {
-    font-size: 1rem;
-  }
 }
 
 @media screen and (width <= 1000px) {
@@ -180,7 +175,9 @@
   .cont-nav {
     display: none;
   }
-
+  .nav-link {
+    font-size: 2em;
+  }
   .burger {
     display: flex;
   }
