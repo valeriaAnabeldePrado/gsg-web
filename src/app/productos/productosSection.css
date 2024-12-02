@@ -3,6 +3,7 @@
   padding: clamp(4rem, 10vw, 6rem) clamp(2rem, 7vw, 12rem) 1rem
     clamp(2rem, 7vw, 12rem);
   background-color: var(--color-fondo);
+  background-color: aqua;
 }
 
 .container {

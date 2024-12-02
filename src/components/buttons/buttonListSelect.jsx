@@ -1,18 +1,15 @@
 "use client";
+
 import React from "react";
+
+import Link from "next/link";
 import "./styleButtonList.css";
-import { getDataTiposQuery } from "@/utils/fetchData";
 
 const ButtonListSelect = ({ tipo }) => {
-  const handleclick = (tipo) => {
-    // getDataTipos(tipo);
-    //getDataTiposQuery(tipo);
-  };
-
   return (
-    <button className="buttonList-lista" onClick={() => handleclick(tipo)}>
+    <Link href={`/productos/${tipo}`} className="buttonList-lista">
       {tipo}
-    </button>
+    </Link>
   );
 };
 

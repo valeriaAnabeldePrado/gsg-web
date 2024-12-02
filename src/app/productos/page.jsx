@@ -5,6 +5,10 @@ import "./productosSection.css";
 import FooterM from "@/components/footer/footer";
 
 const Productos = () => {
+  // const productos = fetch("/products")
+
+  const prod = {};
+
   const images = [
     {
       src: "/imagenes/galeria/img1.png",
@@ -87,40 +91,38 @@ const Productos = () => {
       classImg: "imgDiezH",
     },
   ];
+
   return (
     <>
-      <div className="container-main-productos">
-        <ListSelectedProducts />
-        <section className="flex items-center justify-center">
-          <div className="container">
-            <div className="gallery">
-              {images.map((image, index) => (
-                <div key={index} className={`relative ${image.classname}`}>
-                  <div className={`imageContainer relative ${image.classImg}`}>
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      className="imgGaleria"
-                    />
-                  </div>
-                  <div className="imageInfo">
-                    <h3>{image.title}</h3>
-                    <p>{image.category}</p>
-                  </div>
+      <section className="flex items-center justify-center">
+        <div className="container">
+          <div className="gallery">
+            {images.map((image, index) => (
+              <div key={index} className={`relative ${image.classname}`}>
+                <div className={`imageContainer relative ${image.classImg}`}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="imgGaleria"
+                  />
                 </div>
-              ))}
-              <p className="textGallery">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
-                optio doloribus excepturi cum repellat praesentium ex veritatis
-                deleniti eaque quasi, voluptate corrupti vel doloremque esse
-                nihil, inventore enim, nobis exercitationem.
-              </p>
-            </div>
+                <div className="imageInfo">
+                  <h3>{image.title}</h3>
+                  <p>{image.category}</p>
+                </div>
+              </div>
+            ))}
+            <p className="textGallery">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
+              optio doloribus excepturi cum repellat praesentium ex veritatis
+              deleniti eaque quasi, voluptate corrupti vel doloremque esse
+              nihil, inventore enim, nobis exercitationem.
+            </p>
           </div>
-        </section>
-        <FooterM />
-      </div>
+        </div>
+      </section>
+      <FooterM />
     </>
   );
 };
