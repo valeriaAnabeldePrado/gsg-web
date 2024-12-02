@@ -6,7 +6,7 @@ import "./list.css";
 const ListSelectedProducts = () => {
   return (
     <div className="container-list-tipos">
-      <ul className="container-list-ul">
+      <ul className="container-list-ul m-4 ">
         {productTitle.map((title, index) => (
           <li key={`button_${index}`}>
             <ButtonListSelect tipo={title} />
