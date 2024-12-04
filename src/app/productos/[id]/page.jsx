@@ -4,23 +4,27 @@ import { use, useEffect, useState } from "react";
 import Measure from "@/components/measure";
 
 export default function page({ params }) {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState("");
   const [categoria, setcategoria] = useState("");
 
   const { id } = params;
 
   useEffect(() => {
-    (async () => {
+    const asl = async () => {
       const res = await fetch(`/api/product?id=${id}`);
       const data1 = await res.json();
-      console.log("datita recibida", data1);
-      const productReceived = data1.product;
-      setProduct(productReceived);
-      const cat = productReceived.categoria.toLowerCase();
-      setcategoria(cat);
-      console.log(categoria);
-    })();
-  }, []);
+      if (data1.product) {
+        const productReceived = data1.product;
+        setProduct(productReceived);
+        console.log("NO LLEGO", data1.product);
+        setcategoria(productReceived.categoria); // Aquí asignamos la categoría
+        console.log("receipt", productReceived);
+      } else {
+        console.log("No se encontró el producto");
+      }
+    };
+    asl();
+  }, [id]);
 
   return (
     <>

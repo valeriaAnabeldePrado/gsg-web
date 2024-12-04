@@ -6,7 +6,6 @@ export async function GET(req) {
 
   try {
     const res = await searchById(id);
-    console.log(res);
     return NextResponse.json({ product: res });
   } catch (error) {
     console.error("Error en la conexión a MongoDB:", error);

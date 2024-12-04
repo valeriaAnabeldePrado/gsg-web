@@ -7,10 +7,10 @@ const client = new MongoClient(uri);
 export const obtenerProductos = async () => {
   try {
     await client.connect();
-    const db = client.db("Germi");
+    const db = client.db("gsg");
     let productos;
 
-    productos = await db.collection("prod").find({}).toArray();
+    productos = await db.collection("Productos").find({}).toArray();
 
     return productos;
   } catch (err) {
@@ -23,13 +23,15 @@ export const obtenerProductos = async () => {
 export const searchById = async (id) => {
   try {
     await client.connect();
-    const db = client.db("Germi");
+    const db = client.db("gsg");
 
     const objectId = ObjectId.createFromHexString(id);
 
-    const producto = await db.collection("prod").findOne({ _id: objectId });
+    const producto = await db
+      .collection("Productos")
+      .findOne({ _id: objectId });
 
-    console.log(producto);
+    console.log("producto recibido", producto);
     return producto;
   } catch (err) {
     console.error("Error al obtener productos:", err);
