@@ -17,7 +17,7 @@ export default function page({ params }) {
         const productReceived = data1.product;
         setProduct(productReceived);
         console.log("NO LLEGO", data1.product);
-        setcategoria(productReceived.categoria); // Aquí asignamos la categoría
+        setcategoria(productReceived.categoria);
         console.log("receipt", productReceived);
       } else {
         console.log("No se encontró el producto");
