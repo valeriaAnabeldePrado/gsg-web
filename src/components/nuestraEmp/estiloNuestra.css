@@ -31,6 +31,11 @@
   display: inline-block;
   transform: translateY(200px);
 }
+.portadaDos {
+  height: 100vh;
+  background-image: url("../../../public/imagenes/banner1.png");
+  margin-bottom: 5%;
+}
 @media screen and (width <= 960px) {
   .container-nuestraEmp {
     height: 70dvh;

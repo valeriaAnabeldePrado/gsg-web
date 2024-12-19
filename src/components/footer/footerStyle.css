@@ -20,18 +20,25 @@
 .cont-text-otros > h3 {
   color: var(--color-fuente-roja);
   font-size: clamp(1.2rem, 3vw, 3.5rem);
-  font-weight: 400;
+  font-weight: 200;
 }
 .oficinas {
   text-align: end;
-  background-color: aqua;
+  background-color: transparent;
 }
 .h2-footer {
-  font-size: clamp(1.2rem, 3.5vw, 4.5rem);
-  font-weight: 100;
+  font-size: var(--text-grande);
+  font-weight: 500;
 }
 .cont-h2-footer {
   margin-bottom: 1rem;
+}
+.line-foo {
+  height: 2px;
+  width: 100%;
+  border-radius: 90px;
+  background-color: rgb(188, 188, 188);
+  margin-bottom: 2rem;
 }
 @media screen and (width <= 530px) {
   .linea {

@@ -1,12 +1,17 @@
 .container-list-ul {
-  padding: 5rem;
+  margin-top: 5rem;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .container-list-ul > li {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: "Roboto", sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   font-style: normal;
+  transition: 600ms ease-in-out;
+}
+.container-list-ul > li:hover {
+  color: var(--color-fuente-roja);
 }

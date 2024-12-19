@@ -102,15 +102,15 @@
 .cont-nav {
   display: flex;
   flex-direction: column;
-  padding: 0.2rem 0.5rem 0.5rem;
+  justify-content: flex-end;
+  padding: 1.5rem 0.5rem 1rem;
   background-color: var(--color-fondo);
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 4;
   width: 100%;
-  -webkit-box-shadow: 7px 9px 32px -17.5px #43434323;
-  -moz-box-shadow: 7px 9px 32px -17.5px #4343433c;
-  box-shadow: 7px 9px 32px -17.5px #43434334;
+  height: 10vh;
+  border-bottom: 1px solid #000;
 }
 
 .menu-nav {
@@ -141,7 +141,7 @@
   text-decoration: none;
   color: var(--color-fuente-roja);
   font-weight: 400;
-  font-size: clamp(1.2rem, 1.5vw, 2.3rem);
+  font-size: clamp(1.2rem, 1vw, 2rem);
   transition: all 600ms ease;
 }
 

@@ -1,111 +1,113 @@
 /*----------------- ESTILOS PAGE PRODUCTOS MAIN--------------- */
-.container-main-productos {
-  padding: clamp(4rem, 10vw, 6rem) clamp(2rem, 7vw, 12rem) 1rem
-    clamp(2rem, 7vw, 12rem);
-  background-color: var(--color-fondo);
-  background-color: aqua;
+.wrapper-cont {
+  padding: var(--padding-generico-x-y);
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+.container-items {
+  width: 50%;
+  padding: 0 2rem;
+  margin-bottom: 5rem;
 }
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2vw;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.imageContainer {
+.container-img-g {
+  height: 80vh;
   position: relative;
   width: 100%;
-  height: 100%;
+}
+.img-class {
+  object-fit: cover;
+  height: auto;
+  width: auto;
 }
 
-.imgGaleria {
-  object-fit: cover;
+.mask {
+  position: absolute;
+  z-index: 2;
+
+  background: linear-gradient(
+    180deg,
+    rgba(63, 94, 251, 0) 0%,
+    rgb(30, 30, 38) 300%
+  );
+  top: 0;
+  right: 0;
   width: 100%;
   height: 100%;
-  aspect-ratio: 4/3;
+}
+.title-gallery {
+  font-size: var(--text-medios-card);
+  margin-left: 0.5rem;
+  font-weight: 200;
+  padding-top: 2rem;
+  color: #fff;
+  z-index: 3;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 
-.imageInfo {
-  text-align: start;
-  margin-top: 10px;
+/* PRODUCTO PARTICULAR */
+.img-page-pruct {
+  object-fit: contain;
 }
-.imageInfo > h3 {
-  font-size: clamp(1rem, 2vw, 2.5rem);
+.loader-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
 }
-.imgUno {
-  grid-column: 1/ 1;
-  grid-row: 1/1;
+.circulo-load,
+.circulo-load-two {
+  border: 2px solid blanchedalmond;
+  background-color: transparent;
+  -webkit-box-shadow: 8px 8px 100px 42px rgba(255, 241, 173, 1);
+  -moz-box-shadow: 8px 8px 100px 42px rgba(255, 241, 173, 1);
+  box-shadow: 8px 8px 100px 42px rgba(255, 241, 173, 1);
+  animation: pulse-shadow 2s infinite ease-in-out;
 }
-.imgUnoH,
-.imgDosH,
-.imgDiezH {
-  height: 20vw;
+.circulo-load {
+  width: 30vh;
+  height: 30vh;
+  top: 19vh;
+  left: 30vh;
 }
-.imgDos {
-  grid-column: 1/1;
-  grid-row: 2/2;
+.circulo-load-two {
+  width: 35vh;
+  height: 35vh;
+  top: 40vh;
+  right: 40vh;
 }
-
-.imgTres {
-  grid-column: 2/2;
-  grid-row: span 2;
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 8px 8px 100px 42px rgba(255, 241, 173, 1);
+  }
+  50% {
+    box-shadow: 8px 8px 120px 70px rgba(255, 241, 173, 0.7);
+  }
+  100% {
+    box-shadow: 8px 8px 100px 42px rgba(255, 241, 173, 1);
+  }
 }
-.imgTresH,
-.imgSieteH,
-.imgOchoH {
-  height: 50vw;
+.container-producto {
+  padding: var(--padding-generico-x-y);
+  margin-top: 2rem;
 }
-.imgCuatro {
-  grid-column: 3/3;
-  grid-row: span 2;
+.h2-page-product {
+  font-size: var(--text-xxl);
+  font-weight: 400;
 }
-.imgCuatroH,
-.imgNueveH {
-  height: 40vw;
+.p-text-product,
+.title-ficha {
+  font-weight: 200;
+  padding-top: 2rem;
+  font-size: var(--text-medios);
 }
-.imgCinco {
-  grid-column: span 2;
-  grid-row: span 3;
+.text-p {
+  padding: 1rem 3rem;
 }
-.imgCincoH {
-  height: 25vw;
-}
-.imgSeis {
-  grid-column: span 1;
-  grid-row: span 2;
-}
-.imgSeisH {
-  height: 25vw;
-}
-
-.imgSiete {
-  grid-column: 1/ 1;
-  grid-row: span 5;
-}
-
-.imgOcho {
-  grid-column: 2/2;
-  grid-row: span 5;
-}
-.imgNueve {
-  grid-column: 3/3;
-  grid-row: span 5;
-}
-.imgDiez {
-  grid-column: 3/3;
-  grid-row: span 4;
-}
-
-.textGallery {
-  grid-column: 1/3;
-  grid-row: span 5;
+/* ------------------LOADER---------------- */
+.container-load {
+  position: fixed;
+  z-index: 4;
+  height: 200vh;
+  width: 100%;
+  left: 0;
 }

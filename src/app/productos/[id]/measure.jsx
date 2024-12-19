@@ -1,21 +1,26 @@
 "use client";
-
+import "../productosSection.css";
 export default function Measure({ product }) {
   const descripcionTecnica = product.caracteristicasTecnicas;
 
   return (
     <>
       {descripcionTecnica ? (
-        <div className="flex gap-8 flex-wrap">
+        <div className="flex gap-8 flex-wrap justify-between">
           <div>
-            <h2>Lumen</h2>
+            <h2 className="title-ficha">Lumen</h2>
             {descripcionTecnica.lumen &&
               descripcionTecnica.lumen.map((el, i) => {
-                return <p key={`${el}_${i}`}> {el}</p>;
+                return (
+                  <p className="pt-10" key={`${el}_${i}`}>
+                    {el}
+                  </p>
+                );
               })}
           </div>
+
           <div>
-            <h2>Acabado</h2>
+            <h2 className="title-ficha">Acabado</h2>
             {descripcionTecnica.acabado &&
               descripcionTecnica.acabado.map((el, i) => {
                 // Mapeo de nombres a colores
@@ -40,7 +45,10 @@ export default function Measure({ product }) {
                 const color = colorMap[el.trim()] || "black"; // Gris por defecto si no está definido
 
                 return (
-                  <div key={`${el}_${i}`} className="flex items-center gap-2">
+                  <div
+                    key={`${el}_${i}`}
+                    className="flex items-center gap-2 pt-10"
+                  >
                     {/* Renderiza un círculo con el color */}
                     <span
                       className="inline-block w-6 h-6 rounded-full border"
@@ -52,44 +60,66 @@ export default function Measure({ product }) {
               })}
           </div>
           <div>
-            <h2>Largo </h2>
+            <h2 className="title-ficha">Largo </h2>
             {descripcionTecnica.largo &&
               descripcionTecnica.largo.map((el, i) => {
-                return <p key={`${el}_${i}`}> {el} cm</p>;
+                return (
+                  <p className="pt-10" key={`${el}_${i}`}>
+                    {el} cm
+                  </p>
+                );
               })}
           </div>
           <div>
-            <h2>Ancho </h2>
+            <h2 className="title-ficha">Ancho </h2>
             {descripcionTecnica.ancho &&
               descripcionTecnica.ancho.map((el, i) => {
-                return <p key={`${el}_${i}`}> {el} cm</p>;
+                return (
+                  <p className="pt-10" key={`${el}_${i}`}>
+                    {el} cm
+                  </p>
+                );
               })}
           </div>
           <div>
-            <h2>Diametro </h2>
+            <h2 className="title-ficha">Diametro </h2>
             {descripcionTecnica.diametro
               ? descripcionTecnica.diametro.map((el, i) => {
-                  return <p key={`${el}_${i}`}> {el} cm</p>;
+                  return (
+                    <p className="pt-10" key={`${el}_${i}`}>
+                      {el} cm
+                    </p>
+                  );
                 })
               : "No corresponde"}
           </div>
           <div>
-            <h2>Tono </h2>
+            <h2 className="title-ficha">Tono </h2>
             {descripcionTecnica.tono &&
               descripcionTecnica.tono.map((el, i) => {
-                return <p key={`${el}_${i}`}> {el}</p>;
+                return (
+                  <p className="pt-10" key={`${el}_${i}`}>
+                    {el}
+                  </p>
+                );
               })}
           </div>
           <div>
-            <h2>Watt </h2>
+            <h2 className="title-ficha">Watt </h2>
             {descripcionTecnica.watt &&
               descripcionTecnica.watt.map((el, i) => {
-                return <p key={`${el}_${i}`}> {el}</p>;
+                return (
+                  <p className="pt-10" key={`${el}_${i}`}>
+                    {el}
+                  </p>
+                );
               })}
           </div>
           <div>
-            <p>Led Incluido: {descripcionTecnica.incluyeLed ? "SI" : "NO"}</p>
-            <p>
+            <p className="title-ficha">
+              Led Incluido: {descripcionTecnica.incluyeLed ? "SI" : "NO"}
+            </p>
+            <p className="title-ficha">
               Incluiye Equipo: {descripcionTecnica.incluyeEquipo ? "SI" : "NO"}
             </p>
           </div>

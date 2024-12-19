@@ -36,18 +36,20 @@ const CatalogoHome = () => {
               <h2 className="h2-catalogo">
                 Descarga nuestro catálogo de productos
               </h2>
-              <div className=" contImg-logo">
-                <Image
-                  src={logoDownload}
-                  fill
-                  priority={true}
-                  alt="logoD"
-                  className="logoDownloag"
-                />
-              </div>
-            </div>
-            <div className="cont-btn-descarga">
-              <ButtonL></ButtonL>
+              <section className="flex h-full flex-col items-center gap-10 mt-32 justify-center ">
+                <div className=" contImg-logo">
+                  <Image
+                    src={logoDownload}
+                    fill
+                    priority={true}
+                    alt="logoD"
+                    className="logoDownloag"
+                  />
+                </div>
+                <div className="cont-btn-descarga">
+                  <ButtonL></ButtonL>
+                </div>
+              </section>
             </div>
           </section>
           <section className="cont-footer">

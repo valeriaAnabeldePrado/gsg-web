@@ -8,7 +8,7 @@ const FooterM = () => {
         <h2 className="h2-footer">Contáctate</h2>
         <h2 className="h2-footer ml-10">con nosotros</h2>
       </section>
-      <span className="linea"></span>
+
       <section className="cont-text-contact-footer">
         <div className="cont-text-otros">
           <h3>Otros canales de contacto</h3>

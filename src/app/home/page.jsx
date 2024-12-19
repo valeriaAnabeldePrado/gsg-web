@@ -1,4 +1,3 @@
-import Carousel from "@/components/carousel/carousel";
 import CatalogoHome from "@/components/catalogo-home/catalogoHome";
 import Hero from "@/components/hero/hero";
 import NuestraEmp from "@/components/nuestraEmp/nuestraEmpresa";
@@ -11,7 +10,7 @@ const HomeM = () => {
         <Hero />
       </div>
       <NuestraEmp />
-      <Carousel />
+      <div className="portadaDos"></div>
       <CatalogoHome />
     </>
   );

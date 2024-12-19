@@ -1,14 +1,13 @@
 .btn-descarga {
   border-radius: 100%;
-  border: 3px solid #f3f3f3;
-  padding: 4.7rem 4.4rem 4.4rem 4.4rem;
+  border: 3px solid blanchedalmond;
+  width: 30vh;
+  height: 30vh;
   font-weight: 200;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-box-shadow: 7.5px 3px 25px 0 #f3f3f3;
-  -moz-box-shadow: 7.5px 3px 25px 0 #f3f3f3;
-  box-shadow: 7.5px 3px 25px 0 #f3f3f3;
+
+  -webkit-box-shadow: 7.5px 3px 25px 0 blanchedalmond;
+  -moz-box-shadow: 7.5px 3px 25px 0 blanchedalmond;
+  box-shadow: 7.5px 3px 25px 0 blanchedalmond;
 
   transition: 600ms all;
 }

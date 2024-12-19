@@ -17,15 +17,15 @@
   align-self: flex-end;
 }
 .h2-catalogo {
-  font-size: clamp(1.2rem, 3.5vw, 4.5rem);
+  font-size: var(--text-grande);
   font-weight: 100;
   width: 60%;
 }
 .contImg-logo {
   height: 5vh;
   width: 5vh;
-  align-self: flex-end;
-  margin: 0 clamp(2rem, 7.5vw, 12rem) 2rem 0;
+
+  margin-bottom: 4rem;
   position: relative;
   animation: moveArrow 2s infinite;
 }
@@ -52,10 +52,6 @@
   }
   .cont-btn-descarga {
     margin-top: 3rem;
-    padding-right: 2rem;
-  }
-  .contImg-logo {
-    margin-right: 5rem;
   }
 }
 @media screen and (width <= 1000px) {

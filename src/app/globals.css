@@ -6,10 +6,13 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background-color: var(--color-fondo);
+}
 
 :root {
   /* font-size: clamp(1.2rem, 2vw, 2.5rem); */
-  --color-fondo: #f3f3f3;
+  --color-fondo: #f6f6f6;
   --color-fuente: #2a2a2a;
   --color-fuente-roja: #f53e16;
   --tipo-fuente: "Roboto", sans-serif;
@@ -23,10 +26,11 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --gap: 2rem;
+  /*----------------- FUENTES--------------- */
+  --text-medios: clamp(1.2rem, 2vw, 1.8rem);
+  --text-medios-card: clamp(1.2rem, 2.5vw, 3rem);
+  --text-xxl: clamp(1.2rem, 3vw, 3rem);
+  --text-grande: clamp(1.2rem, 3.2vw, 4rem);
+  --text-xxxl: clamp(1.2rem, 3.5vw, 4.5rem);
+  --text-menu: clamp(1.2rem, 2vw, 2.5rem);
 }
-/*----------------- FUENTES--------------- */
-/* font-size: clamp(1.2rem, 2vw, 2.5rem)--->textos medios
-   font-size: clamp(1.2rem, 3vw, 3.5rem)--->Textos grandes
-   font-size: clamp(1.2rem, 3.5vw, 4.5rem)--->Textos extra grandes
-   font-size: clamp(1.2rem, 2vw, 2.5rem)----->menuNav
-*/

@@ -20,8 +20,8 @@ const MenuNav = () => {
 
   return (
     <>
-      <div className="cont-nav">
-        <nav className="menu-nav">
+      <div className="cont-nav ">
+        <nav className="menu-nav ">
           <ul className="nav-list">
             {rutas.map((ruta) => (
               <li key={ruta.id} className="nav-item">
@@ -32,7 +32,6 @@ const MenuNav = () => {
             ))}
           </ul>
         </nav>
-        <div className="line-span"></div>
       </div>
       {/* menu burger */}
       <section className="nav-bar-position">

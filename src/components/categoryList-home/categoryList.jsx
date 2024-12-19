@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import "./categoryList.css";
 import { luces } from "../../utils/data";
 import Image from "next/image";
 import clsx from "clsx";
+import "./categoryList.css";
 
 export default function CategoryList() {
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -19,7 +19,7 @@ export default function CategoryList() {
             onMouseEnter={() => setHoveredCategory(luz)}
             onMouseLeave={() => setHoveredCategory(null)}
           >
-            {luz.title}
+            <h2>› {luz.title}</h2>
           </div>
         ))}
       </div>
