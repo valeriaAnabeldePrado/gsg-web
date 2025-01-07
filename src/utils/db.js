@@ -10,7 +10,7 @@ export const obtenerProductos = async () => {
     const db = client.db("gsg");
     let productos;
 
-    productos = await db.collection("Productos").find({}).toArray();
+    productos = await db.collection("products").find({}).toArray();
 
     return productos;
   } catch (err) {
@@ -27,9 +27,7 @@ export const searchById = async (id) => {
 
     const objectId = ObjectId.createFromHexString(id);
 
-    const producto = await db
-      .collection("Productos")
-      .findOne({ _id: objectId });
+    const producto = await db.collection("products").findOne({ _id: objectId });
 
     console.log("producto recibido", producto);
     return producto;

@@ -21,13 +21,13 @@ const Productos = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await fetch(`/api/products`);
+
       const data1 = await res.json();
       const data = data1.products;
-      const filteredData = data.filter(
-        (product) => product.img && (product.img.prod1 || product.img.prod2)
-      );
-      setOriginalProducts(filteredData);
-      setProducts(filteredData);
+      //console.log(data);
+
+      setOriginalProducts(data);
+
       const timer = setTimeout(() => {
         setloaderOk(false);
       }, 1000);
@@ -39,22 +39,25 @@ const Productos = () => {
   }, []);
 
   useEffect(() => {
-    if (categoria === "todos" || !categoria) {
+    if (categoria === "Todos" || !categoria) {
       setProducts(originalProducts);
     } else {
       const filteredProducts = originalProducts.filter(
-        (product) => product.categoria === categoria
+        (product) => product.categoria.toLowerCase() === categoria
       );
+
       setProducts(filteredProducts);
     }
+    console.log(categoria);
   }, [categoria, originalProducts]);
+  console.log(products);
 
   return (
     <>
       <div className="w-full wrapper-cont">
         <section className="flex items-center justify-between flex-wrap  w-full">
-          {products && !loaderOk ? (
-            products.map((el, i) => {
+          {originalProducts && !loaderOk ? (
+            originalProducts.map((el, i) => {
               return (
                 <div key={`${el.nombre}_ ${i}`} className={`container-items `}>
                   <Link href={`/productos/${el._id}`}>
@@ -66,7 +69,7 @@ const Productos = () => {
                         className="img-class"
                       />
                       <div className="mask"></div>
-                      <h2 className="title-gallery">{el.nombre}</h2>
+                      <h2 className="title-gallery">{el.categoria}</h2>
                     </div>
                   </Link>
                 </div>
