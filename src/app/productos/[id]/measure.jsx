@@ -1,16 +1,16 @@
 "use client";
 import "../productosSection.css";
 export default function Measure({ product }) {
-  const descripcionTecnica = product.caracteristicasTecnicas;
+  let CharacteristicsP = product.productCharacteristics;
 
   return (
     <>
-      {descripcionTecnica ? (
+      {CharacteristicsP ? (
         <div className="flex gap-8 flex-wrap justify-between">
           <div>
             <h2 className="title-ficha">Lumen</h2>
-            {descripcionTecnica.lumen &&
-              descripcionTecnica.lumen.map((el, i) => {
+            {CharacteristicsP.lumen &&
+              CharacteristicsP.lumen.map((el, i) => {
                 return (
                   <p className="pt-10" key={`${el}_${i}`}>
                     {el}
@@ -21,9 +21,8 @@ export default function Measure({ product }) {
 
           <div>
             <h2 className="title-ficha">Acabado</h2>
-            {descripcionTecnica.acabado &&
-              descripcionTecnica.acabado.map((el, i) => {
-                // Mapeo de nombres a colores
+            {CharacteristicsP.acabado &&
+              CharacteristicsP.acabado.map((el, i) => {
                 const colorMap = {
                   "Aluminio anodizado": "#d4d4d4", // Gris claro
                   "Alumino anodizado": "#d4d4d4", // Gris claro
@@ -49,20 +48,19 @@ export default function Measure({ product }) {
                     key={`${el}_${i}`}
                     className="flex items-center gap-2 pt-10"
                   >
-                    {/* Renderiza un círculo con el color */}
                     <span
                       className="inline-block w-6 h-6 rounded-full border"
                       style={{ backgroundColor: color }}
                     ></span>
-                    <p>{el.trim()}</p> {/* También muestra el nombre */}
+                    <p>{el.trim()}</p>
                   </div>
                 );
               })}
           </div>
           <div>
             <h2 className="title-ficha">Largo </h2>
-            {descripcionTecnica.largo &&
-              descripcionTecnica.largo.map((el, i) => {
+            {CharacteristicsP.largo &&
+              CharacteristicsP.largo.map((el, i) => {
                 return (
                   <p className="pt-10" key={`${el}_${i}`}>
                     {el} cm
@@ -72,8 +70,8 @@ export default function Measure({ product }) {
           </div>
           <div>
             <h2 className="title-ficha">Ancho </h2>
-            {descripcionTecnica.ancho &&
-              descripcionTecnica.ancho.map((el, i) => {
+            {CharacteristicsP.ancho &&
+              CharacteristicsP.ancho.map((el, i) => {
                 return (
                   <p className="pt-10" key={`${el}_${i}`}>
                     {el} cm
@@ -83,8 +81,8 @@ export default function Measure({ product }) {
           </div>
           <div>
             <h2 className="title-ficha">Diametro </h2>
-            {descripcionTecnica.diametro
-              ? descripcionTecnica.diametro.map((el, i) => {
+            {CharacteristicsP.diametro
+              ? CharacteristicsP.diametro.map((el, i) => {
                   return (
                     <p className="pt-10" key={`${el}_${i}`}>
                       {el} cm
@@ -95,8 +93,8 @@ export default function Measure({ product }) {
           </div>
           <div>
             <h2 className="title-ficha">Tono </h2>
-            {descripcionTecnica.tono &&
-              descripcionTecnica.tono.map((el, i) => {
+            {CharacteristicsP.tono &&
+              CharacteristicsP.tono.map((el, i) => {
                 return (
                   <p className="pt-10" key={`${el}_${i}`}>
                     {el}
@@ -106,8 +104,8 @@ export default function Measure({ product }) {
           </div>
           <div>
             <h2 className="title-ficha">Watt </h2>
-            {descripcionTecnica.watt &&
-              descripcionTecnica.watt.map((el, i) => {
+            {CharacteristicsP.watt &&
+              CharacteristicsP.watt.map((el, i) => {
                 return (
                   <p className="pt-10" key={`${el}_${i}`}>
                     {el}
@@ -117,10 +115,10 @@ export default function Measure({ product }) {
           </div>
           <div>
             <p className="title-ficha">
-              Led Incluido: {descripcionTecnica.incluyeLed ? "SI" : "NO"}
+              Led Incluido: {CharacteristicsP.incluyeLed ? "SI" : "NO"}
             </p>
             <p className="title-ficha">
-              Incluiye Equipo: {descripcionTecnica.incluyeEquipo ? "SI" : "NO"}
+              Incluiye Equipo: {CharacteristicsP.incluyeEquipo ? "SI" : "NO"}
             </p>
           </div>
         </div>

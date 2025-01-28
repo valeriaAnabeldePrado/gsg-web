@@ -39,7 +39,7 @@ const Productos = () => {
   }, []);
 
   useEffect(() => {
-    if (categoria === "Todos" || !categoria) {
+    if (categoria === "todos" || !categoria) {
       setProducts(originalProducts);
     } else {
       const filteredProducts = originalProducts.filter(
@@ -55,15 +55,16 @@ const Productos = () => {
   return (
     <>
       <div className="w-full wrapper-cont">
-        <section className="flex items-center justify-between flex-wrap  w-full">
+        <section className="flex items-center justify-between flex-wrap  w-full responsive-container">
           {originalProducts && !loaderOk ? (
-            originalProducts.map((el, i) => {
-              return (
-                <div key={`${el.nombre}_ ${i}`} className={`container-items `}>
+            products.map((el, i) => {
+              return el.modelos.map((imagen) => (
+                <div key={`${i}_${imagen.id}`}  className={`container-items `}>
                   <Link href={`/productos/${el._id}`}>
                     <div className="relative container-img-g">
                       <Image
-                        src={`https://images.smartcloudstudio.com/gsg/${el.code}.png`}
+                        key={imagen.id}
+                        src={`https://images.smartcloudstudio.com/gsg/${imagen.id}.png`}
                         alt={el._id}
                         fill
                         className="img-class"
@@ -73,7 +74,7 @@ const Productos = () => {
                     </div>
                   </Link>
                 </div>
-              );
+              ));
             })
           ) : (
             <LoaderP />

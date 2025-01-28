@@ -20,14 +20,14 @@ export default function page({ params }) {
         const productReceived = data1.product;
         setProduct(productReceived);
         setcategoria(productReceived.categoria);
-        console.log("receipt", productReceived);
+        //console.log("receipt", productReceived);
       } else {
         console.log("No se encontró el producto");
       }
     };
     asl();
   }, [id]);
-  console.log(product);
+
   const handleModelChange = (index) => {
     setSelectedModelIndex(index);
   };
