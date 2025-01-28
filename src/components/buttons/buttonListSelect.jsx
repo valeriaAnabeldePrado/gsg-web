@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const ButtonListSelect = ({ tipo }) => {
   return (
-    <Link href={`/productos?categoria=${tipo}`} className="buttonList-lista">
+    <Link href={`/productos?categoria=${tipo}`} className="buttonList-lista ">
       {tipo}
     </Link>
   );

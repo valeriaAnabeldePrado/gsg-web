@@ -111,3 +111,23 @@
   width: 100%;
   left: 0;
 }
+/* //-----------------MEDIA---------------// */
+@media screen and (width <= 1000px) {
+  .wrapper-cont {
+    padding: var(--padding-chico);
+  }
+  .container-items {
+    padding: 0 1rem;
+  }
+  
+}
+@media screen and (width <= 1000px) {
+ 
+  .responsive-container{
+    flex-direction: column;
+  }
+  .container-items {
+    width: 100%;
+   
+  }
+}

@@ -1,9 +1,13 @@
+.container-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .container-list-ul {
   margin-top: 5rem;
   padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
 }
 .container-list-ul > li {
   font-size: 1.1rem;
@@ -14,4 +18,21 @@
 }
 .container-list-ul > li:hover {
   color: var(--color-fuente-roja);
+}
+.dropdown{
+  display: none;
+}
+@media screen and (width <= 800px) {
+  .container-list-tipos{
+   margin-top: 1rem;
+   padding: 1rem;
+  }
+  .container-list{
+    display: none;
+  }
+  .dropdown{
+    display: inline;
+    width: 100%;
+    
+  }
 }
