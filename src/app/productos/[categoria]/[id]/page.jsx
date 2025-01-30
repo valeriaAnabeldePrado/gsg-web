@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import Measure from '@/app/productos/[id]/measure';
+import Measure from '@/app/productos/[categoria]/[id]/measure';
 import LoaderP from '@/components/loader/loagerP';
-import '../productosSection.css';
+import '../../productosSection.css';
 
 export default function page({ params }) {
   const [product, setProduct] = useState('');
@@ -44,8 +44,8 @@ export default function page({ params }) {
             <div className="flex-1 min-w-96 relative h-[400px] rounded-lg">
               <Image
                 fill
-                src={`https://images.smartcloudstudio.com/gsg/${product.code}.png`}
-                alt={product.nombre}
+                src={`https://images.smartcloudstudio.com/gsg/${product.modelos[0].id}.png`}
+                alt={product.code}
                 className="object-cover rounded-xl"
               />
             </div>
@@ -77,8 +77,10 @@ export default function page({ params }) {
               <section className="h-96 w-full relative container-img-product-id">
                 <Image
                   fill
-                  src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/${product.categoria}/${product.foto_producto}`}
-                  alt={product.modelos[selectedModelIndex].id}
+                  src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/${categoria.toLowerCase()}/${
+                    product.modelos[selectedModelIndex].fotos_producto
+                  }`}
+                  alt={product.modelos[selectedModelIndex].fotos_producto}
                   className="img-page-pruct "
                 />
               </section>

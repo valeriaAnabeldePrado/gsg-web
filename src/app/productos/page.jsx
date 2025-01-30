@@ -24,7 +24,6 @@ const Productos = () => {
 
       const data1 = await res.json();
       const data = data1.products;
-      //console.log(data);
 
       setOriginalProducts(data);
 
@@ -48,38 +47,34 @@ const Productos = () => {
 
       setProducts(filteredProducts);
     }
-    console.log(categoria);
   }, [categoria, originalProducts]);
-  console.log(products);
 
   return (
     <>
       <div className="w-full wrapper-cont">
         <section className="flex items-center justify-between flex-wrap  w-full responsive-container">
           {originalProducts && !loaderOk ? (
-            products.map((el, i) => {
-              if (el.modelos) {
-                return el.modelos.map((imagen) => (
-                  <div key={`${i}_${imagen.id}`} className={`container-items `}>
-                    <Link href={`/productos/${el._id}`}>
-                      <div className="relative container-img-g">
-                        <Image
-                          key={imagen.id}
-                          src={`https://images.smartcloudstudio.com/gsg/${imagen.id}.png`}
-                          alt={el._id}
-                          fill
-                          className="img-class"
-                        />
-                        <div className="mask"></div>
-                        <h2 className="title-gallery">{el.categoria}</h2>
-                      </div>
-                    </Link>
-                  </div>
-                ));
-              } else {
-                return null;
-              }
-            })
+            products.map((el, i) =>
+              el.modelos
+                ? el.modelos.map((imagen) => (
+                    <div key={`${i}_${imagen.id}`} className="container-items">
+                      <Link href={`/productos/${el.categoria}/${el._id}`}>
+                        <div className="relative container-img-g">
+                          <Image
+                            key={imagen.id}
+                            src={`https://images.smartcloudstudio.com/gsg/${imagen.id}.png`}
+                            alt={el._id}
+                            fill
+                            className="img-class"
+                          />
+                          <div className="mask"></div>
+                          <h2 className="title-gallery">{el.categoria}</h2>
+                        </div>
+                      </Link>
+                    </div>
+                  ))
+                : null,
+            )
           ) : (
             <LoaderP />
           )}

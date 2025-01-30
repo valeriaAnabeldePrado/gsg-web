@@ -1,5 +1,5 @@
 'use client';
-import '../productosSection.css';
+import '../../productosSection.css';
 export default function Measure({ product }) {
   let CharacteristicsP = product.productCharacteristics;
 
@@ -44,6 +44,7 @@ export default function Measure({ product }) {
                     'Blanco micro': '#f8f8ff', // Blanco micro
                     'Negro micro': '#2e2e2e', // Negro micro
                     'acero inoxidable': '#b0c4de', // Acero inoxidable
+                    'Oro mate': '#ffd200',
                   };
 
                   // Determina el color según el nombre
