@@ -14,6 +14,8 @@ body {
   /* font-size: clamp(1.2rem, 2vw, 2.5rem); */
   --color-fondo: #f6f6f6;
   --color-fuente-black: #2a2a2a;
+  --color-fuente-grey: #a4a4a4;
+  --color-bg-gray-200: rgb(237, 237, 237);
   --color-fuente-roja: #f53e16;
   --tipo-fuente: "Roboto", sans-serif;
   --padding-generico-x: 0 clamp(2rem, 7vw, 12rem);

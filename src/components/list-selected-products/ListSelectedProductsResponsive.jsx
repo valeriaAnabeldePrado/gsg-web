@@ -14,7 +14,7 @@ const ListSelectedProductsResponsive = () => {
       {({ open }) => (
         <>
           <div>
-            <MenuButton className="inline-flex w-full justify-end gap-x-1.5 rounded-full bg-white pt-4 pb-4 pr-4 py-2 text-lg font-semibold text-gray-700 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">
+            <MenuButton className="inline-flex w-full justify-end gap-x-1.5 bg-[#f6f6f6] rounded-full pt-4 pb-4 pr-4 py-2 text-lg font-semibold text-gray-700 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">
               Categorías
               <ChevronDownIcon aria-hidden="true" className="-mr-1 size-7 text-red-600" />
             </MenuButton>
