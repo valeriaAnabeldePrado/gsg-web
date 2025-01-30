@@ -35,4 +35,7 @@
     width: 100%;
     
   }
+  .ring-gray-300{
+    border: 0.5px solid var(--color-fuente-grey);
+  }
 }
