@@ -54,3 +54,13 @@
     margin-top: 1rem;
   }
 }
+@media screen and (width <= 800px) {
+  .container-footer {
+    padding: 8%;
+    margin-top: 3rem;
+  }
+  .cont-h2-footer {
+    display: flex;
+    margin: 0;
+  }
+}
