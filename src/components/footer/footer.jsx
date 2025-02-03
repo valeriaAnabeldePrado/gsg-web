@@ -1,14 +1,76 @@
-import React from "react";
-import "./footerStyle.css";
-
+'use client';
+import './footerStyle.css';
+import DynamicForm from '../form/DynamicForm';
+import { useState } from 'react';
+const formFields = [
+  {
+    name: 'email',
+    type: 'email',
+    label: 'Correo electrónico',
+    validation: {
+      required: 'El correo electrónico es obligatorio.',
+      pattern: {
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        message: 'Por favor, introduce un correo electrónico válido.',
+      },
+    },
+  },
+];
 const FooterM = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const handleSubmit = (data) => {
+    // const serviceId = import.meta.env.VITE_SERVICE_ID
+    // const templateId = import.meta.env.VITE_TEMPLATE_ID
+    // const publicKey = import.meta.env.VITE_PUBLIC_KEY
+
+    setIsLoading(true);
+    // emailjs
+    //   .send(serviceId, templateId, data, publicKey)
+    //   .then(() => {
+    //     setIsLoading(false)
+    //     setIsSubmitted(true)
+    //     reset()
+
+    //     setTimeout(() => {
+    //       setIsSubmitted(false)
+    //     }, 10000)
+    //   })
+    //   .catch((error) => {
+    //     setIsLoading(false)
+    //     console.error('Error al enviar el email:', error)
+    //   })
+  };
   return (
     <footer className="container-footer">
       <section className="cont-h2-footer">
         <h2 className="h2-footer">Contáctate</h2>
-        <h2 className="h2-footer ml-10">con nosotros</h2>
+        <h2 className="h2-footer ml-2">con nosotros</h2>
       </section>
+      <div>
+        <img src="./img/logo.png" alt="logo" className="img-logo-footer" />
+        <h2 className="text-xl text-slate-600">
+          Suscribite a nuestras noticias!
+        </h2>
 
+        <DynamicForm
+          fields={formFields}
+          onSubmit={handleSubmit}
+          className="form-footer"
+        />
+
+        {isLoading && (
+          <div className="loading-message">
+            Enviando mensaje, aguarde unos instantes...
+          </div>
+        )}
+
+        {isSubmitted && (
+          <div className="success-message">
+            Muchas gracias! Te enviaremos más info por el correo proporcionado.
+          </div>
+        )}
+      </div>
       <section className="cont-text-contact-footer">
         <div className="cont-text-otros">
           <h3>Otros canales de contacto</h3>
