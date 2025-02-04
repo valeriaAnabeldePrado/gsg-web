@@ -1,9 +1,9 @@
-"use client";
-import { useState } from "react";
-import { luces } from "../../utils/data";
-import Image from "next/image";
-import clsx from "clsx";
-import "./categoryList.css";
+'use client';
+import { useState } from 'react';
+import { luces } from '../../utils/data';
+import Image from 'next/image';
+import clsx from 'clsx';
+import './categoryList.css';
 
 export default function CategoryList() {
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -27,11 +27,11 @@ export default function CategoryList() {
         {luces.map((luz, index) => (
           <div key={index}>
             <Image
-              width={300}
+              width={400}
               height={100}
               src={`/imagenes/categoria/${luz.src}`}
               alt="Category"
-              className={clsx("category-image", {
+              className={clsx('category-image', {
                 visible: hoveredCategory?.src === luz.src,
               })}
             />
