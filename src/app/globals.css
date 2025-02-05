@@ -17,7 +17,7 @@ body {
   --color-fuente-grey: #a4a4a4;
   --color-bg-gray-200: rgb(237, 237, 237);
   --color-fuente-roja: #f53e16;
-  --tipo-fuente: "Roboto", sans-serif;
+  --tipo-fuente: 'Roboto', sans-serif;
   --padding-generico-x: 0 clamp(2rem, 7vw, 12rem);
   --padding-generico-y: clamp(2rem, 7vw, 12rem) 0;
   --padding-chico: 2rem;
@@ -29,6 +29,7 @@ body {
   --background-end-rgb: 255, 255, 255;
   --gap: 2rem;
   /*----------------- FUENTES--------------- */
+  --text-small: clamp(1rem, 1.2vw, 1.2rem);
   --text-medios: clamp(1.2rem, 2vw, 1.8rem);
   --text-medios-card: clamp(1.2rem, 2.5vw, 3rem);
   --text-xxl: clamp(1.2rem, 3vw, 3rem);
