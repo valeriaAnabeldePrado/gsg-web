@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import FooterM from '@/components/footer/footer';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import './productosSection.css';
@@ -29,7 +28,7 @@ const Productos = () => {
 
       const timer = setTimeout(() => {
         setloaderOk(false);
-      }, 1000);
+      }, 300);
 
       return () => clearTimeout(timer);
     };
@@ -48,6 +47,7 @@ const Productos = () => {
       setProducts(filteredProducts);
     }
   }, [categoria, originalProducts]);
+  console.log(products);
 
   return (
     <>
@@ -56,30 +56,35 @@ const Productos = () => {
           {originalProducts && !loaderOk ? (
             products.map((el, i) =>
               el.modelos
-                ? el.modelos.map((imagen) => (
-                    <div key={`${i}_${imagen.id}`} className="container-items">
-                      <Link href={`/productos/${el.categoria}/${el._id}`}>
-                        <div className="relative container-img-g">
-                          <Image
-                            key={imagen.id}
-                            src={`https://images.smartcloudstudio.com/gsg/${imagen.id}.png`}
-                            alt={el._id}
-                            fill
-                            className="img-class"
-                          />
-                          <div className="mask"></div>
-                          <h2 className="title-gallery">{el.categoria}</h2>
+                ? el.modelos.map(
+                    (imagen) =>
+                      imagen.id && (
+                        <div
+                          key={`${i}_${imagen.id}`}
+                          className="container-items"
+                        >
+                          <Link href={`/productos/${el.categoria}/${el._id}`}>
+                            <div className="relative container-img-g">
+                              <Image
+                                key={imagen.id}
+                                src={`https://images.smartcloudstudio.com/gsg/${imagen.id}.png`}
+                                alt={el._id}
+                                fill
+                                className="img-class"
+                              />
+                              <div className="mask"></div>
+                              <h2 className="title-gallery">{el.categoria}</h2>
+                            </div>
+                          </Link>
                         </div>
-                      </Link>
-                    </div>
-                  ))
+                      ),
+                  )
                 : null,
             )
           ) : (
             <LoaderP />
           )}
         </section>
-        <FooterM />
       </div>
     </>
   );

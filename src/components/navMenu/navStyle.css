@@ -87,7 +87,7 @@
 .navbar .nav-links li a {
   text-decoration: none;
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   position: relative;
   font-weight: 200;
   font-style: italic;
@@ -97,6 +97,8 @@
 .navbar.nav-open {
   display: block;
   clip-path: circle(100%);
+  height: 100vh;
+  background-color: #170c01;
 }
 
 .cont-nav {
@@ -155,7 +157,8 @@
 .nav-bar-position {
   position: fixed;
   width: 100%;
-  
+
+  background-color: #170c01;
   top: 0;
   z-index: 2;
 }

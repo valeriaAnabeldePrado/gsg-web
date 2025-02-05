@@ -192,3 +192,12 @@
     gap: 2rem;
   }
 }
+@media screen and (width <= 671px) {
+  .container-button-responsive {
+    flex-direction: column;
+  }
+
+  .p-text-product-description {
+    padding-top: 0;
+  }
+}
