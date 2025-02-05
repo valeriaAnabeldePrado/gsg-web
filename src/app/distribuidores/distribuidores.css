@@ -1,0 +1,19 @@
+.stroke-text-title {
+  font-size: var(--text-xxxl);
+  color: var(--color-fuente-roja);
+  padding: 0 8%;
+  margin-top: 9rem;
+}
+.container-distribuidores {
+  padding: var(--padding-generico-x-y);
+  display: flex;
+
+  align-items: flex-end;
+}
+.cont-text-type {
+  font-size: 10em;
+  font-weight: 100;
+}
+.cont-footer-dis {
+  padding: var(--padding-generico-x-y);
+}

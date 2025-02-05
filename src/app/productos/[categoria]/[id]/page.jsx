@@ -35,13 +35,13 @@ export default function page({ params }) {
       {product ? (
         <div className="p-6 md:p-10 flex gap-10 flex-col container-producto">
           <section className="flex flex-wrap gap-10  ">
-            <div className="flex-1 min-w-96 flex flex-col">
+            <div className="flex-1 min-w-72 flex flex-col">
               <h3 className="h2-page-product">{product.nombre}</h3>
-              <p className=" p-text-product-description">
+              <p className=" p-text-product-description ">
                 {product.descripcion}
               </p>
             </div>
-            <div className="flex-1 min-w-96 relative h-[400px] rounded-lg">
+            <div className="flex-1 min-w-72 relative h-[400px] rounded-lg ">
               <Image
                 fill
                 src={`https://images.smartcloudstudio.com/gsg/${product.modelos[0].id}.png`}
@@ -51,7 +51,7 @@ export default function page({ params }) {
             </div>
           </section>
 
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center container-button-responsive">
             {product.modelos.map((modelo, index) => {
               const subnombreSinColgante = modelo.subnombre.replace(
                 'Colgante ',
@@ -74,7 +74,7 @@ export default function page({ params }) {
           </div>
           {product.modelos[selectedModelIndex] && (
             <section>
-              <section className="h-96 w-full relative container-img-product-id">
+              <section className="h-96 w-full relative container-img-product-id bg-white">
                 <Image
                   fill
                   src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/${categoria.toLowerCase()}/${
