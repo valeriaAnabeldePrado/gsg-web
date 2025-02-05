@@ -1,13 +1,14 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import MenuNav from "@/components/navMenu/menuNav";
+import { Inter } from 'next/font/google';
+import './globals.css';
+import MenuNav from '@/components/navMenu/menuNav';
+import FooterM from '@/components/footer/footer';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "GSG DESIGN",
+  title: 'GSG DESIGN',
   description:
-    "Descubre los mejores perfiles de aluminio para luces LED en Argentina. Calidad superior, diseño innovador y atención personalizada. Mejora tus proyectos de iluminación hoy.",
+    'Descubre los mejores perfiles de aluminio para luces LED en Argentina. Calidad superior, diseño innovador y atención personalizada. Mejora tus proyectos de iluminación hoy.',
 };
 
 export default function RootLayout({ children }) {
@@ -17,6 +18,8 @@ export default function RootLayout({ children }) {
         <MenuNav />
 
         {children}
+
+        <FooterM />
       </body>
     </html>
   );

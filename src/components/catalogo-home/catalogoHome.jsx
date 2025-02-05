@@ -1,25 +1,24 @@
-"use client";
-import React from "react";
-import { useRef } from "react";
-import { gsap } from "gsap";
-import Image from "next/image";
-import logoDownload from "../../../public/imagenes/flecha.svg";
-import "./catalogoSection.css";
-import { useGSAP } from "@gsap/react";
-import ButtonL from "../buttons/buttonL";
-import CategoryList from "../categoryList-home/categoryList";
-import FooterM from "../footer/footer";
+'use client';
+import React from 'react';
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import Image from 'next/image';
+import logoDownload from '../../../public/imagenes/flecha.svg';
+import './catalogoSection.css';
+import { useGSAP } from '@gsap/react';
+import ButtonL from '../buttons/buttonL';
+import CategoryList from '../categoryList-home/categoryList';
 
 const CatalogoHome = () => {
   const blackRef = useRef(null);
   useGSAP(() => {
-    gsap.to(".main-bg-black", {
-      backgroundColor: "#170c01",
-      color: "#fff",
+    gsap.to('.main-bg-black', {
+      backgroundColor: '#170c01',
+      color: '#fff',
       scrollTrigger: {
         trigger: blackRef.current,
-        start: "top center",
-        end: "center 60% ",
+        start: 'top center',
+        end: 'center 60% ',
         pinSpacer: false,
         markers: true,
         scrub: 0.5,
@@ -51,9 +50,6 @@ const CatalogoHome = () => {
                 </div>
               </section>
             </div>
-          </section>
-          <section className="cont-footer">
-            <FooterM />
           </section>
         </div>
       </div>
