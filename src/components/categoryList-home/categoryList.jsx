@@ -27,7 +27,7 @@ export default function CategoryList() {
         {luces.map((luz, index) => (
           <div key={index}>
             <Image
-              width={400}
+              width={350}
               height={100}
               src={`/imagenes/categoria/${luz.src}`}
               alt="Category"

@@ -1,6 +1,5 @@
 .category-container {
   display: flex;
-  height: 100vh;
   padding: var(--padding-generico-x-y);
 }
 .category-title {
