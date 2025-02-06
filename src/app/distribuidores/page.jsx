@@ -10,11 +10,10 @@ const words = `Oxygen gets you high. In a catastrophic emergency, we're taking g
 const Distribuidores = () => {
   return (
     <div className="container-main-productos">
-      <h2 className="stroke-text-title">Distribuidores</h2>
-
       <section className="container-distribuidores">
-        <div className=" flex flex-wrap flex-row ">
-          <div className="md:w-[70%]">
+        <div className="cont-text-title">
+          <h2 className="stroke-text-title">Distribuidores</h2>
+          <div className="min-w-72">
             <TextGenerateEffect
               words={words}
               duration={0.1}
@@ -24,7 +23,7 @@ const Distribuidores = () => {
         </div>
         <div className=" flex align-middle justify-center  ">
           <iframe
-            className="rounded-2xl"
+            className="rounded-2xl mapa-resp"
             src="https://www.google.com/maps/d/embed?mid=1J0tpWPg0p5t3QT8peDOo0UOrrwVqQcUj&ehbc=2E312F"
             width="440"
             height="630"
