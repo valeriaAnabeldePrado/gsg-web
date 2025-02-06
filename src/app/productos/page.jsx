@@ -14,23 +14,23 @@ const Productos = () => {
   const searchParams = useSearchParams();
   let categoria;
   if (searchParams.get('categoria')) {
+    console.log(searchParams.get('categoria'));
     categoria = searchParams.get('categoria').toLowerCase();
   }
 
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await fetch(`/api/products`);
-
       const data1 = await res.json();
       const data = data1.products;
-
       setOriginalProducts(data);
+      setloaderOk(false);
 
-      const timer = setTimeout(() => {
-        setloaderOk(false);
-      }, 300);
+      // const timer = setTimeout(() => {
+      //
+      // }, 300);
 
-      return () => clearTimeout(timer);
+      // return () => clearTimeout(timer);
     };
 
     fetchProducts();
@@ -47,7 +47,6 @@ const Productos = () => {
       setProducts(filteredProducts);
     }
   }, [categoria, originalProducts]);
-  console.log(products);
 
   return (
     <>
@@ -56,28 +55,51 @@ const Productos = () => {
           {originalProducts && !loaderOk ? (
             products.map((el, i) =>
               el.modelos
-                ? el.modelos.map(
-                    (imagen) =>
-                      imagen.id && (
-                        <div
-                          key={`${i}_${imagen.id}`}
-                          className="container-items"
-                        >
-                          <Link href={`/productos/${el.categoria}/${el._id}`}>
-                            <div className="relative container-img-g">
-                              <Image
-                                key={imagen.id}
-                                src={`https://images.smartcloudstudio.com/gsg/${imagen.id}.png`}
-                                alt={el._id}
-                                fill
-                                className="img-class"
-                              />
-                              <div className="mask"></div>
-                              <h2 className="title-gallery">{el.categoria}</h2>
-                            </div>
-                          </Link>
-                        </div>
-                      ),
+                ? el.modelos.map((imagen) =>
+                    imagen.foto_portada ? (
+                      <div
+                        key={`${i}_${imagen.id}`}
+                        className="container-items"
+                      >
+                        <Link href={`/productos/${el.categoria}/${el._id}`}>
+                          <div className="relative container-img-g">
+                            <Image
+                              key={imagen.id}
+                              src={`${imagen.foto_portada}`}
+                              alt={imagen.subnombre}
+                              fill
+                              className="img-class"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                            <div className="mask"></div>
+                            <h2 className="title-gallery">
+                              {imagen.subnombre}
+                            </h2>
+                          </div>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div
+                        key={`${i}_${imagen.id}`}
+                        className="container-items"
+                      >
+                        src=
+                        <Link href={`/productos/${el.categoria}/${el._id}`}>
+                          <div className="relative container-img-g">
+                            <Image
+                              key={imagen.id}
+                              src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/${el.categoria.toLowerCase()}/${imagen.fotos_producto}`}
+                              alt={el._id}
+                              fill
+                              className="img-class"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 100vw"
+                            />
+                            <div className="mask"></div>
+                            <h2 className="title-gallery">{el.nombre}</h2>
+                          </div>
+                        </Link>
+                      </div>
+                    ),
                   )
                 : null,
             )

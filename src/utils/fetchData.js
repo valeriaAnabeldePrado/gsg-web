@@ -13,7 +13,7 @@ export const getDataTiposQuery = async (tipo) => {
       throw new Error(`Error en la solicitud: ${res.status} ${res.statusText}`);
     }
     const dataTipo = await res.json();
-    console.log(dataTipo);
+    // console.log(dataTipo);
   } catch (error) {
     console.error(`Hubo un problema al obtener los datos: ${error.message}`);
   }
