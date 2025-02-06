@@ -30,7 +30,7 @@ const DynamicForm = ({ fields, onSubmit, className = '' }) => {
             type={field.type}
             defaultValue={field.defaultValue}
             {...register(field.name, field.validation)}
-            className="input-form p-2 rounded-xl bg-white border-solid border-2 border-purple-600"
+            className="min-w-72 p-2 rounded-xl bg-white border-solid border-2 border-slate-600"
             aria-invalid={!!errors[field.name]} // Indica si el campo tiene errores
           />
 

@@ -29,7 +29,7 @@
 }
 .h2-footer {
   font-size: var(--text-grande);
-  font-weight: 500;
+  font-weight: 300;
 }
 .cont-h2-footer {
   margin-bottom: 1rem;
@@ -41,6 +41,7 @@
   background-color: rgb(188, 188, 188);
   margin-bottom: 2rem;
 }
+
 @media screen and (width <= 530px) {
   .linea {
     width: 40%;

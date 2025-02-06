@@ -6,7 +6,7 @@ const formFields = [
   {
     name: 'email',
     type: 'email',
-    label: 'Correo electrónico',
+    label: '',
     validation: {
       required: 'El correo electrónico es obligatorio.',
       pattern: {
@@ -44,13 +44,16 @@ const FooterM = () => {
   return (
     <footer className="container-footer">
       <section className="cont-h2-footer">
-        <h2 className="h2-footer">Contáctate</h2>
-        <h2 className="h2-footer ml-2">con nosotros</h2>
+        <h2 className="h2-footer">Contáctate con nosotros</h2>
       </section>
       <div>
-        <img src="./img/logo.png" alt="logo" className="img-logo-footer" />
-        <h2 className="text-xl text-slate-600">
-          Suscribite a nuestras noticias!
+        <img
+          src="\imagenes\logoBanner.png"
+          alt="logo"
+          className="img-logo-footer mb-4"
+        />
+        <h2 className="text-xl text-slate-600 mb-5">
+          Dejanos tu correo y un representante se contaxtará
         </h2>
 
         <DynamicForm
