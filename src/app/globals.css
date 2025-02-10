@@ -33,7 +33,7 @@ body {
   --text-medios: clamp(1.2rem, 2vw, 1.8rem);
   --text-medios-card: clamp(1.2rem, 2.5vw, 3rem);
   --text-xxl: clamp(1.2rem, 3vw, 3rem);
-  --text-grande: clamp(1.2rem, 3.2vw, 4rem);
+  --text-grande: clamp(1.6rem, 3.2vw, 4rem);
   --text-xxxl: clamp(1.2rem, 3.5vw, 4.5rem);
   --text-menu: clamp(1.2rem, 2vw, 2.5rem);
 }

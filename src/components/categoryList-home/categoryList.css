@@ -8,7 +8,7 @@
 }
 .category-categories {
   flex: 1;
-  font-size: var(--text-medios-card);
+  font-size: var(--text-medios);
 }
 
 .category-category {
