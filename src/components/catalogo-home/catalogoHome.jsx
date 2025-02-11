@@ -20,7 +20,6 @@ const CatalogoHome = () => {
         start: 'top center',
         end: 'center 60% ',
         pinSpacer: false,
-        markers: true,
         scrub: 0.5,
       },
     });

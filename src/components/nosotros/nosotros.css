@@ -5,7 +5,7 @@
   margin-bottom: 1rem;
 }
 .hero h1 {
-  font-size: var(--text-xxxl);
+  font-size: var(--text-medios-card);
   font-weight: 250;
   color: var(--color-primary);
   margin-bottom: 1rem;
