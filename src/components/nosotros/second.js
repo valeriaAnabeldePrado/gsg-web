@@ -19,7 +19,7 @@ export default function Second() {
         {/* el texto hacia la derecha */}
         <div className="flex flex-col  ">
           <h2>Diseño e innovación</h2>
-          <p>
+          <p className="text-xl">
             Trabajamos dia a día en cada nuevo desafío de diseño comenzando por
             experimentación de nuevos materiales y tecnologías, morfologías y
             usos contemplando la viabilidad y confort visual en cada uno de
@@ -31,7 +31,7 @@ export default function Second() {
         </div>
         <div className="flex flex-col   ">
           <h2>Mejora continua</h2>
-          <p>
+          <p className="text-xl">
             Creemos que siempre se puede mejorar y estamos continuamente
             buscando mejoras en productos o procesos para superarnos día a día y
             ofrecer a nuestros clientes la calidad buscada
@@ -39,7 +39,7 @@ export default function Second() {
         </div>
         <div className="flex flex-col   ">
           <h2>Tecnología</h2>
-          <p>
+          <p className="text-xl">
             Contamos con maquinaria de última tecnología como tornos CNC,
             soldadora laser, maquina de corte laser y todo lo necesario para
             producir a bajo costo y con la mejor terminación

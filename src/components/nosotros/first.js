@@ -8,7 +8,7 @@ export default function First() {
       {/* two box with the same width */}
       <div className="flex-1   p-[var(--padding-chico)] flex flex-col justify-center text-center md:text-left">
         <h2 className="">Quienes somos</h2>
-        <p>
+        <p className="text-xl">
           Somos una empresa joven e innovadora con 10 años de crecimiento
           continuo. Buscamos contínuamente materiales, procesos y tecnologías
           que nos permitan crear luminarias con un diseño diferencial. Somos

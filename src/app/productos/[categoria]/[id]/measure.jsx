@@ -68,31 +68,33 @@ export default function Measure({ product }) {
             </div>
           </div>
           <div>
-            {CharacteristicsP.largo && (
-              <>
-                <h2 className="title-measure">Largo </h2>
-                <div className="container-measure-responsive">
-                  {CharacteristicsP.largo &&
-                    CharacteristicsP.largo.map((el, i) => {
-                      return (
-                        <p
-                          className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                          key={`${el}_${i}`}
-                        >
-                          {el} cm
-                        </p>
-                      );
-                    })}
-                </div>
-              </>
-            )}
+            {Array.isArray(CharacteristicsP.largo) &&
+              CharacteristicsP.largo.length > 0 && (
+                <>
+                  <h2 className="title-measure">Largo </h2>
+                  <div className="container-measure-responsive">
+                    {CharacteristicsP.largo &&
+                      CharacteristicsP.largo.map((el, i) => {
+                        return (
+                          <p
+                            className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                            key={`${el}_${i}`}
+                          >
+                            {el} cm
+                          </p>
+                        );
+                      })}
+                  </div>
+                </>
+              )}
           </div>
           <div>
             {CharacteristicsP.ancho && (
               <>
                 <h2 className="title-measure">Ancho </h2>
                 <div className="container-measure-responsive">
-                  {CharacteristicsP.ancho &&
+                  {Array.isArray(CharacteristicsP.ancho) &&
+                    CharacteristicsP.ancho &&
                     CharacteristicsP.ancho.map((el, i) => {
                       return (
                         <p
@@ -108,28 +110,30 @@ export default function Measure({ product }) {
             )}
           </div>
           <div>
-            {CharacteristicsP.diametro && (
-              <>
-                <h2 className="title-measure">Diametro </h2>
-                <div className="container-measure-responsive">
-                  {CharacteristicsP.diametro.map((el, i) => {
-                    return (
-                      <p
-                        className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                        key={`${el}_${i}`}
-                      >
-                        {el} cm
-                      </p>
-                    );
-                  })}
-                </div>
-              </>
-            )}
+            {Array.isArray(CharacteristicsP.diametro) &&
+              CharacteristicsP.diametro && (
+                <>
+                  <h2 className="title-measure">Diametro </h2>
+                  <div className="container-measure-responsive">
+                    {CharacteristicsP.diametro.map((el, i) => {
+                      return (
+                        <p
+                          className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                          key={`${el}_${i}`}
+                        >
+                          {el} cm
+                        </p>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
           </div>
           <div>
             <h2 className="title-measure">Tono </h2>
             <div className="container-measure-responsive">
-              {CharacteristicsP.tono &&
+              {Array.isArray(CharacteristicsP.tono) &&
+                CharacteristicsP.tono &&
                 CharacteristicsP.tono.map((el, i) => {
                   return (
                     <p
@@ -145,17 +149,16 @@ export default function Measure({ product }) {
           <div>
             <h2 className="title-measure">Watt </h2>
             <div className="container-measure-responsive">
-              {CharacteristicsP.watt &&
-                CharacteristicsP.watt.map((el, i) => {
-                  return (
-                    <p
-                      className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                      key={`${el}_${i}`}
-                    >
-                      {el}
-                    </p>
-                  );
-                })}
+              {Array.isArray(CharacteristicsP.watt) &&
+                CharacteristicsP.watt.length > 0 &&
+                CharacteristicsP.watt.map((el, i) => (
+                  <p
+                    className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                    key={`${el}_${i}`}
+                  >
+                    {el}
+                  </p>
+                ))}
             </div>
           </div>
           <div>
