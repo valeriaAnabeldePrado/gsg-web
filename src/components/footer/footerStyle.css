@@ -4,12 +4,7 @@
   flex-direction: column;
   padding: var(--padding-generico-x-y);
 }
-.linea {
-  height: 2px;
-  background-color: #fff;
-  width: 60%;
-  align-self: flex-end;
-}
+
 .cont-text-contact-footer {
   padding-top: 2rem;
   display: flex;
@@ -41,7 +36,17 @@
   background-color: rgb(188, 188, 188);
   margin-bottom: 2rem;
 }
-
+.footer-button {
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--color-fuente-roja);
+  border-radius: 50px;
+  margin-top: 2rem;
+  transition: all 300ms ease-in;
+}
+.footer-button:hover {
+  background-color: var(--color-fuente-roja);
+  color: #fff;
+}
 @media screen and (width <= 530px) {
   .linea {
     width: 40%;
