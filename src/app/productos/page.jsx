@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import './productosSection.css';
 import LoaderP from '@/components/loader/loagerP';
+import FooterM from '@/components/footer/footer';
 
 const Productos = () => {
   const [originalProducts, setOriginalProducts] = useState([]);
@@ -108,6 +109,7 @@ const Productos = () => {
           )}
         </section>
       </div>
+      <FooterM />
     </>
   );
 };

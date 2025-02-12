@@ -1,17 +1,22 @@
 import Conciencia from '@/components/nosotros/conciencia';
 import First from '@/components/nosotros/first';
-import Hero from '@/components/nosotros/hero';
+import HeroBlack from '@/components/hero/hero-black';
 import Second from '@/components/nosotros/second';
 import React from 'react';
+import FooterM from '@/components/footer/footer';
 
 const Nosotros = () => {
   return (
-    <div className="p-[var(--padding-generico-x-y-pages-top)] ">
-      <Hero />
-      <First />
-      <Second />
-      <Conciencia />
-    </div>
+    <>
+      <div className="p-[var(--padding-generico-x-y)] ">
+        <HeroBlack title="We are light" />
+        {/* respetar el mismo banner para las secciones, si no queda recargado */}
+        <First />
+        <Second />
+        <Conciencia />
+      </div>
+      <FooterM />
+    </>
   );
 };
 

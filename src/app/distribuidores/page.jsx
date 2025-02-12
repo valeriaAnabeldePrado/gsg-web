@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import FooterM from '@/components/footer/footer';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
-import HeroBlack from '@/components/hero-black';
+import HeroBlack from '@/components/hero/hero-black';
 
 const words = `A través de nuestra red de distribuidores, aseguramos que nuestros productos y servicios lleguen a cada rincón, garantizando atención personalizada y calidad superior en cada interacción`;
 
@@ -121,56 +121,59 @@ const Distribuidores = () => {
   };
 
   return (
-    <div className="p-[var(--padding-generico-x-y-pages-top)]">
-      <HeroBlack title="Distribuidores" />
-      <div className="flex p-[var(--padding-generico-y)]">
-        <TextGenerateEffect
-          words={words}
-          duration={0.1}
-          className="flex-1 md:max-w-[80%]"
-        />
-        <div className="rounded-full bg-green-200 h-24 w-24"></div>
-      </div>
+    <>
+      <div className="p-[var(--padding-generico-x-y)]">
+        <HeroBlack title="Distribuidores" />
+        <div className="flex p-[var(--padding-generico-y)]">
+          <TextGenerateEffect
+            words={words}
+            duration={0.1}
+            className="flex-1 md:max-w-[80%]"
+          />
+          <div className="rounded-full bg-green-200 h-24 w-24"></div>
+        </div>
 
-      <div className="flex justify-center">
-        <div className="w-full max-w-[1000px]">
-          {/* Selector de provincias */}
-          <div className="mb-4 ">
-            <label
-              htmlFor="province"
-              className="block font-medium text-gray-700 text-2xl"
-            >
-              Selecciona una provincia:
-            </label>
-            <select
-              id="province"
-              onChange={handleProvinceChange}
-              className="text-2xl mt-1 block w-full p-2 border border-gray-300 rounded-md"
-            >
-              {provincias.map((provincia) => (
-                <option key={provincia.nombre} value={provincia.nombre}>
-                  {provincia.nombre}
-                </option>
-              ))}
-            </select>
+        <div className="flex justify-center">
+          <div className="w-full max-w-[1000px]">
+            {/* Selector de provincias */}
+            <div className="mb-4 ">
+              <label
+                htmlFor="province"
+                className="block font-medium text-gray-700 text-2xl"
+              >
+                Selecciona una provincia:
+              </label>
+              <select
+                id="province"
+                onChange={handleProvinceChange}
+                className="text-2xl mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              >
+                {provincias.map((provincia) => (
+                  <option key={provincia.nombre} value={provincia.nombre}>
+                    {provincia.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Mapa de Google (iframe) */}
+            <iframe
+              className="md:block hidden rounded-2xl mapa-resp"
+              src={mapUrl}
+              width="1000"
+              height="630"
+            ></iframe>
+            <iframe
+              className="md:hidden rounded-2xl mapa-resp"
+              src={mapUrl}
+              width="350"
+              height="630"
+            ></iframe>
           </div>
-
-          {/* Mapa de Google (iframe) */}
-          <iframe
-            className="md:block hidden rounded-2xl mapa-resp"
-            src={mapUrl}
-            width="1000"
-            height="630"
-          ></iframe>
-          <iframe
-            className="md:hidden rounded-2xl mapa-resp"
-            src={mapUrl}
-            width="350"
-            height="630"
-          ></iframe>
         </div>
       </div>
-    </div>
+      <FooterM />
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
-import CatalogoHome from "@/components/catalogo-home/catalogoHome";
-import Hero from "@/components/hero/hero";
-import NuestraEmp from "@/components/nuestraEmp/nuestraEmpresa";
-import React from "react";
+import CatalogoHome from '@/components/catalogo-home/catalogoHome';
+import FooterM from '@/components/footer/footer';
+import Hero from '@/components/hero/hero';
+import NuestraEmp from '@/components/nuestraEmp/nuestraEmpresa';
+import React from 'react';
 
 const HomeM = () => {
   return (
@@ -12,6 +13,7 @@ const HomeM = () => {
       <NuestraEmp />
       <div className="portadaDos"></div>
       <CatalogoHome />
+      <FooterM />
     </>
   );
 };
