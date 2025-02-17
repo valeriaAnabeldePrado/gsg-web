@@ -7,7 +7,7 @@ function SustainabilityCircles() {
       {['Reducir', 'Reutilizar', 'Reciclar'].map((text) => (
         <div
           key={text}
-          className="md:w-60 md:h-60 w-24 h-24 flex items-center justify-center bg-gray-300 rounded-full text-center text-gray-700 font-medium transition-all duration-500 hover:animate-pulse"
+          className="md:w-60 md:h-60 w-24 h-24 flex items-center justify-center bg-gray-300 rounded-full text-center text-gray-700 font-medium transition-all duration-500 hover:animate-pulse md:text-2xl"
         >
           {text}
         </div>

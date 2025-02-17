@@ -34,19 +34,19 @@ export default function page({ params }) {
     <>
       {product ? (
         <div className="p-6 md:p-10 flex gap-10 flex-col container-producto">
-          <section className="flex flex-wrap gap-10  ">
+          <section className="flex flex-wrap gap-10">
             <div className="flex-1 min-w-72 flex flex-col">
               <h3 className="h2-page-product">{product.nombre}</h3>
-              <p className=" p-text-product-description ">
+              <p className="p-text-product-description">
                 {product.descripcion}
               </p>
             </div>
-            <div className="flex-1 min-w-72 relative h-[400px] rounded-lg ">
+            <div className="flex-1 min-w-72 relative aspect-square rounded-lg overflow-hidden">
               <Image
                 fill
                 src={`https://images.smartcloudstudio.com/gsg/${product.modelos[0].id}.png`}
                 alt={product.code}
-                className="object-cover rounded-xl"
+                className="object-cover"
               />
             </div>
           </section>

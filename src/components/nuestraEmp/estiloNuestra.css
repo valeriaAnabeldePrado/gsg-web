@@ -12,19 +12,20 @@
 }
 .titulo {
   display: inline;
-  font-size: clamp(1.2rem, 2.5vw, 3rem);
   vertical-align: middle;
   color: var(--color-fuente-roja);
+  font-size: var(--text-grande);
+  font-weight: 100;
+  width: 60%;
   margin: 0 clamp(10px, 1.5vw, 50px) 0 0;
 }
 .texto-nuestra {
   line-height: 1.2;
   display: inline;
-  font-size: clamp(1.2rem, 3vw, 3.5rem);
+  font-size: clamp(1.2rem, 2rem, 3.5rem);
   vertical-align: middle;
   margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   font-style: normal;
 }
 .split span {
@@ -33,7 +34,7 @@
 }
 .portadaDos {
   height: 100vh;
-  background-image: url("../../../public/imagenes/banner1.png");
+  background-image: url('../../../public/imagenes/banner1.png');
   margin-bottom: 5%;
 }
 @media screen and (width <= 960px) {
