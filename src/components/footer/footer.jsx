@@ -51,7 +51,7 @@ const FooterM = () => {
             <img
               src="/imagenes/logo-red.svg"
               alt="logo"
-              className="h-[20vh] ml-4 mt-4"
+              className="h-[10vh] ml-4 mt-4"
             />
             <button className="footer-button">
               <Link

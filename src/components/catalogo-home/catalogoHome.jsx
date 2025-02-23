@@ -26,29 +26,32 @@ const CatalogoHome = () => {
   }, [blackRef]);
   return (
     <>
-      <div className="main-bg-black">
+      <div className="main-bg-black ">
         <CategoryList />
-        <div className="h-auto cont-black">
-          <section className="cont-catalogo" ref={blackRef}>
-            <div className="cont-h2-arrow">
-              <h2 className="h2-catalogo">
-                Descarga nuestro catálogo de productos
-              </h2>
-              <section className="flex h-full flex-col items-center gap-10 mt-32 justify-center ">
-                <div className=" contImg-logo">
+        <div className="cont-black flex w-full justify-center items-center py-10 ">
+          <section
+            className="flex flex-col items-center text-center"
+            ref={blackRef}
+          >
+            <h2 className="h2-catalogo mb-6">
+              Descarga nuestro catálogo de productos
+            </h2>
+            <section className="flex flex-col items-center justify-center">
+              <div className="contImg-logo mb-4">
+                <div className="relative w-14 h-14 flex items-center justify-center">
                   <Image
                     src={logoDownload}
                     fill
                     priority={true}
                     alt="logoD"
-                    className="logoDownloag"
+                    className="logoDownload"
                   />
                 </div>
-                <div className="cont-btn-descarga">
-                  <ButtonL></ButtonL>
-                </div>
-              </section>
-            </div>
+              </div>
+              <div className="cont-btn-descarga">
+                <ButtonL />
+              </div>
+            </section>
           </section>
         </div>
       </div>

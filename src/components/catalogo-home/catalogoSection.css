@@ -1,30 +1,13 @@
 .main-bg-black {
   background-color: var(--color-fondo);
 }
-.cont-black {
-  padding: 4% var(--padding-generico-y);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.cont-catalogo {
-  display: flex;
-  flex-direction: column;
-  height: 90dvh;
-}
-.cont-btn-descarga {
-  display: block;
-  align-self: flex-end;
-}
+
 .h2-catalogo {
   font-size: var(--text-grande);
   font-weight: 100;
   width: 60%;
 }
 .contImg-logo {
-  height: 5vh;
-  width: 5vh;
-
   margin-bottom: 4rem;
   position: relative;
   animation: moveArrow 2s infinite;
