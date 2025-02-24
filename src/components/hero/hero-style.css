@@ -81,3 +81,13 @@
     width: 18rem;
   }
 }
+
+.centered-text {
+  top: 50%;
+  left: 50%;
+  font-size: var(--text-xxxl);
+  font-weight: 100;
+  color: var(--color-fondo);
+  margin-bottom: 1rem;
+  transform: translate(-50%, -50%);
+}

@@ -37,7 +37,7 @@ export default function Second() {
             ofrecer a nuestros clientes la calidad buscada
           </p>
         </div>
-        <div className="flex flex-col   ">
+        <div className="flex flex-col ">
           <h2>Tecnología</h2>
           <p className="text-xl">
             Contamos con maquinaria de última tecnología como tornos CNC,

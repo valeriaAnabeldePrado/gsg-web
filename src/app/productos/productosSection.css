@@ -201,3 +201,27 @@
     padding-top: 0;
   }
 }
+
+.container-items {
+  transition: transform 0.3s ease-in-out;
+}
+
+.container-items:hover {
+  transform: scale(1.02);
+}
+
+.container-img-g {
+  transition: transform 0.3s ease-in-out;
+}
+
+.container-img-g:hover {
+  transform: scale(1.02);
+}
+
+.img-class {
+  transition: transform 0.3s ease-in-out;
+}
+
+.img-class:hover {
+  transform: scale(1.02);
+}

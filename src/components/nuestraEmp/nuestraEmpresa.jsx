@@ -1,32 +1,32 @@
-"use client";
-import React from "react";
-import "./estiloNuestra.css";
-import { gsap } from "gsap/gsap-core";
-import { ScrollTrigger } from "gsap/all";
-import { useRef, useEffect } from "react";
-import { useGSAP } from "@gsap/react";
+'use client';
+import React from 'react';
+import './estiloNuestra.css';
+import { gsap } from 'gsap/gsap-core';
+import { ScrollTrigger } from 'gsap/all';
+import { useRef, useEffect } from 'react';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const NuestraEmp = () => {
   const divRefD = useRef(null);
   const text =
-    "Somos una empresa innovadora y en constante movimiento. Buscamos día a día tecnologías y procesos que nos permitan crear luminarias con un diseño diferencial.";
+    'Somos una empresa innovadora y en constante movimiento. Buscamos día a día tecnologías y procesos que nos permitan crear luminarias con un diseño diferencial.';
 
-  const palabras = text.split(" ");
+  const palabras = text.split(' ');
 
   useGSAP(() => {
-    const spans = document.querySelectorAll(".split span");
+    const spans = document.querySelectorAll('.split span');
 
     gsap.to(spans, {
       y: 0,
       stagger: 0.1,
-      ease: "power1.out",
+      ease: 'power1.out',
       duration: 1,
       scrollTrigger: {
         trigger: divRefD.current,
-        start: "top center",
-        end: "center center",
+        start: 'top center',
+        end: 'center center',
         scrub: 1,
         markers: false,
       },
