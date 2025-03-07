@@ -1,7 +1,7 @@
 import React from 'react';
-import './nosotros.css';
+import './genericHero.css';
 
-export default function HeroNosotros() {
+export default function GenericHero() {
   return (
     <div className="p-[var(--padding-generico-x-y)] hero mt-10">
       <h2>We are light</h2>

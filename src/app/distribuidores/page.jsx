@@ -1,13 +1,14 @@
 'use client';
 import React, { useState } from 'react';
-import Image from 'next/image';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import FooterM from '@/components/footer/footer';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
-import HeroBlack from '@/components/hero/hero-black';
+
+import GenericHero from '@/components/hero/genericHero';
 
 const words = `A través de nuestra red de distribuidores, aseguramos que nuestros productos y servicios lleguen a cada rincón, garantizando atención personalizada y calidad superior en cada interacción`;
 
-// URLs del iframe para cada provincia
 const provincias = [
   {
     nombre: 'Argentina',
@@ -110,10 +111,9 @@ const provincias = [
 const Distribuidores = () => {
   const [mapUrl, setMapUrl] = useState(provincias[0].url);
 
-  // Manejar el cambio de provincia
-  const handleProvinceChange = (event) => {
+  const handleProvinceChange = (provinciaNombre) => {
     const selectedProvince = provincias.find(
-      (provincia) => provincia.nombre === event.target.value,
+      (provincia) => provincia.nombre === provinciaNombre,
     );
     if (selectedProvince) {
       setMapUrl(selectedProvince.url);
@@ -123,55 +123,76 @@ const Distribuidores = () => {
   return (
     <>
       <div className="p-[var(--padding-generico-x-y)]">
-        <HeroBlack title="Distribuidores" />
+        <GenericHero />
         <div className="flex p-[var(--padding-generico-y)]">
           <TextGenerateEffect
             words={words}
             duration={0.1}
             className="flex-1 md:max-w-[80%]"
           />
-          <div className="rounded-full bg-green-200 h-24 w-24"></div>
         </div>
 
-        <div className="flex justify-center">
-          <div className="w-full max-w-[1000px]">
-            {/* Selector de provincias */}
-            <div className="mb-4 ">
-              <label
-                htmlFor="province"
-                className="block font-medium text-gray-700 text-2xl"
-              >
-                Selecciona una provincia:
-              </label>
-              <select
-                id="province"
-                onChange={handleProvinceChange}
-                className="text-2xl mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              >
-                {provincias.map((provincia) => (
-                  <option key={provincia.nombre} value={provincia.nombre}>
-                    {provincia.nombre}
-                  </option>
-                ))}
-              </select>
-            </div>
+        <div className="w-full max-w-[1000px] flex justify-center m-auto flex-col gap-8">
+          <div className="mb-4 ">
+            <label
+              htmlFor="province"
+              className="block font-medium text-gray-700 text-2xl mb-5"
+            >
+              Selecciona una provincia:
+            </label>
 
-            {/* Mapa de Google (iframe) */}
-            <iframe
-              className="md:block hidden rounded-2xl mapa-resp"
-              src={mapUrl}
-              width="1000"
-              height="630"
-            ></iframe>
-            <iframe
-              className="md:hidden rounded-2xl mapa-resp"
-              src={mapUrl}
-              width="350"
-              height="630"
-            ></iframe>
+            <Menu as="div" className="relative dropdown">
+              {({ open }) => (
+                <>
+                  <div>
+                    <MenuButton className="inline-flex w-full justify-between gap-x-1.5 bg-white rounded-xl p-4 text-2xl font-medium text-gray-700 border border-gray-300 shadow-sm hover:bg-gray-50">
+                      {provincias.find((provincia) => provincia.url === mapUrl)
+                        ?.nombre || 'Selecciona una provincia'}
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="-mr-1 size-7 text-red-600"
+                      />
+                    </MenuButton>
+                  </div>
+
+                  {open && (
+                    <MenuItems
+                      static
+                      className="absolute right-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none max-h-96 overflow-y-auto"
+                    >
+                      <ul className="p-2">
+                        {provincias.map((provincia) => (
+                          <MenuItem key={provincia.nombre} as="div">
+                            {({ close }) => (
+                              <div
+                                className="p-2 hover:bg-gray-100 rounded-md cursor-pointer"
+                                onClick={() => {
+                                  handleProvinceChange(provincia.nombre);
+                                  close();
+                                }}
+                              >
+                                {provincia.nombre}
+                              </div>
+                            )}
+                          </MenuItem>
+                        ))}
+                      </ul>
+                    </MenuItems>
+                  )}
+                </>
+              )}
+            </Menu>
           </div>
+
+          <iframe
+            className="md:block  rounded-2xl  w-full"
+            src={mapUrl}
+            width="1000"
+            height="630"
+          ></iframe>
         </div>
       </div>
+
       <FooterM />
     </>
   );

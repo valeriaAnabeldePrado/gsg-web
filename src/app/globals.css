@@ -20,7 +20,8 @@ body {
   --tipo-fuente: 'Roboto', sans-serif;
   --padding-generico-x: 0 clamp(2rem, 7vw, 12rem);
   --padding-generico-y: clamp(2rem, 7vw, 12rem) 0;
-  --padding-chico: 2rem;
+  --padding-chico: 1.2rem;
+  --padding-tablet: 3rem;
   --padding-generico-x-y: clamp(1rem, 3vw, 3.5rem) clamp(2rem, 7vw, 12rem);
   --padding-generico-x-y-pages-top: clamp(4rem, 10vw, 6rem)
     clamp(2rem, 7vw, 12rem);
@@ -31,8 +32,10 @@ body {
   /*----------------- FUENTES--------------- */
   --text-small: clamp(1rem, 1.2vw, 1.2rem);
   --text-medios: clamp(1.2rem, 2vw, 1.8rem);
-  --text-medios-card: clamp(1.2rem, 2.5vw, 3rem);
-  --text-xxl: clamp(1.2rem, 3vw, 3rem);
+  --text-phone: 24px;
+  --text-medios-card: clamp(2rem, 2.8vw, 3rem);
+  --text-xxl: clamp(1.8rem, 3vw, 2.8rem);
+  --text-card-page-product: clamp(1.8rem, 4vw, 2.7rem);
   --text-grande: clamp(1.6rem, 3.2vw, 4rem);
   --text-xxxl: clamp(1.2rem, 3.5vw, 4.5rem);
   --text-menu: clamp(1.2rem, 2vw, 2.5rem);

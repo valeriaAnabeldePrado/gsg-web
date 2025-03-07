@@ -53,7 +53,7 @@ const FooterM = () => {
               alt="logo"
               className="h-[10vh] ml-4 mt-4"
             />
-            <button className="footer-button">
+            <button className="footer-button ">
               <Link
                 href={'/contacto'}
                 className={`text-2xl font-extralight flex items-center ${isHome ? 'text-white' : 'text-black'}`}

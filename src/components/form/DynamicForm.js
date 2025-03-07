@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import './style.css';
 
 const DynamicForm = ({ fields, onSubmit, className = '' }) => {
   const {
@@ -28,7 +29,7 @@ const DynamicForm = ({ fields, onSubmit, className = '' }) => {
               id={field.name}
               defaultValue={field.defaultValue}
               {...register(field.name, field.validation)}
-              className="min-w-72 p-2 rounded-xl bg-white border-solid border-2 border-slate-600"
+              className="sm:min-w-80 lg:min-w-96 p-2 rounded-xl bg-white border-solid border-2 border-slate-600"
               aria-invalid={!!errors[field.name]}
             />
           ) : (
@@ -37,7 +38,7 @@ const DynamicForm = ({ fields, onSubmit, className = '' }) => {
               type={field.type}
               defaultValue={field.defaultValue}
               {...register(field.name, field.validation)}
-              className="min-w-72 p-2 rounded-xl bg-white border-solid border-2 border-slate-600"
+              className="sm:min-w-80 lg:min-w-96 p-2 rounded-xl bg-white border-solid border-2 border-slate-600"
               aria-invalid={!!errors[field.name]}
             />
           )}
@@ -50,7 +51,7 @@ const DynamicForm = ({ fields, onSubmit, className = '' }) => {
         </div>
       ))}
 
-      <button type="submit" className="b-extra text-black">
+      <button type="submit" className="b-extra text-black buttonForm">
         Enviar
       </button>
     </form>

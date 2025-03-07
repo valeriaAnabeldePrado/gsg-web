@@ -32,9 +32,6 @@
   .stroke-text-title {
     margin-bottom: 2rem;
   }
-  .mapa-resp {
-    width: 100%;
-  }
 }
 @media screen and (width <= 800px) {
   .text-black {

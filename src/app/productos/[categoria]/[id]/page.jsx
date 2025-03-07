@@ -33,8 +33,8 @@ export default function page({ params }) {
   return (
     <>
       {product ? (
-        <div className="p-6 md:p-10 flex gap-10 flex-col container-producto">
-          <section className="flex flex-wrap gap-10">
+        <div className="p-6 md:p-10 flex gap-10 flex-col container-producto ">
+          <section className="flex flex-wrap gap-10 padding-container-top">
             <div className="flex-1 min-w-72 flex flex-col">
               <h3 className="h2-page-product">{product.nombre}</h3>
               <p className="p-text-product-description">

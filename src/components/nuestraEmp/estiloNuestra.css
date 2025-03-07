@@ -14,7 +14,7 @@
   display: inline;
   vertical-align: middle;
   color: var(--color-fuente-roja);
-  font-size: var(--text-grande);
+  font-size: var(--text-medios-card);
   font-weight: 100;
   width: 60%;
   margin: 0 clamp(10px, 1.5vw, 50px) 0 0;
@@ -22,10 +22,10 @@
 .texto-nuestra {
   line-height: 1.2;
   display: inline;
-  font-size: clamp(1.2rem, 2rem, 3.5rem);
+  font-size: var(--text-xxl);
   vertical-align: middle;
   margin: 0;
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
 }
 .split span {
@@ -33,17 +33,33 @@
   transform: translateY(200px);
 }
 .portadaDos {
-  height: 100vh;
+  height: 80vh;
   background-image: url('../../../public/imagenes/banner1.png');
   margin-bottom: 5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 @media screen and (width <= 960px) {
   .container-nuestraEmp {
     height: 70dvh;
   }
 }
+@media screen and (width <= 400px) {
+  .texto-nuestra,
+  .titulo {
+    font-size: var(--text-phone);
+  }
+}
+
 @media screen and (width <= 530px) {
   .container-nuestraEmp {
     height: 60dvh;
+  }
+  .titulo {
+    font-weight: 300;
+  }
+  .texto-nuestra {
+    line-height: 1.5;
   }
 }

@@ -50,6 +50,7 @@
 @media screen and (width <= 530px) {
   .h2-catalogo {
     width: 80%;
+    font-weight: 200;
   }
   .contImg-logo {
     display: none;

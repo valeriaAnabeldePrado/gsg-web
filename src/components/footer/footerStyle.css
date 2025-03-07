@@ -57,6 +57,12 @@
     text-align: start;
     margin-top: 1rem;
   }
+  .footer-button {
+    margin-bottom: 2rem;
+  }
+  .cont-text-otros {
+    margin-bottom: 1rem;
+  }
 }
 @media screen and (width <= 800px) {
   .container-footer {

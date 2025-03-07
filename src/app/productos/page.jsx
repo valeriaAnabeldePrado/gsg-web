@@ -42,7 +42,7 @@ const Productos = () => {
       setProducts(filteredProducts);
     }
   }, [categoria, originalProducts]);
-
+  console.log(products);
   return (
     <>
       <div className="w-full wrapper-cont">

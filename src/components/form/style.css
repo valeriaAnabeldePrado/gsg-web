@@ -1,0 +1,5 @@
+.buttonForm {
+  padding: 0.5rem 2rem;
+  border: 2px solid var(--color-fuente-black);
+  border-radius: 20px;
+}

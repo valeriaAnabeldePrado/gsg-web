@@ -1,14 +1,15 @@
 'use client';
 import DynamicForm from '@/components/form/DynamicForm';
-import HeroBlack from '@/components/hero/hero-black';
+
+import emailjs from '@emailjs/browser';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import React from 'react';
+import GenericHero from '@/components/hero/genericHero';
 
 const formFields = [
   {
-    name: 'fullName',
+    name: 'name',
     type: 'text',
     label: 'Nombre y Apellido',
     validation: {
@@ -49,35 +50,33 @@ let words =
   '¿Tienes alguna consulta o necesitas ayuda? ¡Nos encantaría escucharte! Ponete en contacto con nosotros a través de nuestras redes. Nuestro equipo de atención está aquí para responderte a la brevedad y brindarte la asistencia que necesites.';
 
 const Contacto = () => {
-  // const [isSubmitted, setIsSubmitted] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (data, reset) => {
-    // const serviceId = import.meta.env.VITE_SERVICE_ID
-    // const templateId = import.meta.env.VITE_TEMPLATE_ID
-    // const publicKey = import.meta.env.VITE_PUBLIC_KEY
+    const templateId = process.env.NEXT_PUBLIC_ID_TEMPLATE;
+    const serviceId = process.env.NEXT_PUBLIC_ID_SERVICE;
+    const publicKey = process.env.NEXT_PUBLIC_ID_PUBLICKEY;
+    console.log(serviceId);
     console.log('Datos del formulario:', data);
-    setIsLoading(true);
-    // emailjs
-    //   .send(serviceId, templateId, data, publicKey)
-    //   .then(() => {
-    //     setIsLoading(false)
-    //     setIsSubmitted(true)
-    //     reset()
 
-    //     setTimeout(() => {
-    //       setIsSubmitted(false)
-    //     }, 10000)
-    //   })
-    //   .catch((error) => {
-    //     setIsLoading(false)
-    //     console.error('Error al enviar el email:', error)
-    //   })
+    emailjs
+      .send(serviceId, templateId, data, publicKey)
+      .then(() => {
+        setIsSubmitted(true);
+        reset();
+
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 10000);
+      })
+      .catch((error) => {
+        console.error('Error al enviar el email:', error);
+      });
     reset();
   };
   return (
     <div className="p-[var(--padding-generico-x-y)] ">
-      <HeroBlack title="Contacto" />
+      <GenericHero />
 
       <TextGenerateEffect
         words={words}
@@ -87,8 +86,12 @@ const Contacto = () => {
       <DynamicForm
         fields={formFields}
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto mt-8"
+        className="w-full mx-auto "
       />
+
+      <p className={isSubmitted ? `opacity-100 mt-5` : `opacity-0`}>
+        Muchas gracias por comunicarte, un asesor se contactará a la brevedad!
+      </p>
     </div>
   );
 };

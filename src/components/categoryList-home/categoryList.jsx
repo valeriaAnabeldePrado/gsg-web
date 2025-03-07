@@ -11,7 +11,7 @@ export default function CategoryList() {
   return (
     <div className="category-container px-[var(--padding-generico-x)]">
       <div className="category-categories">
-        <h2 className="h2-catalogo">Categorías</h2>
+        <h2 className="h2-category">Categorías</h2>
         {luces.map((luz, index) => (
           <div
             key={index}
