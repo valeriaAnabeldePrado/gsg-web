@@ -30,6 +30,11 @@ body {
   --background-end-rgb: 255, 255, 255;
   --gap: 2rem;
   /*----------------- FUENTES--------------- */
+  --tablet-main-title: 3.3em;
+  --phone-xl-main-title: 2.8em;
+  --phone-sm-main-title: 2.2em;
+
+  /* fin fuentes */
   --text-small: clamp(1rem, 1.2vw, 1.2rem);
   --text-medios: clamp(1.2rem, 2vw, 1.8rem);
   --text-phone: 24px;

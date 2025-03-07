@@ -19,7 +19,7 @@ export default function CategoryList() {
             onMouseEnter={() => setHoveredCategory(luz)}
             onMouseLeave={() => setHoveredCategory(null)}
           >
-            <h2>› {luz.title}</h2>
+            <h2 className="h2-category">› {luz.title}</h2>
           </div>
         ))}
       </div>

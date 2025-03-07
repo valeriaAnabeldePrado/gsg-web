@@ -22,7 +22,7 @@
     left: 8%;
     bottom: 10%;
     color: #fff;
-    font-size: 3.3em;
+    font-size: var(--tablet-main-title);
   }
   .uno,
   .dos,
@@ -55,7 +55,7 @@
 }
 @media screen and (width <= 530px) {
   .cont-title {
-    font-size: 2.5em;
+    font-size: var(--phone-xl-main-title);
     bottom: 15%;
   }
   .cont-logo {
@@ -68,7 +68,7 @@
 }
 @media screen and (width <= 420px) {
   .cont-title {
-    font-size: 2.2em;
+    font-size: var(--phone-sm-main-title);
   }
   .line-span {
     width: 40px;

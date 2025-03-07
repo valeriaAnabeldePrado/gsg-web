@@ -45,12 +45,6 @@
     height: 70dvh;
   }
 }
-@media screen and (width <= 400px) {
-  .texto-nuestra,
-  .titulo {
-    font-size: var(--text-phone);
-  }
-}
 
 @media screen and (width <= 530px) {
   .container-nuestraEmp {
@@ -61,5 +55,11 @@
   }
   .texto-nuestra {
     line-height: 1.5;
+  }
+}
+@media screen and (width <= 400px) {
+  .texto-nuestra,
+  .titulo {
+    font-size: var(--text-phone);
   }
 }

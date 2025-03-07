@@ -70,11 +70,10 @@
   .category-categories {
     flex: 0;
   }
+
   .h2-category {
-    font-weight: 200;
-  }
-  h2 {
     font-size: var(--text-phone);
+    font-weight: 200;
   }
   .category-category {
     text-align: start;
