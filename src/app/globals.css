@@ -33,13 +33,16 @@ body {
   --tablet-main-title: 3.3em;
   --phone-xl-main-title: 2.8em;
   --phone-sm-main-title: 2.2em;
-
+  --phone-subtitle-sm: 24px;
+  /* //Subtitulos rojos escritorio y tablet */
+  --text-medios-card: clamp(2rem, 2.8vw, 3rem);
+  /* //Subtitulos negros escritorio y tablet */
+  --text-xxl: clamp(1.8rem, 3vw, 2.8rem);
+  /* Textos medios para descripciones */
+  --text-medios: clamp(1.2rem, 2vw, 1.8rem);
   /* fin fuentes */
   --text-small: clamp(1rem, 1.2vw, 1.2rem);
-  --text-medios: clamp(1.2rem, 2vw, 1.8rem);
-  --text-phone: 24px;
-  --text-medios-card: clamp(2rem, 2.8vw, 3rem);
-  --text-xxl: clamp(1.8rem, 3vw, 2.8rem);
+
   --text-card-page-product: clamp(1.8rem, 4vw, 2.7rem);
   --text-grande: clamp(1.6rem, 3.2vw, 4rem);
   --text-xxxl: clamp(1.2rem, 3.5vw, 4.5rem);

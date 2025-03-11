@@ -11,7 +11,7 @@ export default function CategoryList() {
   return (
     <div className="category-container px-[var(--padding-generico-x)]">
       <div className="category-categories">
-        <h2 className="h2-category">Categorías</h2>
+        <h2 className="category-title">Categorías</h2>
         {luces.map((luz, index) => (
           <div
             key={index}
@@ -27,11 +27,10 @@ export default function CategoryList() {
         {luces.map((luz, index) => (
           <Image
             key={index}
-            width={350}
-            height={100}
+            fill
             src={`/imagenes/categoria/${luz.src}`}
             alt="Category"
-            className={clsx(' hidden md:block category-image absolute ', {
+            className={clsx('  md:block category-image absolute ', {
               visible: hoveredCategory?.src === luz.src,
             })}
           />

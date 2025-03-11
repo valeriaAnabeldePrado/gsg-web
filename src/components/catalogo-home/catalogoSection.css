@@ -58,6 +58,6 @@
 }
 @media screen and (width <= 420px) {
   .h2-catalogo {
-    width: 100%;
+    width: 80%;
   }
 }
