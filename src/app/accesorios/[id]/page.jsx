@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+
 import { useEffect, useState } from 'react';
 import Measure from './measure';
 // import '../../productosSection.css';
@@ -39,7 +39,7 @@ export default function page({ params }) {
           </section>
           <section>
             <section className="flex flex-contain">
-              <h3 className="h2-page-product">Caracteristicas</h3>
+              <h3 className="h2-page-product mb-5">Caracteristicas</h3>
             </section>
             <div className="flex gap-4 flex-col">
               <h2 className=" p-text-product  text-p">Descripcion tecnica</h2>

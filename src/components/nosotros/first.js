@@ -4,11 +4,11 @@ import './nosotros.css';
 
 export default function First() {
   return (
-    <section className="flex flex-col md:flex-row gap-1 first">
+    <section className="flex responsive-container-nos gap-1 first">
       {/* two box with the same width */}
       <div className="flex-1   p-[var(--padding-chico)] flex flex-col justify-center text-center md:text-left">
-        <h2 className="">Quienes somos</h2>
-        <p className="text-xl">
+        <h2 className="h2-title-nos">Quienes somos</h2>
+        <p className="text-nuestra">
           Somos una empresa joven e innovadora con 10 años de crecimiento
           continuo. Buscamos contínuamente materiales, procesos y tecnologías
           que nos permitan crear luminarias con un diseño diferencial. Somos
@@ -24,7 +24,7 @@ export default function First() {
           src={'/imagenes/categoria/techo.png'}
           width={300}
           height={300}
-          className="h-full w-full rounded-3xl"
+          className="h-full w-full rounded-3xl object-cover"
         />
       </div>
     </section>

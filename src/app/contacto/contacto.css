@@ -1,0 +1,9 @@
+.text-black span {
+  font-size: var(--text-xxl) !important;
+  font-weight: 200 !important;
+}
+@media screen and (width <= 420px) {
+  .text-black span {
+    font-size: var(--phone-subtitle-sm) !important;
+  }
+}
