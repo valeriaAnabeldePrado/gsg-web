@@ -42,9 +42,10 @@ body {
   --text-medios: clamp(1.2rem, 2vw, 1.8rem);
   /* fin fuentes */
   --text-small: clamp(1rem, 1.2vw, 1.2rem);
+  /* Fuentes de Generic hero escritorio */
+  --text-grande: 4rem;
 
   --text-card-page-product: clamp(1.8rem, 4vw, 2.7rem);
-  --text-grande: clamp(1.6rem, 3.2vw, 4rem);
   --text-xxxl: clamp(1.2rem, 3.5vw, 4.5rem);
   --text-menu: clamp(1.2rem, 2vw, 2.5rem);
 }

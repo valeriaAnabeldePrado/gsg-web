@@ -1,6 +1,6 @@
 'use client';
 import DynamicForm from '@/components/form/DynamicForm';
-
+import './contacto.css';
 import emailjs from '@emailjs/browser';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { useState } from 'react';
@@ -76,7 +76,7 @@ const Contacto = () => {
   };
   return (
     <div className="p-[var(--padding-generico-x-y)] ">
-      <GenericHero />
+      <GenericHero titleHero={'CONTÁCTATE CON NOSOTROS'} />
 
       <TextGenerateEffect
         words={words}

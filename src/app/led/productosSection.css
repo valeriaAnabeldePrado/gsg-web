@@ -93,8 +93,9 @@
   margin-top: 2rem;
 }
 .h2-page-product {
-  font-size: var(--text-xxl);
-  font-weight: 400;
+  font-size: var(--text-medios-card);
+  font-weight: 100;
+  color: var(--color-fuente-roja);
   margin-bottom: 2rem;
 }
 .p-text-product-description,
@@ -113,7 +114,6 @@
   background-color: var(--color-bg-gray-200);
   border-radius: 15px;
   color: var(--color-fuente-black);
-  font-weight: 400;
 }
 .text-p {
   padding: 1rem 3rem;
@@ -230,4 +230,20 @@
 
 .img-class:hover {
   transform: scale(1.02);
+}
+@media screen and (width <= 530px) {
+  .p-text-product-description,
+  .p-text-product,
+  .title-measure,
+  .h2-page-product,
+  .title-ficha {
+    font-weight: 300;
+  }
+}
+@media screen and (width <= 420px) {
+  .title-gallery,
+  .h2-page-product,
+  .p-text-product-description {
+    font-size: var(--phone-subtitle-sm);
+  }
 }

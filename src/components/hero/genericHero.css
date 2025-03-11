@@ -1,15 +1,15 @@
-.hero h2 {
+.h2-hero-title {
   font-size: var(--text-grande);
+  font-weight: 100;
+  color: var(--color-fuente-roja);
+  margin-bottom: 1rem;
+}
+.sub-title-hero {
+  font-size: var(--tablet-main-title);
   font-weight: 100;
   color: var(--color-primary);
   margin-bottom: 1rem;
-}
-.hero h1 {
-  font-size: var(--text-medios-card);
-  font-weight: 250;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  line-height: 0.4;
+  text-align: center;
 }
 .hero {
   display: flex;
@@ -17,4 +17,32 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
+}
+@media screen and (width <= 800px) {
+  .h2-hero-title {
+    font-size: var(--tablet-main-title);
+  }
+  .sub-title-hero {
+    font-size: var(--text-medios-card);
+  }
+}
+@media screen and (width <= 530px) {
+  .h2-hero-title {
+    font-weight: 300;
+    font-size: var(--phone-xl-main-title);
+  }
+  .sub-title-hero {
+    font-weight: 200;
+  }
+}
+@media screen and (width <= 420px) {
+  .h2-hero-title {
+    font-size: var(--phone-sm-main-title);
+  }
+  .sub-title-hero {
+    font-size: var(--phone-subtitle-sm);
+  }
+  .hero {
+    gap: 1rem;
+  }
 }

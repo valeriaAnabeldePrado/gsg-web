@@ -6,6 +6,7 @@ import FooterM from '@/components/footer/footer';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 
 import GenericHero from '@/components/hero/genericHero';
+import './distribuidores.css';
 
 const words = `A través de nuestra red de distribuidores, aseguramos que nuestros productos y servicios lleguen a cada rincón, garantizando atención personalizada y calidad superior en cada interacción`;
 
@@ -123,29 +124,26 @@ const Distribuidores = () => {
   return (
     <>
       <div className="p-[var(--padding-generico-x-y)]">
-        <GenericHero />
-        <div className="flex p-[var(--padding-generico-y)]">
+        <GenericHero titleHero={'NUESTRA RED DE DISTRIBUIDORES'} />
+        <div className="flex p-[var(--padding-generico-y)] responsive-container-dist">
           <TextGenerateEffect
             words={words}
             duration={0.1}
-            className="flex-1 md:max-w-[80%]"
+            className="flex-1 md:max-w-[80%]text-words"
           />
         </div>
 
         <div className="w-full max-w-[1000px] flex justify-center m-auto flex-col gap-8">
           <div className="mb-4 ">
-            <label
-              htmlFor="province"
-              className="block font-medium text-gray-700 text-2xl mb-5"
-            >
+            <label htmlFor="province" className="sub-title-distri ">
               Selecciona una provincia:
             </label>
 
-            <Menu as="div" className="relative dropdown">
+            <Menu as="div" className="relative mt-10">
               {({ open }) => (
                 <>
                   <div>
-                    <MenuButton className="inline-flex w-full justify-between gap-x-1.5 bg-white rounded-xl p-4 text-2xl font-medium text-gray-700 border border-gray-300 shadow-sm hover:bg-gray-50">
+                    <MenuButton className="inline-flex w-full justify-end gap-x-1.5 bg-white rounded-xl p-4 text-2xl font-medium text-gray-700 title-selector border border-gray-300  shadow-sm hover:bg-gray-50">
                       {provincias.find((provincia) => provincia.url === mapUrl)
                         ?.nombre || 'Selecciona una provincia'}
                       <ChevronDownIcon

@@ -100,21 +100,19 @@
 }
 .p-text-product-description,
 .p-text-product,
+.title-measure,
 .title-ficha {
   font-weight: 200;
   padding-top: 2rem;
   font-size: var(--text-medios);
 }
 .title-measure {
-  font-weight: 400;
   padding-top: 1rem;
-  font-size: var(--text-medios);
 }
 .p-text-product {
   background-color: var(--color-bg-gray-200);
   border-radius: 15px;
   color: var(--color-fuente-black);
-  font-weight: 400;
 }
 .text-p {
   padding: 1rem 3rem;
@@ -237,8 +235,12 @@
   transform: scale(1.02);
 }
 @media screen and (width <= 530px) {
-  .h2-page-product {
-    font-weight: 200;
+  .p-text-product-description,
+  .p-text-product,
+  .title-measure,
+  .h2-page-product,
+  .title-ficha {
+    font-weight: 300;
   }
 }
 @media screen and (width <= 420px) {
@@ -246,6 +248,5 @@
   .h2-page-product,
   .p-text-product-description {
     font-size: var(--phone-subtitle-sm);
-    font-weight: 200;
   }
 }

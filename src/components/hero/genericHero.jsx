@@ -1,13 +1,11 @@
 import React from 'react';
 import './genericHero.css';
 
-export default function GenericHero() {
+export default function GenericHero({ titleHero }) {
   return (
-    <div className="p-[var(--padding-generico-x-y)] hero mt-10">
-      <h2>We are light</h2>
-      <h1 className="text-[var(--text-grande)] text-gray-800 font-bold">
-        CONOCÉ MÁS DE NUESTRA EMPRESA
-      </h1>
+    <div className="p-[var(--padding-generico-x-y)] hero mt-10 ">
+      <h2 className="h2-hero-title">We are light</h2>
+      <h1 className="sub-title-hero">{titleHero}</h1>
     </div>
   );
 }
