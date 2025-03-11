@@ -5,17 +5,15 @@ import Link from 'next/link';
 import './productosSection.css';
 
 const Productos = () => {
-  const [accessories, setAccessories] = useState([]);
-
+  const [leds, setLeds] = useState([]);
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await fetch(`/api/accessories`);
       const data1 = await res.json();
-      const acces = data1.accesorios[0].modelos;
-      setAccessories(acces);
-
+      const ledes = data1.accesorios[1].modelos;
+      setLeds(ledes);
       setLoader(false);
     };
 
@@ -27,16 +25,16 @@ const Productos = () => {
       <div className="w-full wrapper-cont">
         <section className="flex items-center justify-between flex-wrap w-full responsive-container">
           {!loader
-            ? accessories.map((el, i) => (
+            ? leds.map((el, i) => (
                 <div
                   key={`${i}_${el.id}`}
                   className="container-items group transform transition-transform duration-300 group-hover:scale-100 rounded-3xl"
                 >
-                  <Link href={`/accesorios/${el.id}`}>
+                  <Link href={`/led/${el.id}`}>
                     <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
                       <Image
                         key={el.id}
-                        src="https://gsgdesign.com.ar/bbd/fotos_prod/accesorios/amp-24w-prin.jpg"
+                        src="https://gsgdesign.com.ar/bbd/fotos_prod/led/led-19w_prin.jpg"
                         alt={el.subnombre}
                         fill
                         className="img-class rounded-3xl"
