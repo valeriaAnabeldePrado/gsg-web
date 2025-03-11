@@ -1,14 +1,16 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import "./navStyle.css";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import './navStyle.css';
 
 const rutas = [
-  { id: 1, nombre: "HOME", deruta: "/" },
-  { id: 2, nombre: "PRODUCTOS", deruta: "/productos" },
-  { id: 3, nombre: "DISTRIBUIDORES", deruta: "/distribuidores" },
-  { id: 4, nombre: "NOSOTROS", deruta: "/nosotros" },
-  { id: 5, nombre: "CONTACTO", deruta: "/contacto" },
+  { id: 1, nombre: 'HOME', deruta: '/' },
+  { id: 2, nombre: 'PRODUCTOS', deruta: '/productos' },
+  { id: 2, nombre: 'ACCESORIOS', deruta: '/accesorios' },
+  { id: 2, nombre: 'LED', deruta: '/led' },
+  { id: 3, nombre: 'DISTRIBUIDORES', deruta: '/distribuidores' },
+  { id: 4, nombre: 'NOSOTROS', deruta: '/nosotros' },
+  { id: 5, nombre: 'CONTACTO', deruta: '/contacto' },
 ];
 
 const MenuNav = () => {
@@ -36,7 +38,7 @@ const MenuNav = () => {
       {/* menu burger */}
       <section className="nav-bar-position">
         <div
-          className={`burger ${isNavOpen ? "burger-open" : ""}`}
+          className={`burger ${isNavOpen ? 'burger-open' : ''}`}
           onClick={handleClick}
         >
           <div className="fas fas-x"></div>
@@ -44,12 +46,12 @@ const MenuNav = () => {
           <div className="fas fas-x"></div>
         </div>
 
-        <nav className={`navbar ${isNavOpen ? "nav-open" : ""}`}>
+        <nav className={`navbar ${isNavOpen ? 'nav-open' : ''}`}>
           <ul className="nav-links">
             {rutas.map((ruta) => (
               <li
                 key={ruta.id}
-                className={`nav-link ${isNavOpen ? "nav-link-open" : ""}`}
+                className={`nav-link ${isNavOpen ? 'nav-link-open' : ''}`}
               >
                 <Link href={ruta.deruta} onClick={handleClick}>
                   {ruta.nombre}

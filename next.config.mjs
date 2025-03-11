@@ -11,6 +11,11 @@ const nextConfig = {
         hostname: 'images.smartcloudstudio.com',
         pathname: '/gsg/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'gsgdesign.com.ar',
+        pathname: '/gsg/**',
+      },
     ],
   },
 };

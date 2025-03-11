@@ -1,15 +1,15 @@
-import { searchById } from "@/utils/db";
+import { searchById } from '@/utils/db';
 
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 export async function GET(req) {
-  const id = req.nextUrl.searchParams.get("id");
+  const id = req.nextUrl.searchParams.get('id');
 
   try {
     const res = await searchById(id);
     return NextResponse.json({ product: res });
   } catch (error) {
-    console.error("Error en la conexión a MongoDB:", error);
-    return new Response("Error en la conexión a MongoDB", {
+    console.error('Error en la conexión a MongoDB:', error);
+    return new Response('Error en la conexión a MongoDB', {
       status: 500,
     });
   }
