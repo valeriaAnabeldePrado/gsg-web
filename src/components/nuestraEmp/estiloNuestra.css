@@ -40,7 +40,7 @@
   background-repeat: no-repeat;
   background-position: right;
 }
-@media screen and (width <= 960px) {
+@media screen and (width <= 800px) {
   .container-nuestraEmp {
     height: 70dvh;
   }
@@ -54,12 +54,12 @@
     font-weight: 300;
   }
   .texto-nuestra {
-    line-height: 1.5;
+    line-height: 1.3;
   }
 }
-@media screen and (width <= 400px) {
+@media screen and (width <= 420px) {
   .texto-nuestra,
   .titulo {
-    font-size: var(--text-phone);
+    font-size: var(--phone-subtitle-sm);
   }
 }
