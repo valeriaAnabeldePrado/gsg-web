@@ -19,13 +19,13 @@
   padding: var(--padding-generico-x-y);
 }
 .text-black span {
-  font-size: var(--text-xxl) !important;
+  font-size: var(--text-medios) !important;
   font-weight: 200 !important;
 }
 .sub-title-distri,
 .title-selector {
   font-weight: 200;
-  font-size: var(--text-xxl);
+  font-size: var(--text-medios);
 }
 
 @media screen and (width <= 1050px) {

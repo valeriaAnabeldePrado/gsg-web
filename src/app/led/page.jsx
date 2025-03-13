@@ -6,13 +6,17 @@ import './productosSection.css';
 
 const Productos = () => {
   const [leds, setLeds] = useState([]);
+  const [description, setDescription] = useState([]);
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await fetch(`/api/accessories`);
       const data1 = await res.json();
-      const ledes = data1.accesorios[1].modelos;
+      const desc = data1.accesorios[3].descripcion;
+
+      setDescription(desc);
+      const ledes = data1.accesorios[3].modelos;
       setLeds(ledes);
       setLoader(false);
     };
@@ -24,6 +28,10 @@ const Productos = () => {
     <>
       <div className="w-full wrapper-cont">
         <section className="flex items-center justify-between flex-wrap w-full responsive-container">
+          <div className="p-text-product-description p-8 text-center w-full items-center flex justify-center flex-col-reverse ">
+            <h3 className=" md:w-10/12 ">{description}</h3>
+            <h2 className="h2-hero-title text-center">Led</h2>
+          </div>
           {!loader
             ? leds.map((el, i) => (
                 <div
@@ -34,7 +42,7 @@ const Productos = () => {
                     <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
                       <Image
                         key={el.id}
-                        src="https://gsgdesign.com.ar/bbd/fotos_prod/led/led-19w_prin.jpg"
+                        src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/led/${el.id}.jpg`}
                         alt={el.subnombre}
                         fill
                         className="img-class rounded-3xl"

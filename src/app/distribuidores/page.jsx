@@ -125,7 +125,7 @@ const Distribuidores = () => {
     <>
       <div className="p-[var(--padding-generico-x-y)]">
         <GenericHero titleHero={'NUESTRA RED DE DISTRIBUIDORES'} />
-        <div className="flex p-[var(--padding-generico-y)] responsive-container-dist">
+        <div className="flex responsive-container-dist">
           <TextGenerateEffect
             words={words}
             duration={0.1}
@@ -133,7 +133,7 @@ const Distribuidores = () => {
           />
         </div>
 
-        <div className="w-full max-w-[1000px] flex justify-center m-auto flex-col gap-8">
+        <div className="w-full max-w-[1000px] flex justify-center m-auto flex-col gap-8 md:pt-20 ">
           <div className="mb-4 ">
             <label htmlFor="province" className="sub-title-distri ">
               Selecciona una provincia:
@@ -143,7 +143,7 @@ const Distribuidores = () => {
               {({ open }) => (
                 <>
                   <div>
-                    <MenuButton className="inline-flex w-full justify-end gap-x-1.5 bg-white rounded-xl p-4 text-2xl font-medium text-gray-700 title-selector border border-gray-300  shadow-sm hover:bg-gray-50">
+                    <MenuButton className="inline-flex w-full justify-end gap-x-1.5 bg-white rounded-xl p-4 text-xl font-medium text-gray-700 title-selector border border-gray-300  shadow-sm hover:bg-gray-50">
                       {provincias.find((provincia) => provincia.url === mapUrl)
                         ?.nombre || 'Selecciona una provincia'}
                       <ChevronDownIcon

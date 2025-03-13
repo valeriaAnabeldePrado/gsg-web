@@ -1,8 +1,8 @@
 import FooterM from '@/components/footer/footer';
 
 export const metadata = {
-  title: 'Accesorios',
-  description: 'Seccion de accesorios',
+  title: 'Leds',
+  description: 'Seccion de leds',
 };
 
 export default function ProductsLayout({ children }) {
