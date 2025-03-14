@@ -8,16 +8,24 @@ import LoaderP from '@/components/loader/loagerP';
 import FooterM from '@/components/footer/footer';
 
 const ProductosContent = () => {
-  const [originalProducts, setOriginalProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [loaderOk, setloaderOk] = useState(true);
-
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); // Esto debe estar en un Suspense
   let categoria;
   if (searchParams.get('categoria')) {
     console.log(searchParams.get('categoria'));
     categoria = searchParams.get('categoria').toLowerCase();
   }
+
+  return (
+    <Suspense fallback={<LoaderP />}>
+      <ProductosList categoria={categoria} />
+    </Suspense>
+  );
+};
+
+const ProductosList = ({ categoria }) => {
+  const [originalProducts, setOriginalProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loaderOk, setloaderOk] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
