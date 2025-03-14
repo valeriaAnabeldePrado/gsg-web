@@ -5,7 +5,7 @@ export const luces = [
   { title: 'Lampara de techo', src: 'techo.png' },
   { title: 'Lampara de pared', src: 'pared.png' },
   { title: 'Lamparas colgantes', src: 'colgantes.png' },
-  { title: 'Accesorios', src: 'accesorios.jpeg' },
+  { title: 'Accesorios', src: 'accesorios.png' },
 ];
 export const destacados = [
   { title: 'Producto 1', src: 'destacado.jpeg' },

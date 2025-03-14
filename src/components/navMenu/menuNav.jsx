@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import './navStyle.css';
+import Image from 'next/image';
+import logo from '/public/imagenes/logo-red.svg';
 
 const rutas = [
   { id: 1, nombre: 'HOME', deruta: '/' },
@@ -24,6 +26,9 @@ const MenuNav = () => {
     <>
       <div className="cont-nav ">
         <nav className="menu-nav ">
+          <ul className="p-2">
+            <Image src={logo} height={60} width={60} />
+          </ul>
           <ul className="nav-list">
             {rutas.map((ruta) => (
               <li key={ruta.id} className="nav-item">

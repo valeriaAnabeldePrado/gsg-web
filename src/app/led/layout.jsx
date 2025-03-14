@@ -1,10 +1,14 @@
 import FooterM from '@/components/footer/footer';
 
 export const metadata = {
-  title: 'Accesorios',
-  description: 'Seccion de accesorios',
+  title: 'Leds',
+  description: 'Seccion de leds',
 };
 
 export default function ProductsLayout({ children }) {
-  return <div className="pt-10">{children}</div>;
+  return (
+    <div className="pt-10">
+      {children} <FooterM />
+    </div>
+  );
 }

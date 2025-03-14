@@ -1,5 +1,5 @@
 .text-black span {
-  font-size: var(--text-xxl) !important;
+  font-size: var(--text-medios) !important;
   font-weight: 200 !important;
 }
 @media screen and (width <= 420px) {

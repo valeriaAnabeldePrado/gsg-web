@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Measure from './measure';
+import Image from 'next/image';
 // import '../../productosSection.css';
 
 export default function page({ params }) {
@@ -13,8 +14,12 @@ export default function page({ params }) {
     const fetchProducts = async () => {
       const res = await fetch(`/api/accessories`);
       const data1 = await res.json();
-      const data = data1.accesorios[0].modelos;
-      const filteredData = data.filter((el) => el.id === id);
+      const acces = [
+        ...data1.accesorios[0].modelos,
+        ...data1.accesorios[1].modelos,
+        ...data1.accesorios[2].modelos,
+      ];
+      const filteredData = acces.filter((el) => el.id === id);
       setAccessories(filteredData[0]);
       setLoader(false);
     };
@@ -31,11 +36,17 @@ export default function page({ params }) {
             <div className="flex-1 min-w-72 flex flex-col">
               <h3 className="h2-page-product">{accessories.subnombre}</h3>
               <p className="p-text-product-description">
-                Accesorios informacion para agregar que podria ser estatica pero
-                H
+                {accessories.description}
               </p>
             </div>
-            <div className="flex-1 min-w-72 relative aspect-square rounded-lg overflow-hidden"></div>
+            <div className="flex-1 min-w-72 relative aspect-square rounded-lg overflow-hidden">
+              <Image
+                fill
+                src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/accesorios/${accessories.id}.jpg`}
+                alt={accessories.id}
+                className="object-cover"
+              />
+            </div>
           </section>
           <section>
             <section className="flex flex-contain">

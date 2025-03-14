@@ -78,15 +78,11 @@ const Contacto = () => {
     <div className="p-[var(--padding-generico-x-y)] ">
       <GenericHero titleHero={'CONTÁCTATE CON NOSOTROS'} />
 
-      <TextGenerateEffect
-        words={words}
-        duration={0.1}
-        className="flex-1  p-[var(--padding-generico-y)]"
-      />
+      <TextGenerateEffect words={words} duration={0.1} className="flex-1  " />
       <DynamicForm
         fields={formFields}
         onSubmit={handleSubmit}
-        className="w-full mx-auto "
+        className="w-full mx-auto mt-20 "
       />
 
       <p className={isSubmitted ? `opacity-100 mt-5` : `opacity-0`}>

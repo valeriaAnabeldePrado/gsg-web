@@ -3,12 +3,12 @@
   padding: var(--padding-generico-x-y);
 }
 .container-items {
-  width: 50%;
+  width: 33%;
   padding: 0 2rem;
   margin-bottom: 5rem;
 }
 .container-img-g {
-  height: 80vh;
+  height: 50vh;
   position: relative;
   width: 100%;
 }
@@ -16,6 +16,13 @@
   object-fit: cover;
   height: auto;
   width: auto;
+}
+
+.h2-hero-title {
+  font-size: var(--text-grande);
+  font-weight: 100;
+  color: var(--color-fuente-roja);
+  margin-bottom: 1rem;
 }
 
 .mask {
@@ -33,7 +40,7 @@
   height: 100%;
 }
 .title-gallery {
-  font-size: var(--text-card-page-product);
+  font-size: var(--text-medios);
   margin-left: 0.5rem;
   font-weight: 200;
   padding-top: 2rem;
@@ -96,7 +103,6 @@
   font-size: var(--text-medios-card);
   font-weight: 100;
   color: var(--color-fuente-roja);
-  margin-bottom: 2rem;
 }
 .p-text-product-description,
 .p-text-product,
@@ -106,9 +112,9 @@
   font-size: var(--text-medios);
 }
 .title-measure {
-  font-weight: 400;
   padding-top: 1rem;
   font-size: var(--text-medios);
+  font-weight: 200;
 }
 .p-text-product {
   background-color: var(--color-bg-gray-200);
@@ -201,7 +207,7 @@
   }
 
   .p-text-product-description {
-    padding-top: 0;
+    padding-top: 2rem;
   }
   .wrapper-cont {
     padding: var(--padding-chico);
@@ -232,18 +238,12 @@
   transform: scale(1.02);
 }
 @media screen and (width <= 530px) {
-  .p-text-product-description,
-  .p-text-product,
-  .title-measure,
-  .h2-page-product,
-  .title-ficha {
+  .h2-page-product {
     font-weight: 300;
   }
 }
 @media screen and (width <= 420px) {
-  .title-gallery,
-  .h2-page-product,
-  .p-text-product-description {
+  .h2-page-product {
     font-size: var(--phone-subtitle-sm);
   }
 }
