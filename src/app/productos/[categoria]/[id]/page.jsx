@@ -9,7 +9,6 @@ export default function page({ params }) {
   const [product, setProduct] = useState('');
   const [categoria, setcategoria] = useState('');
   const [selectedModelIndex, setSelectedModelIndex] = useState(0);
-
   const { id } = params;
 
   useEffect(() => {

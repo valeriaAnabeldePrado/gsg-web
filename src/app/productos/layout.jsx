@@ -2,7 +2,7 @@ import FooterM from '@/components/footer/footer';
 import ListSelectedProducts from '@/components/list-selected-products/ListSelectedProducts';
 
 export const metadata = {
-  title: 'Products',
+  title: 'Productos',
   description: 'Seccion de productos',
 };
 

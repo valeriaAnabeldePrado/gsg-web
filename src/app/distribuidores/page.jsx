@@ -7,6 +7,7 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 
 import GenericHero from '@/components/hero/genericHero';
 import './distribuidores.css';
+import Head from 'next/head';
 
 const words = `A través de nuestra red de distribuidores, aseguramos que nuestros productos y servicios lleguen a cada rincón, garantizando atención personalizada y calidad superior en cada interacción`;
 
@@ -123,6 +124,15 @@ const Distribuidores = () => {
 
   return (
     <>
+      <Head>
+        <title>Distribuidores - GSG</title>
+        <meta
+          name="Distribuidores"
+          content="A través de nuestra red de distribuidores, aseguramos que nuestros productos y servicios lleguen a cada rincón, garantizando atención personalizada y calidad superior en cada interacción."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="p-[var(--padding-generico-x-y)]">
         <GenericHero titleHero={'NUESTRA RED DE DISTRIBUIDORES'} />
         <div className="flex responsive-container-dist">

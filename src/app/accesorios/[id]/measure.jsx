@@ -1,5 +1,5 @@
 'use client';
-import '../productosSection.css';
+import '../accSection.css';
 export default function Measure({ product }) {
   let CharacteristicsP = product.caracteristicasTecnicas;
 

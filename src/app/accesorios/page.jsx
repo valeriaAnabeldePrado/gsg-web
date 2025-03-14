@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import './productosSection.css';
+import './accSection.css';
 
 const Productos = () => {
   const [accessories, setAccessories] = useState([]);
@@ -34,7 +34,7 @@ const Productos = () => {
       <div className="w-full wrapper-cont">
         <section className="flex items-center justify-between flex-wrap w-full responsive-container">
           <div className="p-text-product-description p-8 text-center w-full items-center flex justify-center flex-col-reverse ">
-            <h3 className=" md:w-10/12 ">{description}</h3>
+            <h3 className="md:w-10/12 ">{description}</h3>
             <h2 className="h2-hero-title text-center">Accesorios</h2>
           </div>
           {!loader

@@ -16,7 +16,7 @@ export default function Second() {
         </div>
         <div className="md:p-[var(--padding-chico)]  flex justify-center mt-5 img-resp-display">
           <Image
-            src={'/imagenes/categoria/pared.png'}
+            src={'/imagenes/categoria/pie.png'}
             width={300}
             height={300}
             className="h-full w-full rounded-3xl t"

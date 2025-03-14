@@ -53,10 +53,10 @@ const Productos = () => {
                 modelo.foto_portada ? (
                   <div
                     key={`${i}_${j}_${modelo.id}`}
-                    className="container-items group transform transition-transform duration-300 group-hover:scale-100 rounded-3xl"
+                    className="container-itemss group transform transition-transform duration-300 group-hover:scale-100 rounded-3xl"
                   >
                     <Link href={`/productos/${el.categoria}/${el._id}`}>
-                      <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
+                      <div className="relative container-img-gg transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
                         <Image
                           key={modelo.id}
                           src={`${modelo.foto_portada}`}

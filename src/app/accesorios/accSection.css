@@ -3,12 +3,12 @@
   padding: var(--padding-generico-x-y);
 }
 .container-items {
-  width: 50%;
+  width: 33%;
   padding: 0 2rem;
   margin-bottom: 5rem;
 }
 .container-img-g {
-  height: 80vh;
+  height: 50vh;
   position: relative;
   width: 100%;
 }
@@ -16,6 +16,13 @@
   object-fit: cover;
   height: auto;
   width: auto;
+}
+
+.h2-hero-title {
+  font-size: var(--text-grande);
+  font-weight: 100;
+  color: var(--color-fuente-roja);
+  margin-bottom: 1rem;
 }
 
 .mask {
@@ -33,7 +40,7 @@
   height: 100%;
 }
 .title-gallery {
-  font-size: var(--text-card-page-product);
+  font-size: var(--text-medios);
   margin-left: 0.5rem;
   font-weight: 200;
   padding-top: 2rem;
