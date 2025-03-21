@@ -34,7 +34,7 @@ const CatalogoHome = () => {
             ref={blackRef}
           >
             <h2 className="h2-catalogo mb-6">
-              Descarga nuestro catálogo de productos
+              Conoce nuestro catálogo de productos
             </h2>
             <section className="flex flex-col items-center justify-center">
               <div className="contImg-logo mb-4">

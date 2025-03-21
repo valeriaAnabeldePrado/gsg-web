@@ -76,7 +76,7 @@ const Hero = () => {
           pin: true,
           pinSpacer: false,
           markers: false,
-          scrub: 0.5,
+          scrub: 2,
           onUpdate: render,
         },
       });
@@ -125,11 +125,11 @@ const Hero = () => {
 
   return (
     <>
-      <div className="relative w-screen h-screen ">
+      <div className="relative w-full h-screen ">
         <div ref={divRef} className="heroDesk">
           <canvas
             id="hero-lightpass"
-            className="w-screen canvasH h-screen"
+            className="w-full canvasH h-screen"
             ref={canvasRef}
           ></canvas>
           <h1 className="absolute centered-text opacity-0">We are light</h1>

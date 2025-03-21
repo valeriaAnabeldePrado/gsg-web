@@ -1,7 +1,9 @@
 .container-nuestraEmp {
   height: 100dvh;
+
   background-color: var(--color-fondo);
   padding: var(--padding-generico-x-y);
+
   font-size: 0;
   display: flex;
   justify-content: center;
