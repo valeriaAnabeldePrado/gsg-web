@@ -250,3 +250,44 @@
     font-size: var(--phone-subtitle-sm);
   }
 }
+
+.container-acabado {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.acabado-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9f9f9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  white-space: nowrap; /* Evita que el texto se corte en varias líneas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.acabado-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  flex-shrink: 0; /* Evita que el círculo se reduzca */
+}
+
+/* Asegura que el scroll se vea correctamente */
+.container-acabado::-webkit-scrollbar {
+  height: 6px;
+}
+
+.container-acabado::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+
+.container-acabado::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
