@@ -78,11 +78,11 @@ const FooterM = () => {
           </div>
           <div className="flex flex-col gap-4 md:items-end">
             <div className="cont-text-otros flex flex-col md:items-end gap-2 ">
-              <h3>Nuestras oficinas</h3>
+              <h3>Fabricantes, para mayoristas</h3>
               <p
                 className={`${isHome ? 'text-white text-xl' : 'text-black text-xl'}`}
               >
-                Direccion de oficina
+                CABA, Argentina
               </p>
             </div>
             <div className="cont-text-otros flex flex-col md:items-end ">
