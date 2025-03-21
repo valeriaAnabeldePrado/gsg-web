@@ -6,152 +6,12 @@ export default function Measure({ product }) {
   return (
     <>
       {CharacteristicsP ? (
-        <div className="container-characteristics">
-          <div>
-            <h2 className="title-measure">Lumen</h2>
-            <div className="container-measure-responsive">
-              {CharacteristicsP.lumen &&
-                CharacteristicsP.lumen.map((el, i) => {
-                  return (
-                    <p
-                      className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                      key={`${el}_${i}`}
-                    >
-                      {el}
-                    </p>
-                  );
-                })}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="title-measure">Acabado</h2>
-            <div className="container-measure-responsive">
-              {CharacteristicsP.acabado &&
-                CharacteristicsP.acabado.map((el, i) => {
-                  const colorMap = {
-                    'Aluminio anodizado': '#d4d4d4', // Gris claro
-                    'Alumino anodizado': '#d4d4d4', // Gris claro
-                    Negro: '#000000', // Negro
-                    'Negro mate': '#1a1a1a', // Negro mate
-                    Blanco: '#ffffff', // Blanco
-                    'Blanco Semi-mate': '#f5f5f5', // Blanco semi mate
-                    'Blanco microtexturado': '#fafafa', // Blanco texturizado
-                    Champagne: '#f7e7ce', // Color champagne
-                    Oro: '#ffd700', // Dorado
-                    'Aluminio mate': '#c0c0c0', // Aluminio mate
-                    'Aluminio brillante': '#e6e6e6', // Aluminio brillante
-                    'Blanco micro': '#f8f8ff', // Blanco micro
-                    'Negro micro': '#2e2e2e', // Negro micro
-                    'acero inoxidable': '#b0c4de', // Acero inoxidable
-                    'Oro mate': '#ffd200',
-                  };
-
-                  // Determina el color según el nombre
-                  const color = colorMap[el.trim()] || 'black'; // Gris por defecto si no está definido
-
-                  return (
-                    <div
-                      key={`${el}_${i}`}
-                      className="flex items-center gap-2 pt-10"
-                    >
-                      <span
-                        className="inline-block w-6 h-6 rounded-full border"
-                        style={{ backgroundColor: color }}
-                      ></span>
-                      <p className="text-mg font-light max-[800px]:hidden">
-                        {el.trim()}
-                      </p>
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
-          <div>
-            {Array.isArray(CharacteristicsP.largo) &&
-              CharacteristicsP.largo.length > 0 && (
-                <>
-                  <h2 className="title-measure">Largo </h2>
-                  <div className="container-measure-responsive">
-                    {CharacteristicsP.largo &&
-                      CharacteristicsP.largo.map((el, i) => {
-                        return (
-                          <p
-                            className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                            key={`${el}_${i}`}
-                          >
-                            {el} cm
-                          </p>
-                        );
-                      })}
-                  </div>
-                </>
-              )}
-          </div>
-          <div>
-            {CharacteristicsP.ancho && (
-              <>
-                <h2 className="title-measure">Ancho </h2>
-                <div className="container-measure-responsive">
-                  {Array.isArray(CharacteristicsP.ancho) &&
-                    CharacteristicsP.ancho &&
-                    CharacteristicsP.ancho.map((el, i) => {
-                      return (
-                        <p
-                          className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                          key={`${el}_${i}`}
-                        >
-                          {el} cm
-                        </p>
-                      );
-                    })}
-                </div>
-              </>
-            )}
-          </div>
-          <div>
-            {Array.isArray(CharacteristicsP.diametro) &&
-              CharacteristicsP.diametro && (
-                <>
-                  <h2 className="title-measure">Diametro </h2>
-                  <div className="container-measure-responsive">
-                    {CharacteristicsP.diametro.map((el, i) => {
-                      return (
-                        <p
-                          className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                          key={`${el}_${i}`}
-                        >
-                          {el} cm
-                        </p>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
-          </div>
-          <div>
-            <h2 className="title-measure">Tono </h2>
-            <div className="container-measure-responsive">
-              {Array.isArray(CharacteristicsP.tono) &&
-                CharacteristicsP.tono &&
-                CharacteristicsP.tono.map((el, i) => {
-                  return (
-                    <p
-                      className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                      key={`${el}_${i}`}
-                    >
-                      {el}
-                    </p>
-                  );
-                })}
-            </div>
-          </div>
-          <div>
-            <h2 className="title-measure">Watt </h2>
-            <div className="container-measure-responsive">
-              {Array.isArray(CharacteristicsP.watt) &&
-                CharacteristicsP.watt.length > 0 &&
-                CharacteristicsP.watt.map((el, i) => (
+        <div>
+          <div className="container-characteristics">
+            <div>
+              <h2 className="title-measure">Lumen</h2>
+              <div className="container-measure-responsive">
+                {CharacteristicsP.lumen?.map((el, i) => (
                   <p
                     className="pt-10 max-[800px]:pt-4 text-mg font-light"
                     key={`${el}_${i}`}
@@ -159,15 +19,138 @@ export default function Measure({ product }) {
                     {el}
                   </p>
                 ))}
+              </div>
+            </div>
+
+            <div>
+              {Array.isArray(CharacteristicsP.largo) &&
+                CharacteristicsP.largo.length > 0 && (
+                  <>
+                    <h2 className="title-measure">Largo </h2>
+                    <div className="container-measure-responsive">
+                      {CharacteristicsP.largo.map((el, i) => (
+                        <p
+                          className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                          key={`${el}_${i}`}
+                        >
+                          {el} cm
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
+            </div>
+
+            <div>
+              {CharacteristicsP.ancho && (
+                <>
+                  <h2 className="title-measure">Ancho </h2>
+                  <div className="container-measure-responsive">
+                    {CharacteristicsP.ancho.map((el, i) => (
+                      <p
+                        className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                        key={`${el}_${i}`}
+                      >
+                        {el} cm
+                      </p>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div>
+              {Array.isArray(CharacteristicsP.diametro) &&
+                CharacteristicsP.diametro.length > 0 && (
+                  <>
+                    <h2 className="title-measure">Diametro </h2>
+                    <div className="container-measure-responsive">
+                      {CharacteristicsP.diametro.map((el, i) => (
+                        <p
+                          className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                          key={`${el}_${i}`}
+                        >
+                          {el} cm
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
+            </div>
+
+            <div>
+              <h2 className="title-measure">Tono </h2>
+              <div className="container-measure-responsive">
+                {CharacteristicsP.tono?.map((el, i) => (
+                  <p
+                    className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                    key={`${el}_${i}`}
+                  >
+                    {el}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="title-measure">Watt </h2>
+              <div className="container-measure-responsive">
+                {CharacteristicsP.watt?.map((el, i) => (
+                  <p
+                    className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                    key={`${el}_${i}`}
+                  >
+                    {el}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="title-measure">
+                Led Incluido: {CharacteristicsP.incluyeLed ? 'sí' : 'no'}
+              </p>
+              <p className="title-measure">
+                Incluye Fuente: {CharacteristicsP.incluyeEquipo ? 'sí' : 'no'}
+              </p>
             </div>
           </div>
+
+          {/* Sección de Acabado mejorada */}
           <div>
-            <p className="title-measure">
-              Led Incluido: {CharacteristicsP.incluyeLed ? 'si' : 'no'}
-            </p>
-            <p className="title-measure">
-              Incluiye Equipo: {CharacteristicsP.incluyeEquipo ? 'si' : 'no'}
-            </p>
+            <h2 className="title-measure">Acabado</h2>
+            <div className="container-acabado">
+              {CharacteristicsP.acabado?.map((el, i) => {
+                const colorMap = {
+                  'Aluminio anodizado': '#d4d4d4',
+                  'Alumino anodizado': '#d4d4d4',
+                  Negro: '#000000',
+                  'Negro mate': '#1a1a1a',
+                  Blanco: '#ffffff',
+                  'Blanco Semi-mate': '#f5f5f5',
+                  'Blanco microtexturado': '#fafafa',
+                  Champagne: '#f7e7ce',
+                  Oro: '#ffd700',
+                  'Aluminio mate': '#c0c0c0',
+                  'Aluminio brillante': '#e6e6e6',
+                  'Blanco micro': '#f8f8ff',
+                  'Negro micro': '#2e2e2e',
+                  'acero inoxidable': '#b0c4de',
+                  'Oro mate': '#ffd200',
+                };
+                const color = colorMap[el.trim()] || '#888888';
+
+                return (
+                  <div key={`${el}_${i}`} className="acabado-item">
+                    <span
+                      className="acabado-color"
+                      style={{ backgroundColor: color }}
+                    ></span>
+                    <span className="text-mg font-light">{el.trim()}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       ) : (

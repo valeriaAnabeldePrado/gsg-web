@@ -17,10 +17,10 @@ const CatalogoHome = () => {
       color: '#fff',
       scrollTrigger: {
         trigger: blackRef.current,
-        start: 'top center',
-        end: 'center 60% ',
+        start: 'top bottom',
+        end: 'center 40% ',
         pinSpacer: false,
-        scrub: 0.5,
+        scrub: 0.7,
       },
     });
   }, [blackRef]);

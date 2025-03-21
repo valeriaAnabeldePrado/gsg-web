@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import './footerStyle.css';
 import { Facebook, Instagram, PhilippinePeso, Youtube } from 'lucide-react';
+import Pinterest from './Pinterest';
 
 const FooterM = () => {
   const [isHome, setIsHome] = useState(false);
@@ -25,7 +26,7 @@ const FooterM = () => {
       link: 'https://www.facebook.com/GSGled',
     },
     {
-      icon: <PhilippinePeso />,
+      icon: <Pinterest />,
       name: 'Pinterest',
       link: 'https://ar.pinterest.com/gsgdesignn',
     },
