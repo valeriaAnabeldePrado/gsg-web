@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Measure from '@/app/productos/[categoria]/[id]/measure';
 import LoaderP from '@/components/loader/loagerP';
 import '../../productosSection.css';
+import { IMG_URL } from '@/utils/constants';
 
 export default function page({ params }) {
   const [product, setProduct] = useState('');
@@ -43,7 +44,7 @@ export default function page({ params }) {
             <div className="flex-1 min-w-72 relative aspect-square rounded-lg overflow-hidden">
               <Image
                 fill
-                src={`https://images.smartcloudstudio.com/gsg/${product.modelos[0].id}.png`}
+                src={`${IMG_URL}/${product.modelos[0].id}.png`}
                 alt={product.code}
                 className="object-cover"
               />

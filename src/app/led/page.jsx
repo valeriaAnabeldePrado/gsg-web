@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './ledSection.css';
+import { IMG_URL } from '@/utils/constants';
 
 const Productos = () => {
   const [leds, setLeds] = useState([]);
@@ -13,10 +14,10 @@ const Productos = () => {
     const fetchProducts = async () => {
       const res = await fetch(`/api/accessories`);
       const data1 = await res.json();
-      const desc = data1.accesorios[3].descripcion;
+      const desc = data1.accesorios[1].descripcion;
 
       setDescription(desc);
-      const ledes = data1.accesorios[3].modelos;
+      const ledes = data1.accesorios[1].modelos;
       setLeds(ledes);
       setLoader(false);
     };
@@ -42,7 +43,7 @@ const Productos = () => {
                     <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
                       <Image
                         key={el.id}
-                        src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/led/${el.id}.jpg`}
+                        src={`${IMG_URL}/fotos_blanco/led/${el.id}.jpg`}
                         alt={el.subnombre}
                         fill
                         className="img-class rounded-3xl"

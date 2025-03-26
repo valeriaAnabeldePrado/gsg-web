@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import MenuNav from '@/components/navMenu/menuNav';
+import GTM from '@/components/tag';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className={inter.className}>
+        <GTM />
         <MenuNav />
         {children}
       </body>

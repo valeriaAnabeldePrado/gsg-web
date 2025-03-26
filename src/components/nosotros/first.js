@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import './nosotros.css';
+import { IMG_URL } from '@/utils/constants';
 
 export default function First() {
   return (
@@ -21,7 +22,7 @@ export default function First() {
       </div>
       <div className="flex-1   p-[var(--padding-chico)] items-center justify-center align-middle">
         <Image
-          src={'/imagenes/categoria/techo.png'}
+          src={`${IMG_URL}/bod-170.png`}
           width={300}
           height={300}
           className="h-full w-full rounded-3xl object-cover"

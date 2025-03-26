@@ -11,6 +11,7 @@ export default function ProductsLayout({ children }) {
     <div className="pt-10">
       <ListSelectedProducts />
       {children}
+      <FooterM />
     </div>
   );
 }

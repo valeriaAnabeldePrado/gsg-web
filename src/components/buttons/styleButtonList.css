@@ -1,2 +1,6 @@
-.buttonList {
+.container-footer {
+  padding-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-generico-x-y);
 }
