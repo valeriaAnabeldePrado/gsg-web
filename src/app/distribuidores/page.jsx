@@ -8,6 +8,7 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import GenericHero from '@/components/hero/genericHero';
 import './distribuidores.css';
 import Head from 'next/head';
+import FooterButon from '@/components/buttons/footer-buton';
 
 const words = `A través de nuestra red de distribuidores, aseguramos que nuestros productos y servicios lleguen a cada rincón, garantizando atención personalizada y calidad superior en cada interacción`;
 
@@ -142,7 +143,6 @@ const Distribuidores = () => {
             className="flex-1 md:max-w-[80%]text-words"
           />
         </div>
-
         <div className="w-full max-w-[1000px] flex justify-center m-auto flex-col gap-8 md:pt-20 ">
           <div className="mb-4 ">
             <label htmlFor="province" className="sub-title-distri ">
@@ -199,6 +199,7 @@ const Distribuidores = () => {
             height="630"
           ></iframe>
         </div>
+        <FooterButon rute={'distribuidores/listado'}>Ver listado</FooterButon>
       </div>
 
       <FooterM />

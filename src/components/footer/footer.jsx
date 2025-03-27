@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import './footerStyle.css';
 import { Facebook, Instagram, PhilippinePeso, Youtube } from 'lucide-react';
 import Pinterest from './Pinterest';
+import FooterButon from '../buttons/footer-buton';
 
 const FooterM = () => {
   const [isHome, setIsHome] = useState(false);
@@ -54,28 +55,9 @@ const FooterM = () => {
               alt="logo"
               className="h-[10vh] ml-4 mt-4"
             />
-            <button className="footer-button ">
-              <Link
-                href={'/contacto'}
-                className={`text-2xl font-extralight flex items-center ${isHome ? 'text-white' : 'text-black'}`}
-              >
-                Contactáte
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6 ml-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </Link>
-            </button>
+            <FooterButon isHome={isHome} rute={'contacto'}>
+              Conectate
+            </FooterButon>
           </div>
           <div className="flex flex-col gap-4 md:items-end">
             <div className="cont-text-otros flex flex-col md:items-end gap-2 ">

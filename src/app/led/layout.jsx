@@ -8,7 +8,8 @@ export const metadata = {
 export default function ProductsLayout({ children }) {
   return (
     <div className="pt-10">
-      {children} <FooterM />
+      {children}
+      <FooterM />
     </div>
   );
 }

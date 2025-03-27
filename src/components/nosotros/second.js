@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import './nosotros.css';
+import { IMG_URL } from '@/utils/constants';
 
 export default function Second() {
   return (
@@ -8,7 +9,7 @@ export default function Second() {
       <div className="flex-1  p-[var(--padding-chico)] items-center justify-center align-middle ">
         <div className="md:p-[var(--padding-chico)]  flex justify-center img-resp-display">
           <Image
-            src={'/imagenes/categoria/pared.png'}
+            src={`${IMG_URL}/p01-op.png`}
             width={300}
             height={300}
             className="h-full w-full rounded-3xl t"
@@ -16,7 +17,7 @@ export default function Second() {
         </div>
         <div className="md:p-[var(--padding-chico)]  flex justify-center mt-5 img-resp-display">
           <Image
-            src={'/imagenes/categoria/pie.png'}
+            src={`${IMG_URL}/wal-600.png`}
             width={300}
             height={300}
             className="h-full w-full rounded-3xl t"
