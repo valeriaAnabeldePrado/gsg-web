@@ -29,6 +29,21 @@ export default function CategoryList() {
             </Link>
           );
         })}
+        <Link href={`/accesorios`}>
+          <div
+            className="category-category"
+            onMouseEnter={() =>
+              setHoveredCategory({
+                title: 'Accesorios',
+                categoria: 'accesorios',
+                src: 'Accesorios.png',
+              })
+            }
+            onMouseLeave={() => setHoveredCategory(null)}
+          >
+            <h2 className="h2-category">› Accesorios</h2>
+          </div>
+        </Link>
       </div>
 
       <div className="category-imageContainer relative">
@@ -45,6 +60,16 @@ export default function CategoryList() {
             />
           </Link>
         ))}
+        <Link href={`/catalogo/Accesorios.png`}>
+          <Image
+            fill
+            src={`${IMG_URL}/Accesorios.png`}
+            alt="Category"
+            className={clsx('  md:block category-image absolute ', {
+              visible: hoveredCategory?.src === 'Accesorios.png',
+            })}
+          />
+        </Link>
       </div>
     </div>
   );

@@ -95,14 +95,16 @@ export default function Measure({ product }) {
             <div>
               <h2 className="title-measure">Watt </h2>
               <div className="container-measure-responsive">
-                {CharacteristicsP.watt?.map((el, i) => (
-                  <p
-                    className="pt-10 max-[800px]:pt-4 text-mg font-light"
-                    key={`${el}_${i}`}
-                  >
-                    {el}
-                  </p>
-                ))}
+                {Array.isArray(CharacteristicsP.watt) &&
+                  CharacteristicsP.watt.length > 0 &&
+                  CharacteristicsP.watt.map((el, i) => (
+                    <p
+                      className="pt-10 max-[800px]:pt-4 text-mg font-light"
+                      key={`${el}_${i}`}
+                    >
+                      {el}
+                    </p>
+                  ))}
               </div>
             </div>
 
