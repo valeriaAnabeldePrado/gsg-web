@@ -1,14 +1,14 @@
 export const luces = [
   {
-    title: 'Lamparas de Exterior',
+    title: 'de Exterior',
     categoria: 'exterior',
     src: 'est-ext.png',
   },
-  { title: 'Lamparas de Pie', categoria: 'pie', src: 'bod-170.png' },
+  { title: 'De pie', categoria: 'pie', src: 'bod-170.png' },
   { title: 'Perfiles', categoria: 'perfiles', src: 'p01-tr.png' },
-  { title: 'Lampara de Techo', categoria: 'techo', src: 'pla.png' },
-  { title: 'Lampara de Pared', categoria: 'pared', src: 'tex.png' },
-  { title: 'Lamparas Colgantes', categoria: 'colgantes', src: 'qdr-t.png' },
+  { title: 'De techo', categoria: 'techo', src: 'pla.png' },
+  { title: 'De pared', categoria: 'pared', src: 'tex.png' },
+  { title: 'Colgantes', categoria: 'colgantes', src: 'qdr-t.png' },
   ,
 ];
 export const destacados = [

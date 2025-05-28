@@ -1,12 +1,17 @@
 'use client';
-import Image from 'next/image';
+
 import { useEffect, useState } from 'react';
 import Measure from '@/app/productos/[categoria]/[id]/measure';
 import LoaderP from '@/components/loader/loagerP';
 import '../../productosSection.css';
 import { IMG_URL } from '@/utils/constants';
+import { usePathname } from 'next/navigation';
 
 export default function page({ params }) {
+  const pathname = usePathname();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const [product, setProduct] = useState('');
   const [categoria, setcategoria] = useState('');
   const [selectedModelIndex, setSelectedModelIndex] = useState(0);
@@ -42,7 +47,7 @@ export default function page({ params }) {
               </p>
             </div>
             <div className="flex-1 min-w-72 relative aspect-square rounded-lg overflow-hidden">
-              <Image
+              <img
                 fill
                 src={`${IMG_URL}/${product.modelos[0].id}.png`}
                 alt={product.code}
@@ -75,7 +80,7 @@ export default function page({ params }) {
           {product.modelos[selectedModelIndex] && (
             <section>
               <section className="h-96 w-full relative container-img-product-id bg-white">
-                <Image
+                <img
                   fill
                   src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/${categoria.toLowerCase()}/${
                     product.modelos[selectedModelIndex].fotos_producto

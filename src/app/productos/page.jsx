@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState, Suspense } from 'react';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import './productosSection.css';
 import LoaderP from '@/components/loader/loagerP';
@@ -11,6 +11,10 @@ const ProductosContent = () => {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [loaderOk, setloaderOk] = useState(true);
+  const pathname = usePathname();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const searchParams = useSearchParams();
   let categoria;
