@@ -47,7 +47,7 @@ const Productos = () => {
                 >
                   <Link href={`/accesorios/${el.id}`}>
                     <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
-                      <Image
+                      <img
                         key={el.id}
                         src={`${IMG_URL}/fotos_blanco/accesorios/${el.id}.jpg`}
                         alt={el.subnombre}
