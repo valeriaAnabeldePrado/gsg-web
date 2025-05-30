@@ -21,7 +21,7 @@ const connectDB = async () => {
 export const obtenerProductos = async () => {
   try {
     const db = await connectDB();
-    return await db.collection('productss').find({}).toArray();
+    return await db.collection('products').find({}).toArray();
   } catch (err) {
     console.error('❌ Error al obtener productos:', err);
     throw err;
@@ -62,11 +62,6 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
     const db = await connectDB();
     const modelosMatch = {};
 
-    //filtro de cantidad de leds
-    if (typeof filtros.cantidad === 'number' && filtros.cantidad > 0) {
-      modelosMatch['caracteristicasTecnicas.cantidad'] = filtros.cantidad;
-    }
-
     // Filtro por incluyeLed
     if (typeof filtros.incluyeLed === 'boolean') {
       modelosMatch['caracteristicasTecnicas.incluyeLed'] = filtros.incluyeLed;
@@ -78,7 +73,6 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
         filtros.incluyeEquipo;
     }
 
-    // Filtro por color (array o string, usando regex para coincidencia parcial)
     if (Array.isArray(filtros.color) && filtros.color.length > 0) {
       modelosMatch['caracteristicasTecnicas.color'] = {
         $in: filtros.color

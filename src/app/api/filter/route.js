@@ -28,9 +28,6 @@ export async function GET(request) {
       filtros.cantidad = parseInt(searchParams.get('cantidad') || '0', 10);
     }
 
-    console.log(filtros.cantidad);
-    // Puedes agregar más filtros aquí...
-
     const res = await buscarProductosAvanzado(filtros);
     return NextResponse.json({ products: res });
   } catch (error) {

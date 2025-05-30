@@ -19,11 +19,12 @@ const ProductosContent = () => {
     categoria: searchParams.get('categoria') || 'Todos',
     color: 'Todos',
     acabado: 'Todos',
-    cantidad: '',
     incluyeEquipo: false,
   });
 
-  // Scroll al top cuando cambia la ruta
+  // Separar search del resto de los filtros
+  const { search, ...apiFilters } = filters;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -37,28 +38,31 @@ const ProductosContent = () => {
         categoria: urlCategoria,
       }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  // Función para construir query string
   const buildQuery = (currentFilters) => {
     const params = new URLSearchParams();
 
     Object.entries(currentFilters).forEach(([key, value]) => {
-      if (value && value !== 'Todos' && value !== false) {
+      if (value && value !== 'Todos' && value !== false && value !== '') {
         params.append(key, value.toString());
       }
     });
 
+    // Si no hay filtros activos, devuelve string vacío
     return params.toString();
   };
-
-  // Fetch productos cuando cambian los filtros
+  // ...existing code...
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const query = buildQuery(filters);
+        const query = buildQuery(apiFilters);
+        console.log(query);
+        // Si no hay filtros activos, fetch a /api/products
         const url = query ? `/api/filter?${query}` : '/api/products';
+        console.log(url);
 
         const res = await fetch(url);
         const data = await res.json();
@@ -73,7 +77,9 @@ const ProductosContent = () => {
     };
 
     fetchProducts();
-  }, [filters]);
+    // Solo depende de apiFilters, no de filters ni search
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Filtrado local adicional para búsqueda en tiempo real
   const filteredProducts = products.filter((product) => {
@@ -115,8 +121,7 @@ const ProductosContent = () => {
                 categoria: 'Todos',
                 color: 'Todos',
                 acabado: 'Todos',
-                wattMin: '',
-                wattMax: '',
+                cantidad: '',
                 incluyeEquipo: false,
               })
             }
