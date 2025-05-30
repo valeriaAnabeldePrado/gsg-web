@@ -1,10 +1,10 @@
 import { buscarProductosAvanzado } from '@/utils/db';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const filtros: any = {};
+    const filtros = {};
 
     if (searchParams.has('incluyeLed')) {
       filtros.incluyeLed = searchParams.get('incluyeLed') === 'true';
