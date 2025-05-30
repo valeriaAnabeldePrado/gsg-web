@@ -23,7 +23,7 @@ const ProductosContent = () => {
   });
 
   // Separar search del resto de los filtros
-  const { search, ...apiFilters } = filters;
+  const { search, categoria, ...apiFilters } = filters;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,11 +58,9 @@ const ProductosContent = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const query = buildQuery(apiFilters);
-        console.log(query);
+        const query = buildQuery(filters);
         // Si no hay filtros activos, fetch a /api/products
         const url = query ? `/api/filter?${query}` : '/api/products';
-        console.log(url);
 
         const res = await fetch(url);
         const data = await res.json();
@@ -79,7 +77,7 @@ const ProductosContent = () => {
     fetchProducts();
     // Solo depende de apiFilters, no de filters ni search
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [categoria, filters.color, filters.acabado, filters.incluyeEquipo]);
 
   // Filtrado local adicional para búsqueda en tiempo real
   const filteredProducts = products.filter((product) => {

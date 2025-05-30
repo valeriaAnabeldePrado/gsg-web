@@ -62,10 +62,19 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
     const db = await connectDB();
     const modelosMatch = {};
 
+    const query = {};
+
+    // Filtro para categoria (nivel raíz)
+    if (filtros.categoria && filtros.categoria !== 'Todos') {
+      query.categoria = filtros.categoria;
+    }
+
     // Filtro por incluyeLed
     if (typeof filtros.incluyeLed === 'boolean') {
       modelosMatch['caracteristicasTecnicas.incluyeLed'] = filtros.incluyeLed;
     }
+
+    //filtro para categoria
 
     // Filtro por incluyeEquipo
     if (typeof filtros.incluyeEquipo === 'boolean') {
@@ -107,7 +116,7 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
     }
 
     // Construir la query final
-    const query = {};
+
     if (Object.keys(modelosMatch).length > 0) {
       query.modelos = { $elemMatch: modelosMatch };
     }

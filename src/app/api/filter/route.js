@@ -6,6 +6,10 @@ export async function GET(request) {
     const searchParams = request.nextUrl.searchParams;
     const filtros = {};
 
+    if (searchParams.has('categoria')) {
+      filtros.categoria = searchParams.get('categoria');
+    }
+
     if (searchParams.has('incluyeLed')) {
       filtros.incluyeLed = searchParams.get('incluyeLed') === 'true';
     }
