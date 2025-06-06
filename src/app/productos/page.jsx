@@ -1,19 +1,34 @@
 'use client';
-import React, { useEffect, useState, Suspense } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useState, useMemo, Suspense } from 'react';
+
 import { usePathname, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+
 import './productosSection.css';
 import LoaderP from '@/components/loader/loagerP';
 import Filtering from '@/components/productos/filter';
+import { ProductCard } from '@/components/productos/product-card';
+import { NoResults } from '@/components/productos/product-no-result';
+import { ProductSkeletonList } from '@/components/productos/product-skeleton';
 
-const ProductosContent = () => {
+const Productos = () => (
+  <Suspense fallback={<LoaderP />}>
+    <ProductosInner />
+  </Suspense>
+);
+
+export default Productos;
+
+// --- Componente contenido ---
+const ProductosInner = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Estado unificado para todos los filtros
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   const [filters, setFilters] = useState({
     search: '',
     categoria: searchParams.get('categoria') || 'Todos',
@@ -22,131 +37,71 @@ const ProductosContent = () => {
     incluyeEquipo: false,
   });
 
-  // Separar search del resto de los filtros
-  const { search, categoria, ...apiFilters } = filters;
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  // Sincronizar categoría con URL params
-  useEffect(() => {
-    const urlCategoria = searchParams.get('categoria');
-    if (urlCategoria && urlCategoria !== filters.categoria) {
-      setFilters((prev) => ({
-        ...prev,
-        categoria: urlCategoria,
-      }));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
-
   const buildQuery = (currentFilters) => {
     const params = new URLSearchParams();
-
     Object.entries(currentFilters).forEach(([key, value]) => {
       if (value && value !== 'Todos' && value !== false && value !== '') {
         params.append(key, value.toString());
       }
     });
-
-    // Si no hay filtros activos, devuelve string vacío
     return params.toString();
   };
-  // ...existing code...
+
+  const fetchProducts = async (activeFilters) => {
+    try {
+      setLoading(true);
+      const query = buildQuery(activeFilters);
+      const url = query ? `/api/filter?${query}` : '/api/products';
+      const res = await fetch(url);
+      const data = await res.json();
+      setProducts(data.products || []);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const query = buildQuery(filters);
-        // Si no hay filtros activos, fetch a /api/products
-        const url = query ? `/api/filter?${query}` : '/api/products';
+    const urlCategoria = searchParams.get('categoria');
+    if (urlCategoria && urlCategoria !== filters.categoria) {
+      setFilters((prev) => ({ ...prev, categoria: urlCategoria }));
+    }
+  }, [searchParams]);
 
-        const res = await fetch(url);
-        const data = await res.json();
+  useEffect(() => {
+    fetchProducts(filters);
+  }, [
+    filters.categoria,
+    filters.color,
+    filters.acabado,
+    filters.incluyeEquipo,
+  ]);
 
-        setProducts(data.products || []);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-        setProducts([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-    // Solo depende de apiFilters, no de filters ni search
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoria, filters.color, filters.acabado, filters.incluyeEquipo]);
-
-  // Filtrado local adicional para búsqueda en tiempo real
-  const filteredProducts = products.filter((product) => {
-    if (!filters.search) return true;
+  const filteredProducts = useMemo(() => {
+    if (!filters.search) return products;
 
     const searchTerm = filters.search.toLowerCase();
-    const nameMatch = product.nombre?.toLowerCase().includes(searchTerm);
-    const modelMatch = product.modelos?.some((modelo) =>
-      modelo.subnombre?.toLowerCase().includes(searchTerm),
-    );
+    return products.filter((product) => {
+      const nameMatch = product.nombre?.toLowerCase().includes(searchTerm);
+      const modelMatch = product.modelos?.some((modelo) =>
+        modelo.subnombre?.toLowerCase().includes(searchTerm),
+      );
+      return nameMatch || modelMatch;
+    });
+  }, [filters.search, products]);
 
-    return nameMatch || modelMatch;
-  });
-
-  // Manejar cambio de búsqueda (separado para mejor UX)
   const handleSearchChange = (value) => {
     setFilters((prev) => ({ ...prev, search: value }));
   };
 
-  // Manejar cambios de otros filtros
   const handleFiltersChange = (newFilters) => {
     setFilters((prev) => ({ ...prev, ...newFilters }));
   };
 
-  // Renderizar productos
-  const renderProducts = () => {
-    if (loading) return <LoaderP />;
-
-    if (filteredProducts.length === 0) {
-      return (
-        <div className="w-full text-center py-20">
-          <p className="text-xl text-gray-500 mb-4">
-            No se encontraron productos
-          </p>
-          <button
-            onClick={() =>
-              setFilters({
-                search: '',
-                categoria: 'Todos',
-                color: 'Todos',
-                acabado: 'Todos',
-                cantidad: '',
-                incluyeEquipo: false,
-              })
-            }
-            className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-          >
-            Limpiar filtros
-          </button>
-        </div>
-      );
-    }
-
-    return filteredProducts.map((product, i) =>
-      product.modelos?.map((modelo, j) =>
-        modelo.foto_portada ? (
-          <ProductCard
-            key={`${product._id}_${modelo.id}_${i}_${j}`}
-            product={product}
-            modelo={modelo}
-          />
-        ) : null,
-      ),
-    );
-  };
-
   return (
     <div className="min-h-screen">
-      {/* Barra de búsqueda */}
       <div className="px-4 md:px-10 mb-6">
         <div className="max-w-md">
           <input
@@ -159,48 +114,42 @@ const ProductosContent = () => {
         </div>
       </div>
 
-      {/* Filtros */}
       <div className="px-4 md:px-10 mb-8">
         <Filtering filters={filters} onChange={handleFiltersChange} />
       </div>
 
-      {/* Productos */}
       <div className="w-full wrapper-cont">
         <section className="flex items-center justify-between flex-wrap w-full responsive-container">
-          {renderProducts()}
+          {loading ? (
+            <ProductSkeletonList count={6} />
+          ) : filteredProducts.length === 0 ? (
+            <NoResults
+              onReset={() =>
+                setFilters({
+                  search: '',
+                  categoria: 'Todos',
+                  color: 'Todos',
+                  acabado: 'Todos',
+                  cantidad: '',
+                  incluyeEquipo: false,
+                })
+              }
+            />
+          ) : (
+            filteredProducts.map((product, i) =>
+              product.modelos?.map((modelo, j) =>
+                modelo.foto_portada ? (
+                  <ProductCard
+                    key={`${product._id}_${modelo.id}_${i}_${j}`}
+                    product={product}
+                    modelo={modelo}
+                  />
+                ) : null,
+              ),
+            )
+          )}
         </section>
       </div>
     </div>
   );
 };
-
-// Componente para tarjeta de producto (separado para mejor legibilidad)
-const ProductCard = ({ product, modelo }) => (
-  <div className="container-itemss group transform transition-transform duration-300 hover:scale-105 rounded-3xl">
-    <Link href={`/productos/${product.categoria}/${product._id}`}>
-      <div className="relative container-img-gg transform transition-transform duration-300 rounded-3xl overflow-hidden">
-        <Image
-          src={modelo.foto_portada}
-          alt={modelo.subnombre || 'Producto'}
-          fill
-          className="img-class rounded-3xl object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority={false}
-        />
-        <div className="mask rounded-3xl"></div>
-        <h2 className="title-gallery">{modelo.subnombre}</h2>
-      </div>
-    </Link>
-  </div>
-);
-
-// Componente principal con Suspense
-const Productos = () => {
-  return (
-    <Suspense fallback={<LoaderP />}>
-      <ProductosContent />
-    </Suspense>
-  );
-};
-
-export default Productos;

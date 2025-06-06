@@ -2,7 +2,6 @@ import Link from 'next/link';
 import React from 'react';
 
 export default function FooterButon({ children, isHome, rute }) {
-  console.log(isHome);
   return (
     <button className="footer-button ">
       <Link

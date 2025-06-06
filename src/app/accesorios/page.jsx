@@ -14,7 +14,6 @@ const Productos = () => {
     const fetchProducts = async () => {
       const res = await fetch(`/api/accessories`);
       const data1 = await res.json();
-      console.log(data1);
       const acces = [
         ...data1.accesorios[0].modelos,
         ...data1.accesorios[2].modelos,
@@ -22,7 +21,6 @@ const Productos = () => {
       ];
       const desc = data1.accesorios[0].descripcion;
       setDescription(desc);
-      console.log(acces);
       setAccessories(acces);
 
       setLoader(false);

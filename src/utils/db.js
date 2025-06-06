@@ -49,7 +49,6 @@ export const searchById = async (id) => {
       return null;
     }
 
-    console.log('📦 Producto encontrado:', producto);
     return producto;
   } catch (err) {
     console.error('❌ Error al obtener producto por ID:', err);
@@ -66,7 +65,7 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
 
     // Filtro para categoria (nivel raíz)
     if (filtros.categoria && filtros.categoria !== 'Todos') {
-      query.categoria = filtros.categoria;
+      query.categoria = { $regex: `^${filtros.categoria}$`, $options: 'i' };
     }
 
     // Filtro por incluyeLed

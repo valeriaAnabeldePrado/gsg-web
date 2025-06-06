@@ -43,7 +43,7 @@ const Productos = () => {
                     <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
                       <Image
                         key={el.id}
-                        src={`${IMG_URL}/fotos_blanco/led/${el.id}.jpg`}
+                        src={`${IMG_URL}/fotos_blanco/accesorios/${el.id}.jpg`}
                         alt={el.subnombre}
                         fill
                         className="img-class rounded-3xl"
