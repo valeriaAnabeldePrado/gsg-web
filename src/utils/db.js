@@ -31,7 +31,16 @@ export const obtenerProductos = async () => {
 export const getAccessories = async () => {
   try {
     const db = await connectDB();
-    return await db.collection('accessories').find({}).toArray();
+    return await db.collection('accessories').find({ code: 'ACC' }).toArray();
+  } catch (err) {
+    console.error('❌ Error al obtener accesorios:', err);
+    throw err;
+  }
+};
+export const getLeds = async () => {
+  try {
+    const db = await connectDB();
+    return await db.collection('accessories').find({ code: 'LED' }).toArray();
   } catch (err) {
     console.error('❌ Error al obtener accesorios:', err);
     throw err;
