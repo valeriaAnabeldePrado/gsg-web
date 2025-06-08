@@ -30,7 +30,7 @@ const Productos = () => {
         <section className="flex items-center justify-between flex-wrap w-full responsive-container">
           <div className="p-text-product-description p-8 text-center w-full items-center flex justify-center flex-col-reverse ">
             <h3 className="md:w-10/12 ">{description}</h3>
-            <h2 className="h2-hero-title text-center">Accesorios</h2>
+            <h2 className="h2-hero-title text-center">Leds</h2>
           </div>
           {!loader
             ? leds.map((el, i) => (
