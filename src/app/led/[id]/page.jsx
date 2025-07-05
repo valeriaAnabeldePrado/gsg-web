@@ -12,11 +12,10 @@ export default function page({ params }) {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch(`/api/accessories`);
-      const data1 = await res.json();
-      const leds = data1.accesorios[3].modelos;
-
-      const filteredData = leds.filter((el) => el.id === id);
+      const res = await fetch(`/api/led`);
+      const data = await res.json();
+      const todosLosModelos = data.led.flatMap((acc) => acc.modelos);
+      const filteredData = todosLosModelos.filter((el) => el.id === id);
       setLed(filteredData[0]);
       setLoader(false);
     };

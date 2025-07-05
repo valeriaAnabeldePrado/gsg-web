@@ -8,11 +8,11 @@ import logo from '/public/imagenes/logo-red.svg';
 const rutas = [
   { id: 1, nombre: 'HOME', deruta: '/' },
   { id: 2, nombre: 'PRODUCTOS', deruta: '/productos' },
-  { id: 2, nombre: 'ACCESORIOS', deruta: '/accesorios' },
-  { id: 2, nombre: 'LED', deruta: '/led' },
-  { id: 3, nombre: 'DISTRIBUIDORES', deruta: '/distribuidores' },
-  { id: 4, nombre: 'NOSOTROS', deruta: '/nosotros' },
-  { id: 5, nombre: 'CONTACTO', deruta: '/contacto' },
+  { id: 3, nombre: 'ACCESORIOS', deruta: '/accesorios' },
+  { id: 4, nombre: 'LED', deruta: '/led' },
+  { id: 5, nombre: 'DISTRIBUIDORES', deruta: '/distribuidores' },
+  { id: 6, nombre: 'NOSOTROS', deruta: '/nosotros' },
+  { id: 7, nombre: 'CONTACTO', deruta: '/contacto' },
 ];
 
 const MenuNav = () => {
@@ -27,7 +27,7 @@ const MenuNav = () => {
       <div className="cont-nav ">
         <nav className="menu-nav ">
           <ul className="p-2">
-            <Image src={logo} height={60} width={60} />
+            <Image src={logo} height={60} width="auto" alt="logo" />
           </ul>
           <ul className="nav-list">
             {rutas.map((ruta) => (

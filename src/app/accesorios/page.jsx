@@ -13,17 +13,12 @@ const Productos = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await fetch(`/api/accessories`);
-      const data1 = await res.json();
-      console.log(data1);
-      const acces = [
-        ...data1.accesorios[0].modelos,
-        ...data1.accesorios[2].modelos,
-        ...data1.accesorios[3].modelos,
-      ];
-      const desc = data1.accesorios[0].descripcion;
+
+      const data = await res.json();
+      const todosLosModelos = data.accesorios.flatMap((acc) => acc.modelos);
+      const desc = data.accesorios[0].descripcion;
       setDescription(desc);
-      console.log(acces);
-      setAccessories(acces);
+      setAccessories(todosLosModelos);
 
       setLoader(false);
     };
@@ -51,9 +46,8 @@ const Productos = () => {
                         key={el.id}
                         src={`${IMG_URL}/fotos_blanco/accesorios/${el.id}.jpg`}
                         alt={el.subnombre}
-                        fill
-                        className="img-class rounded-3xl"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover w-full h-full absolute inset-0 rounded-3xl"
+                        loading="lazy"
                       />
                       <div className="mask rounded-3xl"></div>
                       <h2 className="title-gallery">{el.subnombre}</h2>

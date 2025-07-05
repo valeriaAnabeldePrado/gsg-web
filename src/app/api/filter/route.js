@@ -1,10 +1,14 @@
 import { buscarProductosAvanzado } from '@/utils/db';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const filtros: any = {};
+    const filtros = {};
+
+    if (searchParams.has('categoria')) {
+      filtros.categoria = searchParams.get('categoria');
+    }
 
     if (searchParams.has('incluyeLed')) {
       filtros.incluyeLed = searchParams.get('incluyeLed') === 'true';
@@ -27,9 +31,6 @@ export async function GET(request: NextRequest) {
     if (searchParams.has('cantidad')) {
       filtros.cantidad = parseInt(searchParams.get('cantidad') || '0', 10);
     }
-
-    console.log(filtros.cantidad);
-    // Puedes agregar más filtros aquí...
 
     const res = await buscarProductosAvanzado(filtros);
     return NextResponse.json({ products: res });

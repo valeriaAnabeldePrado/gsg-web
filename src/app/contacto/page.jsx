@@ -56,8 +56,6 @@ const Contacto = () => {
     const templateId = process.env.NEXT_PUBLIC_ID_TEMPLATE;
     const serviceId = process.env.NEXT_PUBLIC_ID_SERVICE;
     const publicKey = process.env.NEXT_PUBLIC_ID_PUBLICKEY;
-    console.log(serviceId);
-    console.log('Datos del formulario:', data);
 
     emailjs
       .send(serviceId, templateId, data, publicKey)

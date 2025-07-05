@@ -7,7 +7,7 @@ const LayoutProductId = ({ children, params }) => {
       <div className="w-full h-[40vh] bg-slate-900 relative overflow-hidden">
         <div className="w-full h-full relative">
           <Image
-            src={`/portadas/accesorios.png`}
+            src={`https://images.smartcloudstudio.com/gsg/portadas/perfiles.png`}
             alt="accesorios"
             layout="fill"
             className="object-cover"

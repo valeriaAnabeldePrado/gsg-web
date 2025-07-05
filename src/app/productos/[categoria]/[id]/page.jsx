@@ -48,10 +48,10 @@ export default function page({ params }) {
             </div>
             <div className="flex-1 min-w-72 relative aspect-square rounded-lg overflow-hidden">
               <img
-                fill
                 src={`${IMG_URL}/${product.modelos[0].id}.png`}
                 alt={product.code}
-                className="object-cover"
+                loading="lazy"
+                className="object-cover w-full h-full absolute inset-0"
               />
             </div>
           </section>
@@ -81,12 +81,10 @@ export default function page({ params }) {
             <section>
               <section className="h-96 w-full relative container-img-product-id bg-white">
                 <img
-                  fill
-                  src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/${categoria.toLowerCase()}/${
-                    product.modelos[selectedModelIndex].fotos_producto
-                  }`}
+                  src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/${categoria.toLowerCase()}/${product.modelos[selectedModelIndex].fotos_producto}`}
                   alt={product.modelos[selectedModelIndex].fotos_producto}
-                  className="img-page-pruct "
+                  loading="lazy"
+                  className="img-page-pruct w-full h-full absolute inset-0 object-cover"
                 />
               </section>
               <section className="flex flex-contain">

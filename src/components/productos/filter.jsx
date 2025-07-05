@@ -37,12 +37,9 @@ const Filtering = ({ filters, onChange }) => {
   return (
     <div className="flex flex-wrap gap-4 items-center p-4 bg-gray-50 rounded-lg">
       {/* Color */}
-      <div className="flex items-center gap-2">
-        <label className="text-sm font-semibold text-gray-600 min-w-[60px]">
-          Acabado:
-        </label>
+      <div className="relative">
         <select
-          className={`${inputStyles} w-32`}
+          className={`${inputStyles} w-32 pr-10 appearance-none`} // más padding a la derecha
           value={filters.acabado}
           onChange={(e) => handleChange('acabado', e.target.value)}
         >
@@ -52,9 +49,11 @@ const Filtering = ({ filters, onChange }) => {
             </option>
           ))}
         </select>
+        {/* flechita custom */}
+        <div className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gray-500">
+          ▼
+        </div>
       </div>
-
-      {/* Cantidad de leds */}
 
       {/* Incluye equipo */}
       <div className="flex items-center gap-2">

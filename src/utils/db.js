@@ -21,7 +21,7 @@ const connectDB = async () => {
 export const obtenerProductos = async () => {
   try {
     const db = await connectDB();
-    return await db.collection('productss').find({}).toArray();
+    return await db.collection('products').find({}).toArray();
   } catch (err) {
     console.error('❌ Error al obtener productos:', err);
     throw err;
@@ -31,7 +31,16 @@ export const obtenerProductos = async () => {
 export const getAccessories = async () => {
   try {
     const db = await connectDB();
-    return await db.collection('accessories').find({}).toArray();
+    return await db.collection('accessories').find({ code: 'ACC' }).toArray();
+  } catch (err) {
+    console.error('❌ Error al obtener accesorios:', err);
+    throw err;
+  }
+};
+export const getLeds = async () => {
+  try {
+    const db = await connectDB();
+    return await db.collection('accessories').find({ code: 'LED' }).toArray();
   } catch (err) {
     console.error('❌ Error al obtener accesorios:', err);
     throw err;
@@ -49,7 +58,6 @@ export const searchById = async (id) => {
       return null;
     }
 
-    console.log('📦 Producto encontrado:', producto);
     return producto;
   } catch (err) {
     console.error('❌ Error al obtener producto por ID:', err);
@@ -62,9 +70,11 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
     const db = await connectDB();
     const modelosMatch = {};
 
-    //filtro de cantidad de leds
-    if (typeof filtros.cantidad === 'number' && filtros.cantidad > 0) {
-      modelosMatch['caracteristicasTecnicas.cantidad'] = filtros.cantidad;
+    const query = {};
+
+    // Filtro para categoria (nivel raíz)
+    if (filtros.categoria && filtros.categoria !== 'Todos') {
+      query.categoria = { $regex: `^${filtros.categoria}$`, $options: 'i' };
     }
 
     // Filtro por incluyeLed
@@ -72,13 +82,14 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
       modelosMatch['caracteristicasTecnicas.incluyeLed'] = filtros.incluyeLed;
     }
 
+    //filtro para categoria
+
     // Filtro por incluyeEquipo
     if (typeof filtros.incluyeEquipo === 'boolean') {
       modelosMatch['caracteristicasTecnicas.incluyeEquipo'] =
         filtros.incluyeEquipo;
     }
 
-    // Filtro por color (array o string, usando regex para coincidencia parcial)
     if (Array.isArray(filtros.color) && filtros.color.length > 0) {
       modelosMatch['caracteristicasTecnicas.color'] = {
         $in: filtros.color
@@ -113,7 +124,7 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
     }
 
     // Construir la query final
-    const query = {};
+
     if (Object.keys(modelosMatch).length > 0) {
       query.modelos = { $elemMatch: modelosMatch };
     }

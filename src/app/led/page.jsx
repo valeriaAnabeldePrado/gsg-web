@@ -12,13 +12,12 @@ const Productos = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch(`/api/accessories`);
-      const data1 = await res.json();
-      const desc = data1.accesorios[1].descripcion;
-
+      const res = await fetch(`/api/led`);
+      const data = await res.json();
+      const todosLosModelos = data.led.flatMap((acc) => acc.modelos);
+      const desc = data.led[0].descripcion;
       setDescription(desc);
-      const ledes = data1.accesorios[1].modelos;
-      setLeds(ledes);
+      setLeds(todosLosModelos);
       setLoader(false);
     };
 
@@ -30,8 +29,8 @@ const Productos = () => {
       <div className="w-full wrapper-cont">
         <section className="flex items-center justify-between flex-wrap w-full responsive-container">
           <div className="p-text-product-description p-8 text-center w-full items-center flex justify-center flex-col-reverse ">
-            <h3 className=" md:w-10/12 ">{description}</h3>
-            <h2 className="h2-hero-title text-center">Led</h2>
+            <h3 className="md:w-10/12 ">{description}</h3>
+            <h2 className="h2-hero-title text-center">Leds</h2>
           </div>
           {!loader
             ? leds.map((el, i) => (
@@ -41,13 +40,12 @@ const Productos = () => {
                 >
                   <Link href={`/led/${el.id}`}>
                     <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
-                      <Image
+                      <img
                         key={el.id}
                         src={`${IMG_URL}/fotos_blanco/led/${el.id}.jpg`}
                         alt={el.subnombre}
-                        fill
-                        className="img-class rounded-3xl"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover w-full h-full absolute inset-0 rounded-3xl"
+                        loading="lazy"
                       />
                       <div className="mask rounded-3xl"></div>
                       <h2 className="title-gallery">{el.subnombre}</h2>
