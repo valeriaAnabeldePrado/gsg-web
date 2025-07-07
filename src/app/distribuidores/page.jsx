@@ -248,13 +248,7 @@ const ListaDistribuidores = () => {
             </div>
             <div>
               <div className="text-2xl font-bold text-red-600">
-                {
-                  new Set(
-                    Object.values(filteredDistribuidores)
-                      .flat()
-                      .map((d) => d.Provincia),
-                  ).size
-                }
+                <p>23</p>
               </div>
               <div className="text-sm text-gray-600">Provincias</div>
             </div>
