@@ -68,7 +68,7 @@ const ProductosInner = () => {
     if (urlCategoria && urlCategoria !== filters.categoria) {
       setFilters((prev) => ({ ...prev, categoria: urlCategoria }));
     }
-  }, [searchParams]);
+  }, [searchParams, filters.categoria]);
 
   useEffect(() => {
     fetchProducts(filters);
@@ -100,9 +100,22 @@ const ProductosInner = () => {
     setFilters((prev) => ({ ...prev, ...newFilters }));
   };
 
+  const getCategoryTitle = () => {
+    if (filters.categoria && filters.categoria !== 'Todos') {
+      return `Productos - ${filters.categoria}`;
+    }
+    return 'Todos los Productos';
+  };
+
   return (
     <div className="min-h-screen">
       <div className="px-4 md:px-10 mb-6">
+        <h1 className="text-2xl md:text-3xl font-light text-gray-800 mb-4">
+          {getCategoryTitle()}
+        </h1>
+      </div>
+
+      <div className="px-4 md:px-10 mt-16 mb-4">
         <div className="max-w-md">
           <input
             type="text"

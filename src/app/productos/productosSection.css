@@ -7,6 +7,11 @@
   padding: 0 2rem;
   margin-bottom: 5rem;
 }
+.container-itemss-skeleton {
+  padding: 1rem;
+  margin-bottom: 5rem;
+  width: 48%;
+}
 .container-img-gg {
   position: relative;
   width: 100%;

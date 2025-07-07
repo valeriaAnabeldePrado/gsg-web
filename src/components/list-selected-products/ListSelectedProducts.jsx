@@ -1,7 +1,5 @@
 'use client';
 import React from 'react';
-import ButtonListSelect from '@/components/buttons/buttonListSelect';
-import { productTitle } from '../../utils/constants';
 import useWindowSize from '@/hooks/useWindowSize';
 import './list.css';
 import ListSelectedProductsResponsive from './ListSelectedProductsResponsive';
@@ -9,23 +7,9 @@ import ListSelectedProductsResponsive from './ListSelectedProductsResponsive';
 const ListSelectedProducts = () => {
   const windowSize = useWindowSize();
 
-  return (
-    <div>
-      {windowSize.width < 800 ? (
-        <div className="container-list-tipos">
-          <ListSelectedProductsResponsive />
-        </div>
-      ) : (
-        <ul className="container-list-ul m-4 container-list">
-          {productTitle.map((title, index) => (
-            <li key={`button_${index}`}>
-              <ButtonListSelect tipo={title} />
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+  // Solo mostrar en mobile si es necesario
+  // Por ahora lo ocultamos ya que las categorías están en el navbar
+  return null;
 };
 
 export default ListSelectedProducts;

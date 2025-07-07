@@ -8,12 +8,18 @@ import GenericHero from '@/components/hero/genericHero';
 const Nosotros = () => {
   return (
     <>
-      <div className="p-[var(--padding-generico-x-y)] ">
-        <GenericHero titleHero={'NUESTRA EMPRESA'} />
-        <First />
-        <Second />
-        <Conciencia />
+      {/* Hero Section */}
+      <div className="bg-white">
+        <div className="p-[var(--padding-generico-x-y)]">
+          <GenericHero titleHero={'NUESTRA EMPRESA'} />
+        </div>
       </div>
+
+      {/* Content Sections */}
+      <First />
+      <Second />
+      <Conciencia />
+
       <FooterM />
     </>
   );

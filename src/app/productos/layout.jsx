@@ -1,5 +1,4 @@
 import FooterM from '@/components/footer/footer';
-import ListSelectedProducts from '@/components/list-selected-products/ListSelectedProducts';
 
 export const metadata = {
   title: 'Productos',
@@ -9,7 +8,6 @@ export const metadata = {
 export default function ProductsLayout({ children }) {
   return (
     <div className="pt-10">
-      <ListSelectedProducts />
       {children}
       <FooterM />
     </div>
