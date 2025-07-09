@@ -2,6 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 import './nosotros.css';
 import { IMG_URL } from '@/utils/constants';
+import { LuFactory } from 'react-icons/lu';
+import { LuPaintbrush } from 'react-icons/lu';
+import { LuShieldPlus } from 'react-icons/lu';
 
 export default function First() {
   return (
@@ -35,7 +38,9 @@ export default function First() {
             {/* Key Features */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
               <div className="text-center p-4 bg-gray-50 rounded-xl">
-                <div className="text-3xl mb-2">🏭</div>
+                <div className="text-3xl mb-2 flex items-center justify-center">
+                  <LuFactory />
+                </div>
                 <h3 className="font-semibold text-gray-800 mb-2">
                   Industria Nacional
                 </h3>
@@ -44,7 +49,9 @@ export default function First() {
                 </p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-xl">
-                <div className="text-3xl mb-2">🎨</div>
+                <div className="text-3xl mb-2 flex items-center justify-center">
+                  <LuPaintbrush />
+                </div>
                 <h3 className="font-semibold text-gray-800 mb-2">
                   Personalización
                 </h3>
@@ -53,7 +60,9 @@ export default function First() {
                 </p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-xl">
-                <div className="text-3xl mb-2">🛡️</div>
+                <div className="text-3xl mb-2 flex items-center justify-center">
+                  <LuShieldPlus />
+                </div>
                 <h3 className="font-semibold text-gray-800 mb-2">Garantía</h3>
                 <p className="text-sm text-gray-600">
                   Servicio post venta integral
