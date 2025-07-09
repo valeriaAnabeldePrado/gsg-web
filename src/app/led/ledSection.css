@@ -167,9 +167,7 @@
   .container-items {
     padding: 0;
   }
-  .responsive-container {
-    flex-direction: column;
-  }
+
   .container-items {
     width: 100%;
   }

@@ -1,0 +1,83 @@
+/* Estilos para el componente ProductCard */
+.product-card-container {
+  width: 32%;
+  padding: 0 1rem;
+  margin-bottom: 3rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card-container:hover {
+  transform: scale(1.02);
+}
+
+.product-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.product-card-container:hover .product-card {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.product-card-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.product-card-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card-container:hover .product-card-image {
+  transform: scale(1.05);
+}
+
+.product-card-footer {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(to bottom, #ffffff, #fafafa);
+  border-radius: 0 0 16px 16px;
+}
+
+.product-card-title {
+  font-size: 1.2rem;
+  font-weight: 200;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Responsive */
+@media screen and (width <= 1000px) {
+  .product-card-container {
+    width: 47%;
+    padding: 0 0rem;
+  }
+}
+
+@media screen and (width <= 500px) {
+  .product-card-container {
+    width: 100%;
+  }
+  .responsive-container {
+    flex-direction: column;
+  }
+
+  .product-card-title {
+    font-size: 1.1rem !important;
+  }
+  .product-card-title {
+    font-size: 1rem !important;
+  }
+}

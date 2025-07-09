@@ -6,9 +6,9 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import './productosSection.css';
 import LoaderP from '@/components/loader/loagerP';
 import Filtering from '@/components/productos/filter';
-import { ProductCard } from '@/components/productos/product-card';
+import { ProductCard } from '@/components/ui/ProductCard';
 import { NoResults } from '@/components/productos/product-no-result';
-import { ProductSkeletonList } from '@/components/productos/product-skeleton';
+import { ProductSkeletonList } from '@/components/ui/ProductSkeleton';
 
 const Productos = () => (
   <Suspense fallback={<LoaderP />}>
@@ -96,8 +96,8 @@ const ProductosInner = () => {
     setFilters((prev) => ({ ...prev, search: value }));
   };
 
-  const handleFiltersChange = (newFilters) => {
-    setFilters((prev) => ({ ...prev, ...newFilters }));
+  const handleClearSearch = () => {
+    setFilters((prev) => ({ ...prev, search: '' }));
   };
 
   const getCategoryTitle = () => {
@@ -116,19 +116,22 @@ const ProductosInner = () => {
       </div>
 
       <div className="px-4 md:px-10 mt-16 mb-4">
-        <div className="max-w-md">
-          <input
-            type="text"
-            placeholder="Buscar producto..."
-            value={filters.search}
-            onChange={(e) => handleSearchChange(e.target.value)}
-            className="w-full border-2 border-gray-300 rounded-xl px-4 py-3 text-lg focus:border-red-400 focus:ring-2 focus:ring-red-200 transition-all duration-200 outline-none"
-          />
+        <div className="flex items-center gap-3 max-w-2xl">
+          <div className="flex-1">
+            <input
+              type="text"
+              placeholder="Buscar producto..."
+              value={filters.search}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              className="w-full border-2 border-gray-300 rounded-xl px-4 py-3 text-lg focus:border-red-400 focus:ring-2 focus:ring-red-200 transition-all duration-200 outline-none"
+            />
+          </div>
+          {filters.search && (
+            <button onClick={handleClearSearch} className="clear-search-btn">
+              Limpiar búsqueda
+            </button>
+          )}
         </div>
-      </div>
-
-      <div className="px-4 md:px-10 mb-8">
-        <Filtering filters={filters} onChange={handleFiltersChange} />
       </div>
 
       <div className="w-full wrapper-cont">
@@ -136,18 +139,7 @@ const ProductosInner = () => {
           {loading ? (
             <ProductSkeletonList count={6} />
           ) : filteredProducts.length === 0 ? (
-            <NoResults
-              onReset={() =>
-                setFilters({
-                  search: '',
-                  categoria: 'Todos',
-                  color: 'Todos',
-                  acabado: 'Todos',
-                  cantidad: '',
-                  incluyeEquipo: false,
-                })
-              }
-            />
+            <NoResults />
           ) : (
             filteredProducts.map((product, i) =>
               product.modelos?.map((modelo, j) =>

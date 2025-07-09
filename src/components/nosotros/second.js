@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import './nosotros.css';
 import { IMG_URL } from '@/utils/constants';
+import { BsNut } from 'react-icons/bs';
 
 export default function Second() {
   return (
@@ -40,26 +41,26 @@ export default function Second() {
                   Tecnología de Vanguardia
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="px-6 py-10 bg-gray-50 rounded-lg">
+                  <div className="px-6 py-4 bg-gray-50 rounded-lg">
                     <div className="text-5xl mb-2">⚙️</div>
                     <p className="text-sm font-medium text-gray-700">
                       Tornos CNC
                     </p>
                   </div>
-                  <div className="px-6 py-10 bg-gray-50 rounded-lg">
-                    <div className="text-5xl mb-2">🔬</div>
+                  <div className="px-6 py-4 bg-gray-50 rounded-lg">
+                    <div className="text-4xl mb-2">⚡</div>
                     <p className="text-sm font-medium text-gray-700">
                       Soldadora Láser
                     </p>
                   </div>
                   <div className="px-6 py-10 bg-gray-50 rounded-lg">
-                    <div className="text-5xl mb-2">✂️</div>
+                    <div className="text-4xl mb-2">📐</div>
                     <p className="text-sm font-medium text-gray-700">
                       Corte Láser
                     </p>
                   </div>
                   <div className="px-6 py-10 bg-gray-50 rounded-lg">
-                    <div className="text-5xl mb-2">🏭</div>
+                    <div className="text-4xl mb-2">🏭</div>
                     <p className="text-sm font-medium text-gray-700">
                       Producción Eficiente
                     </p>
@@ -69,9 +70,6 @@ export default function Second() {
             </div>
             <div className="bg-white lg:w-1/2 w-full rounded-2xl p-8 shadow-lg border border-gray-100">
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mr-4">
-                  <span className="text-2xl">🎨</span>
-                </div>
                 <h2 className="h2-title-nos text-left mb-0">
                   Diseño e innovación
                 </h2>
@@ -97,9 +95,6 @@ export default function Second() {
             <section className="  flex lg:flex-row flex-col lg:gap-16 gap-12">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mr-4">
-                    <span className="text-2xl">📈</span>
-                  </div>
                   <h2 className="h2-title-nos text-left mb-0">
                     Mejora continua
                   </h2>
@@ -113,9 +108,6 @@ export default function Second() {
               {/* Tecnología */}
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mr-4">
-                    <span className="text-2xl">⚡</span>
-                  </div>
                   <h2 className="h2-title-nos text-left mb-0">Tecnología</h2>
                 </div>
                 <p className="text-nuestra leading-relaxed">

@@ -6,6 +6,8 @@ import './ledSection.css';
 import { IMG_URL } from '@/utils/constants';
 import ImageSkeleton from '@/components/loader/ImageSkeleton';
 import BrandLoader from '@/components/loader/BrandLoader';
+import { ProductCard } from '@/components/ui/ProductCard';
+import { ProductSkeletonList } from '@/components/ui/ProductSkeleton';
 
 const Productos = () => {
   const [leds, setLeds] = useState([]);
@@ -51,36 +53,15 @@ const Productos = () => {
           </div>
           {!loader ? (
             leds.map((el, i) => (
-              <div
+              <ProductCard
                 key={`${i}_${el.id}`}
-                className="container-items group transform transition-transform duration-300 group-hover:scale-100 rounded-3xl"
-              >
-                <Link href={`/led/${el.id}`}>
-                  <div className="relative container-img-g transform transition-transform duration-300 group-hover:scale-100 rounded-3xl">
-                    {/* Skeleton mientras carga la imagen */}
-                    {!imageLoadStates[el.id] && (
-                      <ImageSkeleton className="w-full h-full absolute inset-0" />
-                    )}
-
-                    <img
-                      key={el.id}
-                      src={`${IMG_URL}/fotos_blanco/led/${el.id}.jpg`}
-                      alt={el.subnombre}
-                      className={`object-cover w-full h-full absolute inset-0 rounded-3xl transition-opacity duration-300 ${
-                        imageLoadStates[el.id] ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      loading="lazy"
-                      onLoad={() => handleImageLoad(el.id)}
-                      onError={() => handleImageError(el.id)}
-                    />
-                    <div className="mask rounded-3xl"></div>
-                    <h2 className="title-gallery">{el.subnombre}</h2>
-                  </div>
-                </Link>
-              </div>
+                type="led"
+                id={el.id}
+                title={el.subnombre}
+              />
             ))
           ) : (
-            <BrandLoader />
+            <ProductSkeletonList count={6} />
           )}
         </section>
       </div>

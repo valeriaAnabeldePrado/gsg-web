@@ -54,9 +54,6 @@ export default function Conciencia() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
-            <span className="text-3xl">🌍</span>
-          </div>
           <h2 className="h2-title-nos text-center mb-6">
             Conciencia ambiental
           </h2>
