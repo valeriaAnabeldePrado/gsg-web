@@ -118,7 +118,7 @@ const Contacto = () => {
           )}
 
           {/* Form Container */}
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 md:p-12">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 md:p-12 mx-6">
             <div className="text-center mb-8">
               <h2 className="h2-hero-title md:text-4xl font-bold text-gray-900 mb-4">
                 Envíanos tu mensaje
@@ -147,7 +147,7 @@ const Contacto = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-12 mx-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
               <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
@@ -165,7 +165,7 @@ const Contacto = () => {
                 </svg>
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-              <p className="text-gray-600">info@gsg.com.ar</p>
+              <p className="text-gray-600">info@gsgdesign.com.ar</p>
             </div>
 
             <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
@@ -185,7 +185,7 @@ const Contacto = () => {
                 </svg>
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Teléfono</h3>
-              <p className="text-gray-600">+54 11 1234-5678</p>
+              <p className="text-gray-600">+54 11 3972-7957</p>
             </div>
 
             <div className="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
