@@ -56,3 +56,225 @@
     font-weight: 300;
   }
 }
+
+/* Estilos para el dropdown personalizado */
+.custom-dropdown-container {
+  position: relative;
+}
+
+.custom-dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.custom-dropdown-toggle:hover {
+  border-color: var(--color-fuente-roja);
+}
+
+.custom-dropdown-toggle:focus {
+  outline: none;
+  border-color: var(--color-fuente-roja);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.custom-dropdown-arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  color: #6b7280;
+}
+
+.custom-dropdown-toggle:hover .custom-dropdown-arrow {
+  transform: rotate(180deg);
+  color: var(--color-fuente-roja);
+}
+
+.custom-dropdown-arrow.rotated {
+  transform: rotate(180deg);
+  color: var(--color-fuente-roja);
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  margin-top: 4px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.custom-dropdown-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.custom-dropdown-item {
+  display: block;
+  padding: 12px 16px;
+  color: #374151;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f3f4f6;
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.custom-dropdown-item:hover {
+  background-color: #f9fafb;
+  color: var(--color-fuente-roja);
+  padding-left: 20px;
+}
+
+.custom-dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--color-fuente-roja);
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.custom-dropdown-item:hover::before {
+  transform: scaleY(1);
+}
+
+.custom-dropdown-item.selected {
+  background-color: #fef2f2;
+  color: var(--color-fuente-roja);
+  font-weight: 500;
+}
+
+/* Estilos para la pantalla vacía (NoResults) */
+.empty-state-container {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  border-radius: 20px;
+  margin: 2rem 0;
+}
+
+.empty-state-content {
+  text-align: center;
+  max-width: 500px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.empty-state-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  animation: float 3s ease-in-out infinite;
+}
+
+.empty-state-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 200;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.empty-state-description {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.empty-state-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.decoration-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  opacity: 0.6;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.decoration-dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.decoration-dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Animaciones para NoResults */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
