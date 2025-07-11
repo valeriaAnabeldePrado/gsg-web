@@ -142,7 +142,7 @@ const MenuNav = () => {
         </nav>
       </div>
       {/* menu burger */}
-      <section className="nav-bar-position">
+      <section className="nav-bar-position ">
         <div
           className={`burger ${isNavOpen ? 'burger-open' : ''}`}
           onClick={handleClick}

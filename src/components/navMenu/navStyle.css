@@ -441,7 +441,7 @@
 
   background-color: #170c01;
   top: 0;
-  z-index: 2;
+  z-index: 500;
 }
 @media screen and (width <= 1400px) {
   .cont-nav {

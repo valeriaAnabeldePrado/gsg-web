@@ -14,7 +14,7 @@ const FloatingMapButton = () => {
       {/* Botón para desktop - esquina inferior derecha */}
       <button
         onClick={scrollToMap}
-        className="hidden md:flex fixed right-6 bottom-6 z-50 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
+        className="hidden md:flex fixed right-6 bottom-6 z-9 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
         aria-label="Ver mapa de distribuidores"
       >
         <div className="flex items-center space-x-2">
