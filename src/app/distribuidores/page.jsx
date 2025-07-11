@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import FooterM from '@/components/footer/footer';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import GenericHero from '@/components/hero/genericHero';
@@ -8,11 +8,66 @@ import Head from 'next/head';
 import distribuidores from './utils/distriLocalidad.json';
 import FloatingMapButton from './FloatingMapButton';
 import MapSection from './MapSection';
+import { NoResults } from '@/components/productos/product-no-result';
 
 const words = `A través de nuestra red de distribuidores, aseguramos que nuestros productos y servicios lleguen a cada rincón, garantizando atención personalizada y calidad superior en cada interacción`;
 
+// Componente para el dropdown personalizado
+const CustomDropdown = ({ options, value, onChange, placeholder }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleSelect = (option) => {
+    onChange(option);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="custom-dropdown-container" ref={dropdownRef}>
+      <button
+        type="button"
+        className="custom-dropdown-toggle"
+        onClick={handleToggle}
+      >
+        <span>{value || placeholder}</span>
+        <span className={`custom-dropdown-arrow ${isOpen ? 'rotated' : ''}`}>
+          ▼
+        </span>
+      </button>
+      <div className={`custom-dropdown-menu ${isOpen ? 'open' : ''}`}>
+        {options.map((option) => (
+          <div
+            key={option}
+            className={`custom-dropdown-item ${value === option ? 'selected' : ''}`}
+            onClick={() => handleSelect(option)}
+          >
+            {option}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 // Componente para la tarjeta de distribuidor
-const DistribuidorCard = ({ distribuidor }) => {
+const DistribuidorCard = ({ distribuidor, provincia }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -29,7 +84,7 @@ const DistribuidorCard = ({ distribuidor }) => {
             <p className="text-sm text-gray-600 mb-2">
               {distribuidor.Dirección}
             </p>
-            <p className="text-sm text-gray-500">{distribuidor.Provincia}</p>
+            <p className="text-sm text-gray-500">{distribuidor.Localidad}</p>
           </div>
           <div className="flex items-center space-x-2">
             {distribuidor.Teléfono !== 0 && (
@@ -58,8 +113,12 @@ const DistribuidorCard = ({ distribuidor }) => {
             <div className="flex items-center space-x-2">
               <span className="text-gray-500 text-sm">🏢</span>
               <span className="text-sm text-gray-700">
-                {distribuidor.Provincia}
+                {distribuidor.Localidad}
               </span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-gray-500 text-sm">🗺️</span>
+              <span className="text-sm text-gray-700">{provincia}</span>
             </div>
             {distribuidor.Teléfono !== 0 && (
               <div className="flex items-center space-x-2">
@@ -74,7 +133,7 @@ const DistribuidorCard = ({ distribuidor }) => {
             )}
             <div className="pt-2">
               <a
-                href={distribuidor.Link}
+                href={distribuidor['Link directo a Google Maps']}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 text-blue-600 hover:text-blue-700 text-sm font-medium"
@@ -90,8 +149,8 @@ const DistribuidorCard = ({ distribuidor }) => {
   );
 };
 
-// Componente para la sección de localidad
-const LocalidadSection = ({ localidad, distribuidores }) => {
+// Componente para la sección de provincia
+const ProvinciaSection = ({ provincia, distribuidores }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -102,7 +161,7 @@ const LocalidadSection = ({ localidad, distribuidores }) => {
       >
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-xl font-semibold text-gray-800">{localidad}</h2>
+            <h2 className="text-xl font-semibold text-gray-800">{provincia}</h2>
             <p className="text-sm text-gray-600 mt-1">
               {distribuidores.length} distribuidor
               {distribuidores.length !== 1 ? 'es' : ''}
@@ -118,7 +177,11 @@ const LocalidadSection = ({ localidad, distribuidores }) => {
         <div className="bg-white p-6">
           <div className="grid gap-4">
             {distribuidores.map((distribuidor, index) => (
-              <DistribuidorCard key={index} distribuidor={distribuidor} />
+              <DistribuidorCard
+                key={index}
+                distribuidor={distribuidor}
+                provincia={provincia}
+              />
             ))}
           </div>
         </div>
@@ -133,18 +196,16 @@ const ListaDistribuidores = () => {
   const [selectedProvincia, setSelectedProvincia] = useState('Todas');
 
   // Obtener todas las provincias únicas
-  const provincias = [
-    'Todas',
-    ...new Set(
-      Object.values(distribuidores)
-        .flat()
-        .map((d) => d.Provincia),
-    ),
-  ];
+  const provincias = ['Todas', ...Object.keys(distribuidores)];
 
   // Filtrar distribuidores
   const filteredDistribuidores = Object.entries(distribuidores).reduce(
-    (acc, [localidad, distribuidoresList]) => {
+    (acc, [provincia, distribuidoresList]) => {
+      // Filtrar por provincia seleccionada
+      if (selectedProvincia !== 'Todas' && provincia !== selectedProvincia) {
+        return acc;
+      }
+
       const filtered = distribuidoresList.filter((distribuidor) => {
         const matchesSearch =
           searchTerm === '' ||
@@ -154,17 +215,16 @@ const ListaDistribuidores = () => {
           distribuidor.Dirección.toLowerCase().includes(
             searchTerm.toLowerCase(),
           ) ||
-          localidad.toLowerCase().includes(searchTerm.toLowerCase());
+          distribuidor.Localidad.toLowerCase().includes(
+            searchTerm.toLowerCase(),
+          ) ||
+          provincia.toLowerCase().includes(searchTerm.toLowerCase());
 
-        const matchesProvincia =
-          selectedProvincia === 'Todas' ||
-          distribuidor.Provincia === selectedProvincia;
-
-        return matchesSearch && matchesProvincia;
+        return matchesSearch;
       });
 
       if (filtered.length > 0) {
-        acc[localidad] = filtered;
+        acc[provincia] = filtered;
       }
 
       return acc;
@@ -188,7 +248,24 @@ const ListaDistribuidores = () => {
 
         {/* Filtros */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+          <h3 className="mb-5 text-[var(--color-fuente-roja)] font-medium">
+            Selecciona la Provincia y luego busca por localidad o distribuidor
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label
+                htmlFor="provincia"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Filtrar por provincia
+              </label>
+              <CustomDropdown
+                options={provincias}
+                value={selectedProvincia}
+                onChange={setSelectedProvincia}
+                placeholder="Seleccionar provincia"
+              />
+            </div>
             <div>
               <label
                 htmlFor="search"
@@ -199,44 +276,29 @@ const ListaDistribuidores = () => {
               <input
                 type="text"
                 id="search"
-                placeholder="Buscar por nombre, dirección o localidad..."
+                placeholder="Buscar por dirección o localidad..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors"
+                className="w-full px-4 py-[10px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors"
               />
             </div>
-            <div>
-              <label
-                htmlFor="provincia"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Filtrar por provincia
-              </label>
-              <select
-                id="provincia"
-                value={selectedProvincia}
-                onChange={(e) => setSelectedProvincia(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors"
-              >
-                {provincias.map((provincia) => (
-                  <option key={provincia} value={provincia}>
-                    {provincia}
-                  </option>
-                ))}
-              </select>
-            </div>
+          </div>
+          <div className="flex w-full mt-4">
+            <button
+              onClick={() => {
+                setSearchTerm('');
+                setSelectedProvincia('Todas');
+              }}
+              className="bg-slate-100 border-red-200 border-2 text-red-500 px-4 py-3 rounded-full w-full"
+            >
+              Limpiar filtro
+            </button>
           </div>
         </div>
 
         {/* Estadísticas */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-            <div>
-              <div className="text-2xl font-bold text-red-600">
-                {Object.keys(filteredDistribuidores).length}
-              </div>
-              <div className="text-sm text-gray-600">Localidades</div>
-            </div>
             <div>
               <div className="text-2xl font-bold text-red-600">
                 {Object.values(filteredDistribuidores).reduce(
@@ -248,8 +310,20 @@ const ListaDistribuidores = () => {
             </div>
             <div>
               <div className="text-2xl font-bold text-red-600">
-                <p>23</p>
+                {Object.values(filteredDistribuidores).reduce(
+                  (total, distribuidores) => {
+                    const localidadesUnicas = new Set(
+                      distribuidores.map((d) => d.Localidad),
+                    );
+                    return total + localidadesUnicas.size;
+                  },
+                  0,
+                )}
               </div>
+              <div className="text-sm text-gray-600">Localidades</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-red-600">24</div>
               <div className="text-sm text-gray-600">Provincias</div>
             </div>
           </div>
@@ -258,21 +332,16 @@ const ListaDistribuidores = () => {
         {/* Lista de distribuidores */}
         <div className="space-y-6">
           {Object.keys(filteredDistribuidores).length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-gray-400 text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                No se encontraron distribuidores
-              </h3>
-              <p className="text-gray-500">
-                Intenta ajustar los filtros de búsqueda
-              </p>
-            </div>
+            <NoResults
+              title={' No se encontraron distribuidores'}
+              description={'Intenta ajustar los filtros de búsqueda'}
+            />
           ) : (
             Object.entries(filteredDistribuidores).map(
-              ([localidad, distribuidoresList]) => (
-                <LocalidadSection
-                  key={localidad}
-                  localidad={localidad}
+              ([provincia, distribuidoresList]) => (
+                <ProvinciaSection
+                  key={provincia}
+                  provincia={provincia}
                   distribuidores={distribuidoresList}
                 />
               ),

@@ -139,7 +139,12 @@ const ProductosInner = () => {
           {loading ? (
             <ProductSkeletonList count={6} />
           ) : filteredProducts.length === 0 ? (
-            <NoResults />
+            <NoResults
+              title={' No se encontraron los productos'}
+              description={
+                'Intenta ajustar tu búsqueda o explorar otras categorías'
+              }
+            />
           ) : (
             filteredProducts.map((product, i) =>
               product.modelos?.map((modelo, j) =>

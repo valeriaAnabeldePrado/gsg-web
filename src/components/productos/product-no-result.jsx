@@ -1,4 +1,4 @@
-export const NoResults = () => (
+export const NoResults = ({ title, description }) => (
   <div className="empty-state-container">
     <div className="empty-state-content">
       {/* Icono ilustrativo */}
@@ -28,12 +28,10 @@ export const NoResults = () => (
       </div>
 
       {/* Título principal */}
-      <h2 className="empty-state-title">No se encontraron los productos</h2>
+      <h2 className="empty-state-title">{title}</h2>
 
       {/* Descripción */}
-      <p className="empty-state-description">
-        Intenta ajustar tu búsqueda o explorar otras categorías
-      </p>
+      <p className="empty-state-description">{description}</p>
 
       {/* Elementos decorativos */}
       <div className="empty-state-decoration">
