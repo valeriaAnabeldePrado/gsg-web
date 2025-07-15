@@ -11,6 +11,7 @@ export const ProductCard = ({
   title,
   id,
 }) => {
+  console.log(title);
   // Determinar la URL de la imagen basada en el tipo
   const getImageUrl = () => {
     if (imageUrl) return imageUrl;
@@ -47,11 +48,13 @@ export const ProductCard = ({
         <div className="product-card">
           {/* Card de imagen */}
           <div className="product-card-image-container">
-            <img
+            <Image
               src={getImageUrl()}
               alt={getTitle() || 'Producto'}
+              // className="product-card-image"
+              width={300}
+              height={300}
               className="product-card-image"
-              loading="lazy"
             />
           </div>
 

@@ -151,6 +151,7 @@ const ProductosInner = () => {
                 modelo.foto_portada ? (
                   <ProductCard
                     key={`${product._id}_${modelo.id}_${i}_${j}`}
+                    title={product.nombre}
                     product={product}
                     modelo={modelo}
                   />
