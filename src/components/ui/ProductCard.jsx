@@ -52,8 +52,8 @@ export const ProductCard = ({
               src={getImageUrl()}
               alt={getTitle() || 'Producto'}
               // className="product-card-image"
-              width={300}
-              height={300}
+              width={1000}
+              height={1000}
               className="product-card-image"
             />
           </div>
