@@ -34,7 +34,7 @@ body {
   --tablet-main-title: 3.3em;
   --phone-xl-main-title: 2.8em;
   --phone-sm-main-title: 2.2em;
-  --phone-subtitle-sm: 24px;
+  --phone-subtitle-sm: 18px;
   /* //Subtitulos rojos escritorio y tablet */
   --text-medios-card: clamp(2rem, 2.8vw, 3rem);
   /* //Subtitulos negros escritorio y tablet */

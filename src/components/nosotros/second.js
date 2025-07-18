@@ -37,7 +37,7 @@ export default function Second() {
 
               {/* Technology showcase */}
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 ">
-                <h3 className="sub-title-hero font-semibold text-gray-800 mb-4 text-center">
+                <h3 className="h2-title-nos  font-semibold text-gray-800 mb-4 text-center">
                   Tecnología de Vanguardia
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-center">

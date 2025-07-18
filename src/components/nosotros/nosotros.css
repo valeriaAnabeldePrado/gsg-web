@@ -1,7 +1,7 @@
 .h2-title-nos {
   color: var(--color-fuente-roja);
   font-size: var(--text-medios-card);
-  font-weight: 100;
+  font-weight: 200;
 }
 .text-nuestra {
   font-weight: 200;
@@ -17,31 +17,21 @@
   }
 
   .text-nuestra {
-    font-size: clamp(1rem, 1.8vw, 1.6rem);
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
   }
 }
 @media screen and (width <= 768px) {
   .h2-title-nos {
-    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-  }
-
-  .text-nuestra {
-    font-size: clamp(0.9rem, 1.6vw, 1.4rem);
+    font-size: clamp(1.8rem, 2.2vw, 2.2rem);
   }
 }
-@media screen and (width <= 530px) {
-  .h2-title-nos {
-    font-weight: 200;
-    font-size: clamp(1.4rem, 2vw, 2rem);
-  }
 
-  .text-nuestra {
-    font-size: clamp(0.85rem, 1.4vw, 1.2rem);
-  }
-}
 @media screen and (width <= 420px) {
-  .text-nuestra,
   .h2-title-nos {
+    font-size: 26px;
+    font-weight: 300;
+  }
+  .text-nuestra {
     font-size: var(--phone-subtitle-sm);
   }
   .responsive-container-circle {

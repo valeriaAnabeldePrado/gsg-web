@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Measure from '@/app/productos/[categoria]/[id]/measure';
 import LoaderP from '@/components/loader/loagerP';
 import '../../productosSection.css';
+import Image from 'next/image';
 import { IMG_URL } from '@/utils/constants';
 
 export default function ProductPage({ params }) {
@@ -52,6 +53,19 @@ export default function ProductPage({ params }) {
       fetchProduct();
     }
   }, [id]);
+
+  // Comunicar al layout que el contenido ha cargado
+  useEffect(() => {
+    if (!loading && !error && product) {
+      // Pequeño delay para asegurar que todo el contenido esté renderizado
+      const timer = setTimeout(() => {
+        // Emitir un evento personalizado para comunicar al layout
+        window.dispatchEvent(new CustomEvent('productPageLoaded'));
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [loading, error, product]);
 
   const handleModelChange = (index) => {
     setSelectedModelIndex(index);
@@ -121,8 +135,8 @@ export default function ProductPage({ params }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         <section className="bg-white rounded-xl shadow-sm p-8 mb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="order-2 lg:order-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1">
               <div className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium mb-4">
                 {categoria}
               </div>
@@ -134,14 +148,14 @@ export default function ProductPage({ params }) {
               </p>
             </div>
 
-            <div className="order-1 lg:order-2">
-              <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg bg-white p-6">
+            <div className="order-1 md:order-2 w-full h-[400px] md:h-[500px] relative">
+              <div className="relative aspect-square rounded-xl w-full overflow-hidden shadow-lg bg-white p-6 h-full">
                 {product.modelos?.[0] && (
-                  <img
+                  <Image
                     src={getImageUrl(product.modelos[0].id)}
                     alt={product.code || product.nombre}
-                    loading="lazy"
-                    className="object-contain w-full h-full hover:scale-105 transition-transform duration-300 rounded-lg"
+                    fill
+                    className="object-cover w-full h-full rounded-xl hover:scale-105 transition-transform duration-300"
                   />
                 )}
               </div>
@@ -169,11 +183,10 @@ export default function ProductPage({ params }) {
                   }`}
                 >
                   {/* Imagen del modelo */}
-                  <div className="aspect-square p-4 bg-gray-50 rounded-t-lg">
+                  <div className="aspect-square p-4 bg-white rounded-t-lg">
                     <img
                       src={getProductImageUrl(modelo.fotos_producto)}
                       alt={modelo.subnombre}
-                      loading="lazy"
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>

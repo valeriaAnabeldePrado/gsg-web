@@ -1,21 +1,11 @@
 'use client';
-import Image from 'next/image';
+import BannerLayout from '@/components/ui/BannerLayout';
 
-const LayoutProductId = ({ children, params }) => {
+const LayoutProductId = ({ children }) => {
   return (
-    <div>
-      <div className="w-full h-[40vh] bg-slate-900 relative overflow-hidden">
-        <div className="w-full h-full relative">
-          <Image
-            src={`/portadas/accesorios.png`}
-            alt="accesorios"
-            layout="fill"
-            className="object-cover"
-          />
-        </div>
-      </div>
+    <BannerLayout logoSrc="/imagenes/redLogo.png" alt="accesorios">
       {children}
-    </div>
+    </BannerLayout>
   );
 };
 

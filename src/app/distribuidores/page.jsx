@@ -76,7 +76,7 @@ const DistribuidorCard = ({ distribuidor, provincia }) => {
         className="p-4 cursor-pointer hover:bg-gray-50 transition-colors"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-start max-sm:flex-col">
           <div className="flex-1">
             <h3 className="font-semibold text-lg text-gray-800 mb-1">
               {distribuidor.Nombre}
@@ -86,15 +86,11 @@ const DistribuidorCard = ({ distribuidor, provincia }) => {
             </p>
             <p className="text-sm text-gray-500">{distribuidor.Localidad}</p>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 max-sm:mt-4">
             {distribuidor.Teléfono !== 0 && (
-              <a
-                href={`tel:${distribuidor.Teléfono}`}
-                className="text-green-600 hover:text-green-700 text-sm font-medium"
-                onClick={(e) => e.stopPropagation()}
-              >
+              <p className="text-green-600 hover:text-green-700 text-sm font-medium">
                 📞 {distribuidor.Teléfono}
-              </a>
+              </p>
             )}
             <span className="text-gray-400">{isExpanded ? '▼' : '►'}</span>
           </div>
@@ -123,12 +119,9 @@ const DistribuidorCard = ({ distribuidor, provincia }) => {
             {distribuidor.Teléfono !== 0 && (
               <div className="flex items-center space-x-2">
                 <span className="text-gray-500 text-sm">📞</span>
-                <a
-                  href={`tel:${distribuidor.Teléfono}`}
-                  className="text-sm text-green-600 hover:text-green-700 font-medium"
-                >
+                <p className="text-sm text-green-600 hover:text-green-700 font-medium">
                   {distribuidor.Teléfono}
-                </a>
+                </p>
               </div>
             )}
             <div className="pt-2">

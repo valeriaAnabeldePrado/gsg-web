@@ -1,11 +1,8 @@
 'use client';
 import React, { useEffect, useState, useMemo, Suspense } from 'react';
-
 import { usePathname, useSearchParams } from 'next/navigation';
-
 import './productosSection.css';
 import LoaderP from '@/components/loader/loagerP';
-import Filtering from '@/components/productos/filter';
 import { ProductCard } from '@/components/ui/ProductCard';
 import { NoResults } from '@/components/productos/product-no-result';
 import { ProductSkeletonList } from '@/components/ui/ProductSkeleton';
@@ -108,14 +105,14 @@ const ProductosInner = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen md:mt-10 lg:mt-24 xl:mt-32">
       <div className="px-4 md:px-10 mb-6">
-        <h1 className="text-2xl md:text-3xl font-light text-gray-800 mb-4">
+        <h1 className="text-2xl md:text-3xl font-light text-gray-800 ">
           {getCategoryTitle()}
         </h1>
       </div>
 
-      <div className="px-4 md:px-10 mt-16 mb-4">
+      <div className="px-4 md:px-10 mt-8 mb-4">
         <div className="flex items-center gap-3 max-w-2xl">
           <div className="flex-1">
             <input
