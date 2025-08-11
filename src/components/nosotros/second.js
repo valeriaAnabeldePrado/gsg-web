@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import './nosotros.css';
 import { IMG_URL } from '@/utils/constants';
-import { BsNut } from 'react-icons/bs';
+// import { BsNut } from 'react-icons/bs';
 
 export default function Second() {
   return (
@@ -42,25 +42,21 @@ export default function Second() {
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div className="px-6 py-4 bg-gray-50 rounded-lg">
-                    <div className="text-5xl mb-2">⚙️</div>
                     <p className="text-sm font-medium text-gray-700">
                       Tornos CNC
                     </p>
                   </div>
                   <div className="px-6 py-4 bg-gray-50 rounded-lg">
-                    <div className="text-4xl mb-2">⚡</div>
                     <p className="text-sm font-medium text-gray-700">
                       Soldadora Láser
                     </p>
                   </div>
                   <div className="px-6 py-10 bg-gray-50 rounded-lg">
-                    <div className="text-4xl mb-2">📐</div>
                     <p className="text-sm font-medium text-gray-700">
                       Corte Láser
                     </p>
                   </div>
                   <div className="px-6 py-10 bg-gray-50 rounded-lg">
-                    <div className="text-4xl mb-2">🏭</div>
                     <p className="text-sm font-medium text-gray-700">
                       Producción Eficiente
                     </p>

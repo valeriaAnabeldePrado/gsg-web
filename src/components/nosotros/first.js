@@ -39,7 +39,7 @@ export default function First() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
               <div className="text-center p-4 bg-gray-50 rounded-xl">
                 <div className="text-3xl mb-2 flex items-center justify-center">
-                  <LuFactory />
+                  {/* <LuFactory /> */}
                 </div>
                 <h3 className="font-semibold text-gray-800 mb-2">
                   Industria Nacional
@@ -50,7 +50,7 @@ export default function First() {
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-xl">
                 <div className="text-3xl mb-2 flex items-center justify-center">
-                  <LuPaintbrush />
+                  {/* <LuPaintbrush /> */}
                 </div>
                 <h3 className="font-semibold text-gray-800 mb-2">
                   Personalización
@@ -61,7 +61,7 @@ export default function First() {
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-xl">
                 <div className="text-3xl mb-2 flex items-center justify-center">
-                  <LuShieldPlus />
+                  {/* <LuShieldPlus /> */}
                 </div>
                 <h3 className="font-semibold text-gray-800 mb-2">Garantía</h3>
                 <p className="text-sm text-gray-600">

@@ -4,6 +4,8 @@ import Conciencia from '@/components/nosotros/conciencia';
 import React from 'react';
 import FooterM from '@/components/footer/footer';
 import GenericHero from '@/components/hero/genericHero';
+import First from '@/components/nosotros/first';
+import Second from '@/components/nosotros/second';
 
 const Nosotros = () => {
   return (
@@ -16,8 +18,8 @@ const Nosotros = () => {
       </div>
 
       {/* Content Sections */}
-      {/* <First />
-      <Second /> */}
+      <First />
+      <Second />
       <Conciencia />
 
       <FooterM />
