@@ -3,7 +3,7 @@
   top: 25px;
   right: 25px;
   cursor: pointer;
-  z-index: 4;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -40,7 +40,7 @@
   height: 100%;
   width: 100%;
   background-color: #170c01;
-  z-index: 3;
+  z-index: 9998;
   clip-path: circle(0px at 0 0px);
   transition: 0.5s ease all;
 }
@@ -149,7 +149,7 @@
   background-color: var(--color-fondo);
   position: fixed;
   top: 0;
-  z-index: 4;
+  z-index: 9999;
   width: 100%;
   border-bottom: 1px solid #000;
 }
@@ -441,7 +441,7 @@
 
   background-color: #170c01;
   top: 0;
-  z-index: 500;
+  z-index: 9999;
 }
 @media screen and (width <= 1400px) {
   .cont-nav {
