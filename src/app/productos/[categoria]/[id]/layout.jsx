@@ -10,19 +10,16 @@ const LayoutProductId = ({ children, params }) => {
   const [childrenLoaded, setChildrenLoaded] = useState(false);
 
   const handleImageLoad = () => {
-    console.log('Banner image loaded successfully');
     setImageLoaded(true);
   };
 
   const handleImageError = () => {
-    console.log('Banner image failed to load');
     setImageLoaded(true); // También marcamos como cargado para evitar que se quede en skeleton
   };
 
   // Timeout de respaldo para asegurar que el skeleton no se quede para siempre
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log('Timeout reached, hiding skeleton');
       setImageLoaded(true);
     }, 7000); // 5 segundos de timeout
 
@@ -32,7 +29,6 @@ const LayoutProductId = ({ children, params }) => {
   // Escuchar cuando el contenido de la página ha cargado
   useEffect(() => {
     const handleProductPageLoaded = () => {
-      console.log('Product page loaded event received');
       setChildrenLoaded(true);
     };
 

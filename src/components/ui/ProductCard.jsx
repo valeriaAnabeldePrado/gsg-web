@@ -11,7 +11,6 @@ export const ProductCard = ({
   title,
   id,
 }) => {
-  console.log(title);
   // Determinar la URL de la imagen basada en el tipo
   const getImageUrl = () => {
     if (imageUrl) return imageUrl;

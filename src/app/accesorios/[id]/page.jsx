@@ -27,7 +27,6 @@ export default function page({ params }) {
     fetchProducts();
   }, []);
 
-  console.log(accessories);
   return (
     <>
       {accessories ? (

@@ -23,7 +23,6 @@ export default function page({ params }) {
     fetchProducts();
   }, []);
 
-  console.log(led);
   return (
     <>
       {led ? (

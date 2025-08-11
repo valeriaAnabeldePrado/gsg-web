@@ -42,7 +42,6 @@ const MenuNav = () => {
   const handleMobileDropdownToggle = (e) => {
     e.stopPropagation();
     setIsMobileDropdownOpen(!isMobileDropdownOpen);
-    console.log(isMobileDropdownOpen);
   };
 
   const handleCategoryClick = (categoria) => {

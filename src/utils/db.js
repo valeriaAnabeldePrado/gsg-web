@@ -13,7 +13,6 @@ const connectDB = async () => {
     });
     await client.connect();
     db = client.db('gsg');
-    console.log('✅ MongoDB conectado');
   }
   return db;
 };

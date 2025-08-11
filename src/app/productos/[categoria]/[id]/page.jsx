@@ -70,7 +70,6 @@ export default function ProductPage({ params }) {
   const handleModelChange = (index) => {
     setSelectedModelIndex(index);
   };
-  console.log(selectedModelIndex);
 
   const getCleanSubnombre = (subnombre) => {
     return subnombre?.replace('Colgante ', '') || '';
