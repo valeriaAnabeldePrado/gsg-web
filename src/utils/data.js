@@ -12,7 +12,7 @@ export const luces = [
   ,
 ];
 export const destacados = [
-  { title: 'Producto 1', src: 'destacado.jpeg' },
-  { title: 'Producto 2', src: 'destacado.jpeg' },
-  { title: 'Producto 3', src: 'destacado.jpeg' },
+  { title: 'Perfil mini PE', src: 'hex-d.png' },
+  { title: 'Producto 1', src: 'PIN.png' },
+  { title: 'Producto 1', src: 'snk.png' },
 ];

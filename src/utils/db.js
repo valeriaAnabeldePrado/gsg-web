@@ -136,3 +136,66 @@ export const buscarProductosAvanzado = async (filtros = {}) => {
     throw err;
   }
 };
+
+export const obtenerProductosDestacados = async () => {
+  try {
+    const db = await connectDB();
+
+    // Buscar productos que sean destacados a nivel principal O que tengan modelos destacados
+    const productosDestacados = await db
+      .collection('products')
+      .find(
+        {
+          $or: [
+            { esDestacado: true }, // Productos destacados a nivel principal
+            { 'modelos.esDestacado': true }, // Productos con modelos destacados
+          ],
+        },
+        {
+          projection: {
+            nombre: 1,
+            categoria: 1,
+            modelos: 1,
+            _id: 1,
+            esDestacado: 1, // Para saber si es destacado a nivel principal
+          },
+        },
+      )
+      .toArray();
+
+    // Procesar los resultados para manejar modelos destacados
+    const productosProcessed = productosDestacados.map((producto) => {
+      // Si el producto es destacado a nivel principal, devolvemos tal como está
+      if (producto.esDestacado) {
+        return producto;
+      }
+
+      // Si no es destacado a nivel principal, buscamos el modelo destacado
+      if (producto.modelos && producto.modelos.length > 0) {
+        const modeloDestacado = producto.modelos.find(
+          (modelo) => modelo.esDestacado,
+        );
+        if (modeloDestacado) {
+          // Retornamos el producto pero con solo el modelo destacado al frente
+          return {
+            ...producto,
+            modelos: [
+              modeloDestacado,
+              ...producto.modelos.filter((m) => !m.esDestacado),
+            ],
+          };
+        }
+      }
+
+      return producto;
+    });
+
+    console.log(
+      `✅ Encontrados ${productosProcessed.length} productos destacados`,
+    );
+    return productosProcessed;
+  } catch (err) {
+    console.error('❌ Error al obtener productos destacados:', err);
+    throw err;
+  }
+};

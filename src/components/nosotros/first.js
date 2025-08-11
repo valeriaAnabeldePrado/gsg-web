@@ -2,9 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 import './nosotros.css';
 import { IMG_URL } from '@/utils/constants';
-import { LuFactory } from 'react-icons/lu';
-import { LuPaintbrush } from 'react-icons/lu';
-import { LuShieldPlus } from 'react-icons/lu';
+// import { LuFactory } from 'react-icons/lu';
+// import { LuPaintbrush } from 'react-icons/lu';
+// import { LuShieldPlus } from 'react-icons/lu';
 
 export default function First() {
   return (

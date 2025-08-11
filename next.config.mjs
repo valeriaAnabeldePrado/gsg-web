@@ -16,6 +16,10 @@ const nextConfig = {
         hostname: 'gsgdesign.com.ar',
         pathname: '/gsg/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
     ],
   },
 };

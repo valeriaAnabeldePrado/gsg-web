@@ -1,0 +1,34 @@
+.titulo {
+  display: inline;
+  vertical-align: middle;
+  color: var(--color-fuente-roja);
+  font-size: var(--text-medios-card);
+  font-weight: 200;
+  width: 60%;
+  margin: 0 clamp(10px, 1.5vw, 50px) 0 0;
+}
+.titulo-1 {
+  display: inline;
+  vertical-align: middle;
+  color: var(--color-fuente-roja);
+  font-size: var(--text-xxxl);
+  font-weight: 200;
+  width: 60%;
+  margin: 0 clamp(10px, 1.5vw, 50px) 0 0;
+}
+
+.text-home {
+  font-weight: 200;
+  padding-top: 2rem;
+  font-size: var(--text-medios);
+}
+.text-home-2 {
+  font-weight: 200;
+  padding-top: 1.5rem;
+  font-size: var(--text-small);
+}
+.text-home-3 {
+  font-weight: 200;
+  padding-top: 1.5rem;
+  font-size: var(--text-medios);
+}

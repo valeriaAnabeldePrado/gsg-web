@@ -1,11 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+
 import './accSection.css';
-import { IMG_URL } from '@/utils/constants';
-import ImageSkeleton from '@/components/loader/ImageSkeleton';
-import BrandLoader from '@/components/loader/BrandLoader';
+
 import { ProductCard } from '@/components/ui/ProductCard';
 import { ProductSkeletonList } from '@/components/ui/ProductSkeleton';
 
