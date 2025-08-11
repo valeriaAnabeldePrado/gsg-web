@@ -4,42 +4,36 @@ import React from 'react';
 export default function WhyChooseUs() {
   const ventajas = [
     {
-      icon: '💡',
       title: 'Tecnología LED Avanzada',
       description:
         'Productos con la última tecnología LED para máxima eficiencia energética y durabilidad que transforman cualquier espacio.',
       detail: 'Hasta 50,000 horas de vida útil',
     },
     {
-      icon: '🏆',
       title: 'Calidad Garantizada',
       description:
         'Todos nuestros productos cuentan con garantía extendida y certificaciones internacionales de los más altos estándares.',
       detail: '5 años de garantía premium',
     },
     {
-      icon: '👨‍💼',
       title: 'Asesoramiento Personalizado',
       description:
         'Nuestro equipo de expertos te acompaña en cada proyecto, desde la consulta inicial hasta la instalación final.',
       detail: 'Soporte técnico 24/7',
     },
     {
-      icon: '🚚',
-      title: 'Entrega Nacional',
+      title: 'Cobertura Nacional',
       description:
-        'Red de distribuidores en todo el país para llegar a donde estés con envíos rápidos, seguros y tracking en tiempo real.',
-      detail: 'Envío gratis en compras +$50k',
+        'Contamos con una amplia red de distribuidores en todo el país para abastecer de forma rápida y eficiente a nuestros clientes.',
+      detail: 'Red logística en todo el país',
     },
     {
-      icon: '🎨',
       title: 'Diseño Exclusivo',
       description:
         'Luminarias con diseños únicos que combinan funcionalidad y estética premium para crear ambientes únicos.',
       detail: 'Más de 200 diseños exclusivos',
     },
     {
-      icon: '⚡',
       title: 'Eficiencia Energética',
       description:
         'Reduce hasta un 80% tu consumo eléctrico con nuestras soluciones LED de última generación y tecnología smart.',
