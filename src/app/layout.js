@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <GTM />
         <MenuNav />
+
         {children}
       </body>
     </html>
