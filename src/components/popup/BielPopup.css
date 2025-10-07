@@ -1,0 +1,704 @@
+/* Popup BIEL Light + Building Styles */
+
+.biel-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+  padding: 20px;
+  animation: bielFadeIn 0.5s ease-out;
+}
+
+.biel-popup-container {
+  position: relative;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  max-width: 550px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: bielSlideUp 0.6s ease-out;
+  border: 1px solid #f1c40f;
+}
+
+.biel-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(44, 62, 80, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10002;
+}
+
+.biel-popup-close:hover {
+  background: rgba(44, 62, 80, 0.2);
+  transform: rotate(90deg);
+}
+
+.biel-popup-header {
+  position: relative;
+  background: #F1C40F;
+  color: #2c3e50;
+  padding: 20px 25px 20px;
+  text-align: center;
+  box-shadow: 0 1px 5px rgba(241, 196, 15, 0.2);
+}
+
+.biel-popup-event-name {
+  font-family: var(--tipo-fuente);
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  letter-spacing: -0.5px;
+}
+
+.biel-popup-event-year {
+  font-family: var(--tipo-fuente);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.biel-popup-body {
+  padding: 20px 25px;
+  text-align: center;
+}
+
+.biel-popup-highlight {
+  margin-bottom: 20px;
+}
+
+.biel-popup-main-text {
+  font-family: var(--tipo-fuente);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.3;
+  background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.biel-popup-details {
+  margin-bottom: 25px;
+}
+
+.biel-popup-countdown {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(241, 196, 15, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(241, 196, 15, 0.15);
+}
+
+.biel-countdown-title {
+  font-family: var(--tipo-fuente);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.biel-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.biel-countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 5px;
+  background: #F1C40F;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(241, 196, 15, 0.2);
+}
+
+.biel-countdown-number {
+  font-family: var(--tipo-fuente);
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2c3e50;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.biel-countdown-label {
+  font-family: var(--tipo-fuente);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.biel-popup-date-location {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.biel-popup-date,
+.biel-popup-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--tipo-fuente);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.biel-popup-icon {
+  width: 18px;
+  height: 18px;
+  color: #f39c12;
+}
+
+.biel-popup-description {
+  font-family: var(--tipo-fuente);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5a6c7d;
+  margin-bottom: 5px;
+}
+
+.biel-popup-description p {
+  margin: 0 0 12px 0;
+}
+
+.biel-popup-stand {
+  font-family: var(--tipo-fuente);
+  font-size: 1rem;
+  color: #f39c12;
+  padding: 8px 12px;
+  background: rgba(241, 196, 15, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(241, 196, 15, 0.2);
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.biel-popup-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.biel-popup-cta-button {
+  background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+  color: #2c3e50;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 25px;
+  font-family: var(--tipo-fuente);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
+}
+
+.biel-popup-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(241, 196, 15, 0.4);
+}
+
+.biel-popup-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.biel-popup-cta-button:hover .biel-popup-arrow {
+  transform: translateX(3px);
+}
+
+/* Animaciones */
+@keyframes bielFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bielSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .biel-popup-container {
+    margin: 10px;
+    max-width: none;
+    border-radius: 6px;
+    max-height: 85vh;
+  }
+  
+  .biel-popup-event-name {
+    font-size: 1.8rem;
+  }
+  
+  .biel-popup-event-year {
+    font-size: 1.1rem;
+  }
+  
+  .biel-popup-main-text {
+    font-size: 1.3rem;
+  }
+  
+  .biel-popup-header {
+    padding: 15px 20px 15px;
+  }
+  
+  .biel-popup-body {
+    padding: 15px 20px;
+  }
+  
+  .biel-popup-date-location {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .biel-popup-cta-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .biel-countdown-grid {
+    max-width: 240px;
+    gap: 6px;
+  }
+
+  .biel-countdown-number {
+    font-size: 1.2rem;
+  }
+
+  .biel-countdown-label {
+    font-size: 0.65rem;
+  }
+
+  .biel-popup-countdown {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .biel-countdown-title {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  .biel-countdown-item {
+    padding: 6px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .biel-popup-overlay {
+    padding: 10px;
+  }
+  
+  .biel-popup-container {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .biel-popup-event-name {
+    font-size: 1.6rem;
+  }
+  
+  .biel-popup-main-text {
+    font-size: 1.2rem;
+  }
+  
+  .biel-popup-header {
+    padding: 12px 15px 12px;
+  }
+  
+  .biel-popup-body {
+    padding: 12px 15px;
+  }
+
+  .biel-countdown-grid {
+    max-width: 220px;
+    gap: 5px;
+  }
+
+  .biel-countdown-number {
+    font-size: 1.1rem;
+  }
+
+  .biel-countdown-label {
+    font-size: 0.6rem;
+  }
+
+  .biel-popup-countdown {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+}
+
+.biel-popup-event-year {
+  font-family: var(--tipo-fuente);
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  opacity: 0.95;
+  letter-spacing: 1px;
+}
+
+/* Contenido principal */
+.biel-popup-body {
+  padding: 20px 25px;
+  text-align: center;
+}
+
+.biel-popup-highlight {
+  margin-bottom: 20px;
+}
+
+/* Contador regresivo */
+.biel-popup-countdown {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(241, 196, 15, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(241, 196, 15, 0.15);
+}
+
+.biel-countdown-title {
+  font-family: var(--tipo-fuente);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.biel-countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.biel-countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 5px;
+  background: #f1c40f;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(241, 196, 15, 0.2);
+}
+
+.biel-countdown-number {
+  font-family: var(--tipo-fuente);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.biel-countdown-label {
+  font-family: var(--tipo-fuente);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.biel-popup-main-text {
+  font-family: var(--tipo-fuente);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.3;
+  background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.biel-popup-details {
+  margin-bottom: 35px;
+}
+
+.biel-popup-date-location {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.biel-popup-date,
+.biel-popup-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--tipo-fuente);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  background: rgba(241, 196, 15, 0.08);
+  padding: 8px 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(241, 196, 15, 0.25);
+}
+
+.biel-popup-icon {
+  width: 20px;
+  height: 20px;
+  color: #f1c40f;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.biel-popup-description {
+  margin-top: 20px;
+}
+
+.biel-popup-description p {
+  font-family: var(--tipo-fuente);
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+}
+
+.biel-popup-stand {
+  font-family: var(--tipo-fuente);
+  font-size: 1.1rem;
+  color: #f1c40f;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: rgba(241, 196, 15, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(241, 196, 15, 0.25);
+  display: inline-block;
+}
+
+/* Botón de acción */
+.biel-popup-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.biel-popup-cta-button {
+  background: #f1c40f;
+  color: #2c3e50;
+  border: 1px solid #f1c40f;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-family: var(--tipo-fuente);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.2);
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.biel-popup-cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
+  background: #f39c12;
+  border-color: #f39c12;
+  color: #ffffff;
+}
+
+.biel-popup-cta-button:active {
+  transform: translateY(-1px);
+}
+
+.biel-popup-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.biel-popup-cta-button:hover .biel-popup-arrow {
+  transform: translateX(4px);
+}
+
+/* Footer */
+.biel-popup-footer {
+  display: none;
+}
+
+/* Animaciones */
+@keyframes bielFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bielSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .biel-popup-container {
+    margin: 10px;
+    max-width: none;
+    border-radius: 15px;
+  }
+
+  .biel-popup-event-name {
+    font-size: 2rem;
+  }
+
+  .biel-popup-event-year {
+    font-size: 1.2rem;
+  }
+
+  .biel-popup-main-text {
+    font-size: 1.5rem;
+  }
+
+  .biel-popup-header {
+    padding: 30px 20px 50px;
+  }
+
+  .biel-popup-body {
+    padding: 30px 20px;
+  }
+
+  .biel-popup-date-location {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .biel-popup-cta-button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+
+  .biel-countdown-grid {
+    max-width: 260px;
+    gap: 8px;
+  }
+
+  .biel-countdown-number {
+    font-size: 1.3rem;
+  }
+
+  .biel-countdown-label {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 480px) {
+  .biel-popup-overlay {
+    padding: 10px;
+  }
+  
+  .biel-popup-container {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .biel-popup-event-name {
+    font-size: 1.6rem;
+  }
+  
+  .biel-popup-main-text {
+    font-size: 1.2rem;
+  }
+  
+  .biel-popup-header {
+    padding: 12px 15px 12px;
+  }
+  
+  .biel-popup-body {
+    padding: 12px 15px;
+  }
+
+  .biel-countdown-grid {
+    max-width: 220px;
+    gap: 5px;
+  }
+
+  .biel-countdown-number {
+    font-size: 1.1rem;
+  }
+
+  .biel-countdown-label {
+    font-size: 0.6rem;
+  }
+
+  .biel-popup-countdown {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+}
