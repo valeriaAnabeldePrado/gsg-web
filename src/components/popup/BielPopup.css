@@ -56,7 +56,7 @@
 
 .biel-popup-header {
   position: relative;
-  background: #F1C40F;
+  background: #f1c40f;
   color: #2c3e50;
   padding: 20px 25px 20px;
   text-align: center;
@@ -137,7 +137,7 @@
   flex-direction: column;
   align-items: center;
   padding: 8px 5px;
-  background: #F1C40F;
+  background: #f1c40f;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(241, 196, 15, 0.2);
 }
@@ -275,32 +275,32 @@
     border-radius: 6px;
     max-height: 85vh;
   }
-  
+
   .biel-popup-event-name {
     font-size: 1.8rem;
   }
-  
+
   .biel-popup-event-year {
     font-size: 1.1rem;
   }
-  
+
   .biel-popup-main-text {
     font-size: 1.3rem;
   }
-  
+
   .biel-popup-header {
     padding: 15px 20px 15px;
   }
-  
+
   .biel-popup-body {
     padding: 15px 20px;
   }
-  
+
   .biel-popup-date-location {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .biel-popup-cta-button {
     padding: 12px 24px;
     font-size: 1rem;
@@ -338,24 +338,24 @@
   .biel-popup-overlay {
     padding: 10px;
   }
-  
+
   .biel-popup-container {
     max-height: 80vh;
     overflow-y: auto;
   }
-  
+
   .biel-popup-event-name {
     font-size: 1.6rem;
   }
-  
+
   .biel-popup-main-text {
     font-size: 1.2rem;
   }
-  
+
   .biel-popup-header {
     padding: 12px 15px 12px;
   }
-  
+
   .biel-popup-body {
     padding: 12px 15px;
   }
@@ -662,24 +662,24 @@
   .biel-popup-overlay {
     padding: 10px;
   }
-  
+
   .biel-popup-container {
     max-height: 80vh;
     overflow-y: auto;
   }
-  
+
   .biel-popup-event-name {
     font-size: 1.6rem;
   }
-  
+
   .biel-popup-main-text {
     font-size: 1.2rem;
   }
-  
+
   .biel-popup-header {
     padding: 12px 15px 12px;
   }
-  
+
   .biel-popup-body {
     padding: 12px 15px;
   }
