@@ -3,6 +3,7 @@ import './globals.css';
 import MenuNav from '@/components/navMenu/menuNav';
 import GTM from '@/components/tag';
 import Head from 'next/head';
+import SmoothScroll from '@/components/ui/SmoothScroll';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         </script>
       </Head>
       <body className={inter.className}>
+        <SmoothScroll />
         <GTM />
         <MenuNav />
         {children}
