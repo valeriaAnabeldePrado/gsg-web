@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
 import MenuNav from '@/components/navMenu/menuNav';
 import GTM from '@/components/tag';
@@ -34,7 +35,9 @@ export default function RootLayout({ children }) {
         </script>
       </Head>
       <body className={inter.className}>
-        <SmoothScroll />
+        <Suspense fallback={null}>
+          <SmoothScroll />
+        </Suspense>
         <GTM />
         <MenuNav />
         {children}

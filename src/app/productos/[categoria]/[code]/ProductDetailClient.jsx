@@ -368,13 +368,12 @@ export default function ProductDetailClient({ product }) {
               <div className="addons-grid">
                 {product.addons.map((addon) => {
                   const categoryKey = addon.category?.toLowerCase() || 'other';
-                  const categoryConfig =
-                    {
-                      control: { label: 'Control', icon: '🎛️' },
-                      instalacion: { label: 'Instalación', icon: '🔧' },
-                      driver: { label: 'Driver', icon: '⚡' },
-                      accesorio: { label: 'Accesorio', icon: '🔌' },
-                    }[categoryKey] || { label: 'Accesorio', icon: '🔌' };
+                  const categoryConfig = {
+                    control: { label: 'Control', icon: '🎛️' },
+                    instalacion: { label: 'Instalación', icon: '🔧' },
+                    driver: { label: 'Driver', icon: '⚡' },
+                    accesorio: { label: 'Accesorio', icon: '🔌' },
+                  }[categoryKey] || { label: 'Accesorio', icon: '🔌' };
 
                   return (
                     <div key={addon.id} className="addon-card">

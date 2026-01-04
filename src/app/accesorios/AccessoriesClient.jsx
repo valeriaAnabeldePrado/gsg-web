@@ -54,8 +54,8 @@ export default function AccessoriesClient({ initialAccessories }) {
     if (selectedFinishes.length > 0) {
       filtered = filtered.filter((accessory) =>
         accessory.finishes?.some((finish) =>
-          selectedFinishes.includes(finish.id)
-        )
+          selectedFinishes.includes(finish.id),
+        ),
       );
     }
 
@@ -63,8 +63,8 @@ export default function AccessoriesClient({ initialAccessories }) {
     if (selectedLightTones.length > 0) {
       filtered = filtered.filter((accessory) =>
         accessory.lightTones?.some((tone) =>
-          selectedLightTones.includes(tone.id)
-        )
+          selectedLightTones.includes(tone.id),
+        ),
       );
     }
 
@@ -84,7 +84,7 @@ export default function AccessoriesClient({ initialAccessories }) {
     setSelectedFinishes((prev) =>
       prev.includes(finishId)
         ? prev.filter((id) => id !== finishId)
-        : [...prev, finishId]
+        : [...prev, finishId],
     );
   };
 
@@ -92,7 +92,7 @@ export default function AccessoriesClient({ initialAccessories }) {
     setSelectedLightTones((prev) =>
       prev.includes(toneId)
         ? prev.filter((id) => id !== toneId)
-        : [...prev, toneId]
+        : [...prev, toneId],
     );
   };
 

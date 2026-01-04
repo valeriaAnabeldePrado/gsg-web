@@ -1,15 +1,15 @@
-import { createServerSupabaseClient } from '@/lib/supabase/server';
+import { supabaseAdmin } from '@/lib/supabase/server';
 
 export async function GET() {
   try {
-    const supabase = await createServerSupabaseClient();
+    const supabase = supabaseAdmin;
 
     const { data, error } = await supabase
       .from('distributors')
-      .select('*')
+      .select('*, zone:distributor_zones(name)')
       .eq('active', true)
-      .order('province', { ascending: true })
-      .order('city', { ascending: true })
+      .order('zone(name)', { ascending: true })
+      .order('locality', { ascending: true })
       .order('name', { ascending: true });
 
     if (error) {
