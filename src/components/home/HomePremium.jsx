@@ -859,7 +859,7 @@ export default function HomePremium() {
           </div>
           <div className="design-image">
             <Image
-              src="/gsg/portadas/exterior.png"
+              src="/gsg/hex-s.png"
               alt="Arquitectura y Luz"
               fill
               className="object-cover"

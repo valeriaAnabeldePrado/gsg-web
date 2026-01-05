@@ -180,7 +180,7 @@ const Nosotros = () => {
               </div>
               <div style={{ marginTop: '10vh' }}>
                 <div className="strip-image-box">
-                   <Image src="/gsg/P02.png" alt="Sistema P02" fill />
+                   <Image src="/gsg/p02.png" alt="Sistema P02" fill />
                 </div>
                  <div className="strip-info"><span>Sistema P02</span></div>
               </div>
@@ -204,7 +204,7 @@ const Nosotros = () => {
             <div className="strip-col strip-col-3" style={{ paddingTop: '15vh' }}>
               <div>
                 <div className="strip-image-box">
-                   <Image src="/gsg/PGA.png" alt="Detalle de Perfil" fill />
+                   <Image src="/gsg/pga.png" alt="Detalle de Perfil" fill />
                 </div>
                 <div className="strip-info"><span>PGA Detail</span></div>
               </div>
