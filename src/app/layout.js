@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import './globals.css';
 import MenuNav from '@/components/navMenu/menuNav';
 import GTM from '@/components/tag';
+import Clarity from '@/components/Clarity';
 import Head from 'next/head';
 import SmoothScroll from '@/components/ui/SmoothScroll';
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
           <SmoothScroll />
         </Suspense>
         <GTM />
+        <Clarity />
         <MenuNav />
         {children}
       </body>

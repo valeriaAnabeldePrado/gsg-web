@@ -51,7 +51,7 @@ const LayoutPerfilId = ({ children }) => {
           className={`w-full h-full relative ${imageLoaded ? 'block' : 'hidden'}`}
         >
           <Image
-            src={`https://images.smartcloudstudio.com/gsg/portadas/perfiles.png`}
+            src={`/gsg/portadas/perfiles.png`}
             alt="Perfiles LED"
             fill
             className="object-cover"

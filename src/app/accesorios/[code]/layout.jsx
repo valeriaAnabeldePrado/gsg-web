@@ -51,7 +51,7 @@ const LayoutAccesorioId = ({ children }) => {
           className={`w-full h-full relative ${imageLoaded ? 'block' : 'hidden'}`}
         >
           <Image
-            src={`https://images.smartcloudstudio.com/gsg/portadas/accesorios.png`}
+            src={`/gsg/portadas/accesorios.png`}
             alt="Accesorios"
             fill
             className="object-cover"

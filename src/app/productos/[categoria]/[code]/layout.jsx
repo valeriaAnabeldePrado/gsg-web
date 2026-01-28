@@ -52,7 +52,7 @@ const LayoutProductId = ({ children, params }) => {
           className={`w-full h-full relative ${imageLoaded ? 'block' : 'hidden'}`}
         >
           <Image
-            src={`https://images.smartcloudstudio.com/gsg/portadas/${cat}.png`}
+            src={`/gsg/portadas/${cat}.png`}
             alt={`${categoria}`}
             fill
             className="object-cover"

@@ -1,18 +1,33 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import './product-detail.css';
 import ProfileComparisonTable from '@/components/products/ProfileComparisonTable';
+import { trackEvent } from '@/lib/analytics';
 
 export default function ProductDetailClient({ product }) {
   const pathname = usePathname();
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const lastTrackedProduct = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  // Analytics
+  useEffect(() => {
+    if (product && lastTrackedProduct.current !== product.code) {
+      lastTrackedProduct.current = product.code;
+      
+      trackEvent('view_product', {
+        code: product.code, // Ajusta si la propiedad se llama diferente
+        name: product.name,
+        category: product.category?.name || product.category,
+      });
+    }
+  }, [product]);
 
   // Comunicar al layout que el contenido ha cargado
   useEffect(() => {
