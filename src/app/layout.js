@@ -1,8 +1,11 @@
 import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
 import MenuNav from '@/components/navMenu/menuNav';
 import GTM from '@/components/tag';
+import Clarity from '@/components/Clarity';
 import Head from 'next/head';
+import SmoothScroll from '@/components/ui/SmoothScroll';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,7 +36,11 @@ export default function RootLayout({ children }) {
         </script>
       </Head>
       <body className={inter.className}>
+        <Suspense fallback={null}>
+          <SmoothScroll />
+        </Suspense>
         <GTM />
+        <Clarity />
         <MenuNav />
         {children}
       </body>

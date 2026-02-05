@@ -1,0 +1,320 @@
+/* ========================================
+   GSG LIGHTING - NOSOTROS "ATELIER" + OCCHIO VALUES
+   ======================================== */
+
+.nosotros-page {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* === UTILS === */
+.container-fluid {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.text-reveal-line {
+  overflow: hidden;
+  display: block;
+}
+
+.text-reveal-line span {
+  display: block;
+  transform: translateY(100%);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-reveal-line.visible span {
+  transform: translateY(0);
+}
+
+/* === HERO SECTION === */
+.atelier-hero {
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.atelier-hero-img {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+}
+
+.atelier-hero-img img {
+  object-fit: cover;
+  transform: scale(1.1);
+}
+
+.atelier-hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+}
+
+.atelier-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 2rem;
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.atelier-title {
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+/* === INTRO EDITORIAL === */
+.atelier-intro {
+  padding: 15vh 0;
+  position: relative;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  align-items: flex-start;
+}
+
+@media (max-width: 968px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.intro-lead {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.3;
+  color: #1a1a1a;
+}
+
+.intro-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-top: 1rem;
+}
+
+/* === PARALLAX GALLERY - MULTI DIRECTIONAL === */
+.atelier-gallery {
+  padding: 10vh 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.strip-container {
+  display: flex;
+  justify-content: center;
+  gap: 4vw;
+  width: 100%;
+  position: relative;
+}
+
+.strip-col {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  gap: 15vh;
+  will-change: transform;
+}
+
+.strip-image-box {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.strip-image-box img {
+  object-fit: cover;
+  transition: transform 0.6s ease-out;
+}
+
+.strip-image-box:hover img {
+  transform: scale(1.05);
+}
+
+.strip-info {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+  border-top: 1px solid #1a1a1a;
+  padding-top: 0.5rem;
+}
+
+/* === VALUES SECTION (OCCHIO STYLE) === */
+.values-parallax-section {
+  padding: 10vh 0;
+  background: #fff;
+}
+
+.values-parallax-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15vh;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.value-block {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0;
+  min-height: 80vh;
+  position: relative;
+}
+
+.value-block.reverse {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.value-block.reverse .value-content {
+  order: 2;
+}
+
+.value-block.reverse .value-img-wrapper {
+  order: 1;
+}
+
+@media (max-width: 968px) {
+  .value-block, .value-block.reverse {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .value-img-wrapper {
+    height: 50vh;
+  }
+
+  .value-block.reverse .value-content {
+    order: 1;
+  }
+  .value-block.reverse .value-img-wrapper {
+    order: 0;
+  }
+}
+
+.value-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  background: #f0f0f0;
+}
+
+.value-img-wrapper img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.value-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6vw;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.value-kicker {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #f53e16;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.value-kicker::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: #f53e16;
+}
+
+.value-headline {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+}
+
+.value-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  max-width: 500px;
+}
+
+/* === FACTORY IMMERSIVE === */
+.factory-section {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.factory-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.factory-bg img {
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.factory-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5rem 4vw;
+  color: white;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+
+.factory-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 200;
+  margin-bottom: 2rem;
+}
+
+.factory-btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  border: 1px solid white;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transition: all 0.3s ease;
+}
+
+.factory-btn:hover {
+  background: white;
+  color: black;
+}

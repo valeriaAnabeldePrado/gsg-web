@@ -1,0 +1,492 @@
+/* ========================================
+   LED DETAIL PAGE - STYLES
+   ======================================== */
+
+.led-detail-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* === HERO BANNER === */
+.led-detail-banner {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.led-detail-banner-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.led-detail-banner-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.led-detail-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  z-index: 2;
+}
+
+.led-detail-banner-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.led-detail-banner-category {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.led-detail-banner-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.led-detail-banner-led-type {
+  display: inline-block;
+  background: white;
+  color: #1a1a1a;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.led-detail-banner-description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin-top: 1rem;
+}
+
+/* === CONTENT SECTION === */
+.led-detail-content {
+  padding: 4rem 2rem;
+}
+
+.led-detail-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+/* === GALLERY === */
+.led-detail-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 6rem;
+  height: fit-content;
+}
+
+.led-detail-gallery-main {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+
+.led-detail-gallery-main-image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.led-detail-gallery-main:hover .led-detail-gallery-main-image {
+  transform: scale(1.05);
+}
+
+.led-detail-gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 1rem;
+}
+
+.led-detail-gallery-thumbnails {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.led-detail-gallery-thumb {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  background: #fafafa;
+  border: 2px solid #e5e5e5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.led-detail-gallery-thumb:hover {
+  border-color: #999;
+}
+
+.led-detail-gallery-thumb.active {
+  border-color: #1a1a1a;
+}
+
+.led-detail-thumb-image {
+  object-fit: cover;
+}
+
+.detail-header {
+  display: none;
+}
+
+.detail-description {
+  display: none;
+}
+
+.detail-category {
+  display: none;
+}
+
+.detail-title {
+  display: none;
+}
+
+.detail-led-type {
+  display: none;
+}
+
+/* === INFO SECTION === */
+.led-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* === SPECS SECTION === */
+.led-detail-specs-section {
+  padding: 2rem 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.led-detail-specs-title {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.led-detail-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.led-detail-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.led-detail-spec-label {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.led-detail-spec-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.led-detail-spec-badge {
+  display: inline-block;
+  width: fit-content;
+  background: #1a1a1a;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === NOTES === */
+.led-detail-notes {
+  background: #fafafa;
+  padding: 1.5rem;
+  border-left: 3px solid #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.led-detail-note-item {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.led-detail-note-item strong {
+  color: #1a1a1a;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* === VARIANTS SECTION === */
+.led-detail-variants-section {
+  padding: 2rem 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.led-detail-variants-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+}
+
+.led-detail-voltage-group {
+  margin-bottom: 2rem;
+}
+
+.led-detail-voltage-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.led-detail-variants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.led-detail-variant-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: #fafafa;
+  border: 2px solid #e5e5e5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.led-detail-variant-card:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.led-detail-variant-card.active {
+  background: white;
+  border-color: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.led-detail-variant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.led-detail-variant-code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.led-detail-variant-price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.led-detail-variant-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.led-detail-variant-specs span {
+  padding: 0.25rem 0.75rem;
+  background: white;
+  border: 1px solid #e5e5e5;
+}
+
+.led-detail-variant-out-of-stock {
+  font-size: 0.75rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === SELECTED VARIANT === */
+.led-detail-selected-variant-details {
+  padding: 1.5rem 0;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 2rem;
+}
+
+.led-detail-selected-variant-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.led-detail-selected-variant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.led-detail-selected-variant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.led-detail-selected-code {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.led-detail-selected-price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.led-detail-selected-variant-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.led-detail-selected-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.led-detail-selected-spec .led-detail-spec-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.led-detail-selected-spec .led-detail-spec-value {
+  color: #1a1a1a;
+  font-family: 'Courier New', monospace;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .led-detail-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .led-detail-gallery {
+    position: static;
+  }
+
+  .specs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-description {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .led-detail-content {
+    padding: 3rem 1.5rem;
+  }
+
+  .led-detail-banner {
+    min-height: 50vh;
+  }
+
+  .banner-content {
+    padding: 3rem 1.5rem;
+  }
+
+  .banner-title {
+    font-size: 2rem;
+  }
+
+  .banner-description {
+    font-size: 1rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-variant-specs {
+    grid-template-columns: 1fr;
+  }
+}

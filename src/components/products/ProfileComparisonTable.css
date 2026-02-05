@@ -1,0 +1,127 @@
+.profile-comparison-container {
+  width: 100%;
+  margin: 4rem 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.profile-comparison-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-comparison-toggle:hover {
+  background-color: #f9f9f9;
+}
+
+.profile-comparison-toggle span:first-child {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  letter-spacing: -0.02em;
+}
+
+.profile-comparison-toggle .arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+  color: #a4a4a4;
+}
+
+.profile-comparison-toggle .arrow.open {
+  transform: rotate(180deg);
+}
+
+.profile-comparison-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-comparison-content.open {
+  max-height: 2000px; /* Large enough to fit the table */
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.comparison-table thead th {
+  background-color: #f8f8f8;
+  color: #2a2a2a;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.comparison-table thead tr:first-child th {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.comparison-table tbody tr:hover {
+  background-color: #fcfcfc;
+}
+
+.comparison-table .profile-name {
+  font-weight: 700;
+  text-align: left;
+  color: #2a2a2a;
+  background-color: #fff;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.comparison-table .check-mark {
+  color: #2a2a2a;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-comparison-container {
+    margin: 2rem 0;
+    border-radius: 8px;
+  }
+  
+  .profile-comparison-toggle {
+    padding: 1rem;
+  }
+  
+  .table-wrapper {
+    padding: 0 1rem 1rem 1rem;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
