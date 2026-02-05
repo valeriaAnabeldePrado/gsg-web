@@ -99,7 +99,7 @@ const ProductosInner = () => {
 
   const getCategoryTitle = () => {
     if (filters.categoria && filters.categoria !== 'Todos') {
-      return `Productoss - ${filters.categoria}`;
+      return `Productos - ${filters.categoria}`;
     }
     return 'Todos los Productos';
   };
