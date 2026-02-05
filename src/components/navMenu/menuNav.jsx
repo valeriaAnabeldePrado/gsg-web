@@ -18,7 +18,7 @@ const rutas = [
 const MenuNav = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/' || pathname === '/home';
-  
+
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
@@ -53,7 +53,10 @@ const MenuNav = () => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsProductDropdownOpen(false);
       }
-      if (mobileDropdownRef.current && !mobileDropdownRef.current.contains(event.target)) {
+      if (
+        mobileDropdownRef.current &&
+        !mobileDropdownRef.current.contains(event.target)
+      ) {
         setIsMobileDropdownOpen(false);
       }
     };
@@ -83,7 +86,9 @@ const MenuNav = () => {
   return (
     <>
       {/* Desktop Menu */}
-      <div className={`cont-nav ${isScrolled ? 'scrolled' : ''} ${!isHomePage ? 'not-home' : ''}`}>
+      <div
+        className={`cont-nav ${isScrolled ? 'scrolled' : ''} ${!isHomePage ? 'not-home' : ''}`}
+      >
         <nav className="menu-nav">
           <ul className="p-2">
             <Link href="/">
@@ -101,57 +106,62 @@ const MenuNav = () => {
                       onMouseEnter={() => setIsProductDropdownOpen(true)}
                     >
                       {ruta.nombre}
-                      <span className={`dropdown-arrow ${isProductDropdownOpen ? 'rotated' : ''}`}>▼</span>
+                      <span
+                        className={`dropdown-arrow ${isProductDropdownOpen ? 'rotated' : ''}`}
+                      >
+                        ▼
+                      </span>
                     </button>
-                    
-                    {/* MEGA MENU */}
-                    <div 
-                      className={`mega-menu ${isProductDropdownOpen ? 'visible' : ''}`}
+
+                    {/* DROPDOWN MODERNO */}
+                    <div
+                      className={`modern-dropdown ${isProductDropdownOpen ? 'visible' : ''}`}
                       onMouseLeave={() => setIsProductDropdownOpen(false)}
                     >
-                      <div className="mega-menu-content">
-                        {/* Column 1: Luminarias (Categories) */}
-                        <div className="mega-column categories-col">
-                          <h3 className="mega-title">Luminarias</h3>
-                          <div className="categories-grid">
+                      <div className="dropdown-inner">
+                        {/* Luminarias en lista horizontal */}
+                        <div className="dropdown-section">
+                          <span className="section-label">Luminarias</span>
+                          <div className="links-row">
                             {productTitle.map((categoria, index) => (
                               <Link
                                 key={index}
                                 href={`/productos?categoria=${categoria}`}
-                                className="mega-link"
+                                className={`dropdown-link ${categoria === 'Perfiles' ? 'special' : ''}`}
                                 onClick={handleCategoryClick}
                               >
                                 {categoria}
                               </Link>
                             ))}
-                            <Link 
-                              href="/productos" 
-                              className="mega-link view-all"
-                              onClick={handleCategoryClick}
-                            >
-                              Ver todo
-                            </Link>
                           </div>
                         </div>
 
-                        {/* Column 2: Featured Sections (LED & Accessories) */}
-                        <div className="mega-column featured-col">
-                          <h3 className="mega-title">Especialidades</h3>
-                          <div className="featured-links-container">
-                            <Link href="/led" className="featured-link-item" onClick={handleCategoryClick}>
-                
-                              <div className="featured-content">
-                                <h4>Tecnología LED</h4>
-                                <p>Soluciones de iluminación lineal, neón y módulos de alta eficiencia.</p>
-                              </div>
-                            </Link>
+                        <div className="dropdown-divider"></div>
 
-                            <Link href="/accesorios" className="featured-link-item" onClick={handleCategoryClick}>
-  
-                              <div className="featured-content">
-                                <h4>Accesorios</h4>
-                                <p>Drivers, perfiles, controladores y componentes para instalación.</p>
-                              </div>
+                        {/* Especialidades */}
+                        <div className="dropdown-section">
+                          <span className="section-label">Especialidades</span>
+                          <div className="links-row">
+                            <Link
+                              href="/led"
+                              className="dropdown-link"
+                              onClick={handleCategoryClick}
+                            >
+                              LED
+                            </Link>
+                            <Link
+                              href="/accesorios"
+                              className="dropdown-link"
+                              onClick={handleCategoryClick}
+                            >
+                              Accesorios
+                            </Link>
+                            <Link
+                              href="/productos"
+                              className="dropdown-link highlight"
+                              onClick={handleCategoryClick}
+                            >
+                              Ver todo →
                             </Link>
                           </div>
                         </div>
@@ -171,7 +181,10 @@ const MenuNav = () => {
 
       {/* Mobile Menu (Burger) */}
       <section className="nav-bar-position">
-        <div className={`burger ${isNavOpen ? 'burger-open' : ''} ${!isHomePage ? 'burger-dark' : ''}`} onClick={handleClick}>
+        <div
+          className={`burger ${isNavOpen ? 'burger-open' : ''} ${!isHomePage ? 'burger-dark' : ''}`}
+          onClick={handleClick}
+        >
           <div className="fas"></div>
           <div className="fas"></div>
           <div className="fas"></div>
@@ -180,14 +193,26 @@ const MenuNav = () => {
         <nav className={`navbar ${isNavOpen ? 'nav-open' : ''}`}>
           <ul className="nav-links">
             {rutas.map((ruta, index) => (
-              <li key={ruta.id} className={`nav-link ${isNavOpen ? 'nav-link-open' : ''}`}>
+              <li
+                key={ruta.id}
+                className={`nav-link ${isNavOpen ? 'nav-link-open' : ''}`}
+              >
                 {ruta.hasDropdown ? (
                   <div className="mobile-dropdown" ref={mobileDropdownRef}>
-                    <button className="mobile-dropdown-toggle" onClick={handleMobileDropdownToggle}>
+                    <button
+                      className="mobile-dropdown-toggle"
+                      onClick={handleMobileDropdownToggle}
+                    >
                       {ruta.nombre}
-                      <span className={`mobile-dropdown-arrow ${isMobileDropdownOpen ? 'rotated' : ''}`}>▼</span>
+                      <span
+                        className={`mobile-dropdown-arrow ${isMobileDropdownOpen ? 'rotated' : ''}`}
+                      >
+                        ▼
+                      </span>
                     </button>
-                    <div className={`mobile-dropdown-menu ${isMobileDropdownOpen ? 'open' : ''}`}>
+                    <div
+                      className={`mobile-dropdown-menu ${isMobileDropdownOpen ? 'open' : ''}`}
+                    >
                       <div className="mobile-section-title">Luminarias</div>
                       <Link
                         href="/productos"
@@ -200,17 +225,26 @@ const MenuNav = () => {
                         <Link
                           key={idx}
                           href={`/productos?categoria=${categoria}`}
-                          className="mobile-dropdown-item"
+                          className={`mobile-dropdown-item ${categoria === 'Perfiles' ? 'perfiles-item' : ''}`}
                           onClick={handleCategoryClick}
                         >
                           {categoria}
                         </Link>
                       ))}
+
                       <div className="mobile-divider"></div>
-                      <Link href="/led" className="mobile-dropdown-item highlight" onClick={handleCategoryClick}>
+                      <Link
+                        href="/led"
+                        className="mobile-dropdown-item highlight"
+                        onClick={handleCategoryClick}
+                      >
                         Tecnología LED
                       </Link>
-                      <Link href="/accesorios" className="mobile-dropdown-item highlight" onClick={handleCategoryClick}>
+                      <Link
+                        href="/accesorios"
+                        className="mobile-dropdown-item highlight"
+                        onClick={handleCategoryClick}
+                      >
                         Accesorios
                       </Link>
                     </div>

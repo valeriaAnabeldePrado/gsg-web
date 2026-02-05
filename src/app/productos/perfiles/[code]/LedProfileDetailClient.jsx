@@ -18,12 +18,36 @@ export default function LedProfileDetailClient({ profile }) {
   // Tomar TODAS las imágenes que sean para mostrar (no PDFs)
   const allImages =
     profile.media?.filter(
-      (m) => m.kind === 'cover' || m.kind === 'gallery' || m.kind === 'tech',
+      (m) =>
+        m.kind === 'cover' ||
+        m.kind === 'gallery' ||
+        m.kind === 'tech' ||
+        m.kind === 'accessory',
     ) || [];
 
   const pdfs =
     profile.media?.filter((m) => m.kind === 'datasheet' || m.kind === 'spec') ||
     [];
+
+  // Debug: Ver qué media estamos recibiendo
+  useEffect(() => {
+    console.log('=== DEBUG PROFILE MEDIA ===');
+    console.log('Full profile:', profile);
+    console.log('Profile.media:', profile.media);
+    console.log('Media length:', profile.media?.length || 0);
+    
+    if (profile.media && profile.media.length > 0) {
+      console.log('Media items details:');
+      profile.media.forEach((item, index) => {
+        console.log(`  [${index}] kind: "${item.kind}", path: "${item.path}"`);
+      });
+    }
+    
+    console.log('All images filtered:', allImages);
+    console.log('All images length:', allImages.length);
+    console.log('PDFs filtered:', pdfs);
+    console.log('========================');
+  }, [profile, allImages, pdfs]);
 
   const currentImage = allImages[selectedImageIndex];
 
@@ -60,6 +84,14 @@ export default function LedProfileDetailClient({ profile }) {
 
             <div className="bg-gray-50 rounded-lg p-6 space-y-4">
               <h3 className="font-bold text-lg mb-4">Especificaciones</h3>
+              {profile.code && (
+                <div className="flex justify-between items-center border-b border-gray-200 pb-3">
+                  <span className="text-gray-600">Código</span>
+                  <span className="font-semibold text-gray-900">
+                    {profile.code}
+                  </span>
+                </div>
+              )}
               {profile.material && (
                 <div className="flex justify-between items-center border-b border-gray-200 pb-3">
                   <span className="text-gray-600">Material</span>
@@ -130,19 +162,52 @@ export default function LedProfileDetailClient({ profile }) {
 
           {/* Galería de imágenes - SEGUNDO */}
           <div className="space-y-4 order-2 md:order-2">
+            {allImages.length === 0 && (
+              <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-sm text-yellow-800">
+                  ⚠️ No se encontraron imágenes para este perfil.
+                  <br />
+                  Media items: {profile.media?.length || 0}
+                  <br />
+                  Kinds disponibles:{' '}
+                  {profile.media?.map((m) => m.kind).join(', ') || 'ninguno'}
+                </p>
+              </div>
+            )}
+
             {currentImage ? (
               <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden">
                 <img
                   src={getImageUrl(currentImage.path)}
                   alt={currentImage.alt_text || profile.name}
                   className="w-full h-full object-contain"
+                  onError={(e) => {
+                    console.error('Error loading image:', currentImage.path);
+                    e.target.src = '/gsg/no-image.svg';
+                  }}
                 />
               </div>
-            ) : (
-              <div className="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
-                <p className="text-gray-400">Sin imagen</p>
+            ) : allImages.length === 0 ? (
+              <div className="aspect-square bg-gray-200 rounded-lg flex flex-col items-center justify-center p-8 text-center">
+                <svg
+                  className="w-16 h-16 text-gray-400 mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                <p className="text-gray-500 font-medium">Sin imágenes disponibles</p>
+                <p className="text-sm text-gray-400 mt-2">
+                  Este perfil aún no tiene imágenes cargadas
+                </p>
               </div>
-            )}
+            ) : null}
 
             {allImages.length > 1 && (
               <div className="grid grid-cols-6 gap-2">

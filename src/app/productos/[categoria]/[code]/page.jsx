@@ -6,16 +6,17 @@ import ProductDetailClient from './ProductDetailClient';
 export default async function ProductPage({ params }) {
   // Esperar a que params se resuelva
   const { code } = await params;
+  const decodedCode = decodeURIComponent(code);
 
   // Ignorar solicitudes de archivos estáticos
-  if (code.includes('.') || code === 'favicon.ico') {
+  if (decodedCode.includes('.') || decodedCode === 'favicon.ico') {
     notFound();
   }
 
   // Obtener el producto desde Supabase usando el código
   let product;
   try {
-    product = await getProductByCode(code);
+    product = await getProductByCode(decodedCode);
   } catch (error) {
     console.error('Error al obtener producto:', error);
     notFound(); // Muestra la página 404 de Next.js

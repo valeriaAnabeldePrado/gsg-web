@@ -16,6 +16,31 @@ export default function ProductsClient({
   const [selectedLightTones, setSelectedLightTones] = useState([]);
   const [includesLed, setIncludesLed] = useState(null);
   const [includesDriver, setIncludesDriver] = useState(null);
+  const [selectedUso, setSelectedUso] = useState([]);
+
+  // Mapeo de usos por código de perfil
+  const perfilUsos = {
+    P01: ['APLICAR', 'EMBUTIR'],
+    P02: ['APLICAR'],
+    ANGULO: ['APLICAR'],
+    PH1: ['APLICAR'],
+    PH2: ['SUSPENDER'],
+    PV8: ['APLICAR'],
+    'MINI PE': ['EMBUTIR'],
+    PEM: ['EMBUTIR'],
+    PEXL: ['EMBUTIR'],
+    GARGANTA: ['APLICAR'],
+    INVISIBLE: ['APLICAR'],
+    ESCALERA: ['APLICAR'],
+    PISO: ['APLICAR'],
+    PEI: ['EMBUTIR'],
+    'PTS-024': ['APLICAR'],
+    'PTS-020': ['APLICAR', 'EMBUTIR'],
+    'PTS-038': ['APLICAR'],
+    'PWS 101B/ 102B': ['EMBUTIR'],
+    'PWS 109/110': ['EMBUTIR'],
+    'PBS 144/145': ['EMBUTIR'],
+  };
 
   // Limpiar búsqueda cuando cambia la categoría
   useEffect(() => {
@@ -125,6 +150,35 @@ export default function ProductsClient({
       );
     }
 
+    // Filtro de USO (solo para perfiles)
+    if (selectedUso.length > 0) {
+      filtered = filtered.filter((product) => {
+        const isProfile = !product.category && product.material;
+        if (!isProfile) return true; // No filtrar productos normales
+
+        // Buscar el código del producto en el mapeo
+        const productCode = product.code?.toUpperCase();
+        const productName = product.name?.toUpperCase();
+
+        // Buscar coincidencia exacta o parcial
+        const usos = Object.keys(perfilUsos).find((key) => {
+          const keyUpper = key.toUpperCase();
+          return (
+            productCode?.includes(keyUpper) || productName?.includes(keyUpper)
+          );
+        });
+
+        if (!usos) return false;
+
+        // Verificar si el perfil tiene alguno de los usos seleccionados
+        const perfilTieneUso = perfilUsos[usos].some((uso) =>
+          selectedUso.includes(uso),
+        );
+
+        return perfilTieneUso;
+      });
+    }
+
     return filtered;
   }, [
     searchTerm,
@@ -134,6 +188,7 @@ export default function ProductsClient({
     selectedLightTones,
     includesLed,
     includesDriver,
+    selectedUso,
   ]);
 
   const handleClearSearch = () => {
@@ -146,6 +201,7 @@ export default function ProductsClient({
     setSelectedLightTones([]);
     setIncludesLed(null);
     setIncludesDriver(null);
+    setSelectedUso([]);
   };
 
   const toggleFinish = (finishId) => {
@@ -161,6 +217,12 @@ export default function ProductsClient({
       prev.includes(toneId)
         ? prev.filter((id) => id !== toneId)
         : [...prev, toneId],
+    );
+  };
+
+  const toggleUso = (uso) => {
+    setSelectedUso((prev) =>
+      prev.includes(uso) ? prev.filter((u) => u !== uso) : [...prev, uso],
     );
   };
 
@@ -225,7 +287,8 @@ export default function ProductsClient({
     selectedFinishes.length +
     selectedLightTones.length +
     (includesLed !== null ? 1 : 0) +
-    (includesDriver !== null ? 1 : 0);
+    (includesDriver !== null ? 1 : 0) +
+    selectedUso.length;
 
   return (
     <div className="products-layout">
@@ -339,6 +402,25 @@ export default function ProductsClient({
             </label>
           </div>
         </div>
+
+        {/* Filtro de USO - Solo para Perfiles */}
+        {categoria?.toLowerCase() === 'perfiles' && (
+          <div className="filter-group">
+            <h4 className="filter-title">Uso</h4>
+            <div className="filter-options">
+              {['APLICAR', 'SUSPENDER', 'EMBUTIR'].map((uso) => (
+                <label key={uso} className="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedUso.includes(uso)}
+                    onChange={() => toggleUso(uso)}
+                  />
+                  <span className="checkbox-label">{uso}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
       </aside>
 
       {/* Contenido principal */}
@@ -457,11 +539,6 @@ function ProductGridItem({ product, images, link }) {
       <div className="product-grid-info">
         <h3 className="product-grid-name">{product.name}</h3>
         <p className="product-grid-code">{product.code}</p>
-        {images.length > 1 && (
-          <p className="product-variants-count">
-            {images.length} variante{images.length > 1 ? 's' : ''}
-          </p>
-        )}
       </div>
     </Link>
   );

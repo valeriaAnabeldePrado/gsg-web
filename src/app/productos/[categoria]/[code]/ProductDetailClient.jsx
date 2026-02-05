@@ -25,6 +25,10 @@ export default function ProductDetailClient({ product }) {
         code: product.code, // Ajusta si la propiedad se llama diferente
         name: product.name,
         category: product.category?.name || product.category,
+        metadata: {
+          viewedAt: new Date().toISOString(), // Fecha y hora local del cliente
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
       });
     }
   }, [product]);
