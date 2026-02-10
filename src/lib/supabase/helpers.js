@@ -290,7 +290,7 @@ const LED_PROFILE_SELECT = `
   ),
   led_profile_finishes (
     finish:finishes (
-      id, name
+      id, slug, name, hex_color, sheen, texture, material_base, swatch_url
     )
   ),
   led_profile_diffusers (
