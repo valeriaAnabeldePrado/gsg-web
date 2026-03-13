@@ -471,12 +471,17 @@ export default function ProductsClient({
                 ? `profile-${product.code}`
                 : `product-${product.id}`;
 
+              const techImage = isProfile
+                ? product.media?.find((m) => m.kind === 'tech')?.path
+                : null;
+
               return (
                 <ProductGridItem
                   key={uniqueKey}
                   product={product}
                   images={getProductImages(product)}
                   link={getProductLink(product)}
+                  hoverImage={techImage}
                 />
               );
             })}
@@ -488,20 +493,20 @@ export default function ProductsClient({
 }
 
 // Componente para cada item del grid con carrusel de imágenes
-function ProductGridItem({ product, images, link }) {
+function ProductGridItem({ product, images, link, hoverImage }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
 
-  // Auto-avanzar imágenes cuando hay hover
+  // Auto-avanzar imágenes cuando hay hover (solo si no hay hoverImage dedicada)
   useEffect(() => {
-    if (!isHovering || images.length <= 1) return;
+    if (!isHovering || images.length <= 1 || hoverImage) return;
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 1000); // Cambiar cada 1 segundo
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, [isHovering, images.length]);
+  }, [isHovering, images.length, hoverImage]);
 
   // Reset al quitar hover
   useEffect(() => {
@@ -509,6 +514,8 @@ function ProductGridItem({ product, images, link }) {
       setCurrentImageIndex(0);
     }
   }, [isHovering]);
+
+  const displaySrc = isHovering && hoverImage ? hoverImage : images[currentImageIndex];
 
   return (
     <Link
@@ -519,10 +526,10 @@ function ProductGridItem({ product, images, link }) {
     >
       <div className="product-grid-image">
         <Image
-          src={images[currentImageIndex]}
+          src={displaySrc}
           alt={product.name}
           fill
-          className="object-cover"
+          className="object-cover transition-opacity duration-300"
         />
         {/* Indicadores de imágenes */}
         {images.length > 1 && (
