@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const R2_BASE_URL = 'https://pub-991b1e142013489ca0b64e1e314c7386.r2.dev';
 
 export default function AccessoryDetailClient({ accessory }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const router = useRouter();
 
   // Comunicar al layout que el contenido ha cargado
   useEffect(() => {
@@ -46,6 +47,15 @@ export default function AccessoryDetailClient({ accessory }) {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <button
+          onClick={() => router.back()}
+          className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          Volver
+        </button>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-12">
           {/* Información del accesorio - PRIMERO */}
           <div className="space-y-6 order-1 md:order-1">
@@ -145,7 +155,7 @@ export default function AccessoryDetailClient({ accessory }) {
                 <img
                   src={getImageUrl(currentImage.path)}
                   alt={currentImage.alt_text || accessory.name}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
             ) : (

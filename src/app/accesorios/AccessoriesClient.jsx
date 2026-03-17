@@ -6,8 +6,18 @@ import { NoResults } from '@/components/productos/product-no-result';
 
 export default function AccessoriesClient({ initialAccessories }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTipos, setSelectedTipos] = useState([]);
   const [selectedFinishes, setSelectedFinishes] = useState([]);
   const [selectedLightTones, setSelectedLightTones] = useState([]);
+
+  // Extraer tipos únicos
+  const availableTipos = useMemo(() => {
+    const tipos = new Set();
+    initialAccessories.forEach((a) => {
+      if (a.tipo) tipos.add(a.tipo);
+    });
+    return Array.from(tipos).sort();
+  }, [initialAccessories]);
 
   // Extraer acabados únicos
   const availableFinishes = useMemo(() => {
@@ -50,6 +60,11 @@ export default function AccessoriesClient({ initialAccessories }) {
       });
     }
 
+    // Filtro de tipo
+    if (selectedTipos.length > 0) {
+      filtered = filtered.filter((a) => selectedTipos.includes(a.tipo));
+    }
+
     // Filtro de acabados
     if (selectedFinishes.length > 0) {
       filtered = filtered.filter((accessory) =>
@@ -69,15 +84,22 @@ export default function AccessoriesClient({ initialAccessories }) {
     }
 
     return filtered;
-  }, [searchTerm, initialAccessories, selectedFinishes, selectedLightTones]);
+  }, [searchTerm, initialAccessories, selectedTipos, selectedFinishes, selectedLightTones]);
 
   const handleClearSearch = () => {
     setSearchTerm('');
   };
 
   const handleClearFilters = () => {
+    setSelectedTipos([]);
     setSelectedFinishes([]);
     setSelectedLightTones([]);
+  };
+
+  const toggleTipo = (tipo) => {
+    setSelectedTipos((prev) =>
+      prev.includes(tipo) ? prev.filter((t) => t !== tipo) : [...prev, tipo],
+    );
   };
 
   const toggleFinish = (finishId) => {
@@ -108,7 +130,7 @@ export default function AccessoriesClient({ initialAccessories }) {
   };
 
   const activeFiltersCount =
-    selectedFinishes.length + selectedLightTones.length;
+    selectedTipos.length + selectedFinishes.length + selectedLightTones.length;
 
   return (
     <div className="products-layout">
@@ -122,6 +144,25 @@ export default function AccessoriesClient({ initialAccessories }) {
             </button>
           )}
         </div>
+
+        {/* Tipo */}
+        {availableTipos.length > 0 && (
+          <div className="filter-group">
+            <h4 className="filter-title">Tipo</h4>
+            <div className="filter-options">
+              {availableTipos.map((tipo) => (
+                <label key={tipo} className="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedTipos.includes(tipo)}
+                    onChange={() => toggleTipo(tipo)}
+                  />
+                  <span className="checkbox-label">{tipo}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Acabados */}
         {availableFinishes.length > 0 && (
