@@ -158,7 +158,7 @@ const featuredProducts = [
     name: 'Perfiles LED Premium',
     category: 'Perfiles',
     image: '/gsg/portadas/perfiles.png',
-    link: '/productos/perfiles',
+    link: '/productos?categoria=Perfiles',
   },
   {
     id: 2,

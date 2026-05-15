@@ -24,7 +24,6 @@ export default function AccessoriesClient({ initialAccessories }) {
     initialAccessories.forEach((accessory) => {
       if (accessory.tipo) typesSet.add(accessory.tipo);
     });
-    // Priorizar el orden definido
     const ordered = ACCESSORY_TYPES.filter((t) => typesSet.has(t));
     const others = Array.from(typesSet).filter((t) => !ACCESSORY_TYPES.includes(t));
     return [...ordered, ...others];

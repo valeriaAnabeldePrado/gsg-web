@@ -290,7 +290,7 @@ const LED_PROFILE_SELECT = `
   ),
   led_profile_finishes (
     finish:finishes (
-      id, name
+      id, slug, name, hex_color, sheen, texture, material_base, swatch_url
     )
   ),
   led_profile_diffusers (
@@ -482,7 +482,7 @@ function normalizeAccessory(raw) {
     name: raw.name,
     description: raw.description,
     photoUrl: raw.photo_url,
-    tipo: raw.tipo,
+    tipo: raw.tipo || null,
     amperage: raw.amperage,
     watt: raw.watt,
     voltageLabel: raw.voltage_label,
