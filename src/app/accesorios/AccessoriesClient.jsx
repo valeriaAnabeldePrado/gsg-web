@@ -4,10 +4,31 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { NoResults } from '@/components/productos/product-no-result';
 
+const ACCESSORY_TYPES = [
+  'Amplificadores',
+  'Controladoras',
+  'Dimmers',
+  'Conectores',
+  'Sensores',
+];
+
 export default function AccessoriesClient({ initialAccessories }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedFinishes, setSelectedFinishes] = useState([]);
   const [selectedLightTones, setSelectedLightTones] = useState([]);
+
+  // Extraer tipos únicos
+  const availableTypes = useMemo(() => {
+    const typesSet = new Set();
+    initialAccessories.forEach((accessory) => {
+      if (accessory.tipo) typesSet.add(accessory.tipo);
+    });
+    // Priorizar el orden definido
+    const ordered = ACCESSORY_TYPES.filter((t) => typesSet.has(t));
+    const others = Array.from(typesSet).filter((t) => !ACCESSORY_TYPES.includes(t));
+    return [...ordered, ...others];
+  }, [initialAccessories]);
 
   // Extraer acabados únicos
   const availableFinishes = useMemo(() => {
@@ -50,6 +71,13 @@ export default function AccessoriesClient({ initialAccessories }) {
       });
     }
 
+    // Filtro de tipos
+    if (selectedTypes.length > 0) {
+      filtered = filtered.filter((accessory) =>
+        selectedTypes.includes(accessory.tipo),
+      );
+    }
+
     // Filtro de acabados
     if (selectedFinishes.length > 0) {
       filtered = filtered.filter((accessory) =>
@@ -69,15 +97,24 @@ export default function AccessoriesClient({ initialAccessories }) {
     }
 
     return filtered;
-  }, [searchTerm, initialAccessories, selectedFinishes, selectedLightTones]);
+  }, [searchTerm, initialAccessories, selectedTypes, selectedFinishes, selectedLightTones]);
 
   const handleClearSearch = () => {
     setSearchTerm('');
   };
 
   const handleClearFilters = () => {
+    setSelectedTypes([]);
     setSelectedFinishes([]);
     setSelectedLightTones([]);
+  };
+
+  const toggleType = (type) => {
+    setSelectedTypes((prev) =>
+      prev.includes(type)
+        ? prev.filter((t) => t !== type)
+        : [...prev, type],
+    );
   };
 
   const toggleFinish = (finishId) => {
@@ -108,7 +145,7 @@ export default function AccessoriesClient({ initialAccessories }) {
   };
 
   const activeFiltersCount =
-    selectedFinishes.length + selectedLightTones.length;
+    selectedTypes.length + selectedFinishes.length + selectedLightTones.length;
 
   return (
     <div className="products-layout">
@@ -122,6 +159,25 @@ export default function AccessoriesClient({ initialAccessories }) {
             </button>
           )}
         </div>
+
+        {/* Tipos de Accesorio */}
+        {availableTypes.length > 0 && (
+          <div className="filter-group">
+            <h4 className="filter-title">Tipo de Accesorio</h4>
+            <div className="filter-options">
+              {availableTypes.map((type) => (
+                <label key={type} className="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedTypes.includes(type)}
+                    onChange={() => toggleType(type)}
+                  />
+                  <span className="checkbox-label">{type}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Acabados */}
         {availableFinishes.length > 0 && (

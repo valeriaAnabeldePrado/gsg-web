@@ -6,6 +6,107 @@ import './product-detail.css';
 import ProfileComparisonTable from '@/components/products/ProfileComparisonTable';
 import { trackEvent } from '@/lib/analytics';
 
+const R2_BASE_URL = 'https://pub-991b1e142013489ca0b64e1e314c7386.r2.dev';
+
+// Barra visual de rango de temperaturas de color (frío → súper cálido)
+function LightTemperatureBar({ tones }) {
+  if (!tones || tones.length === 0) return null;
+
+  // Orden fijo de frío a súper cálido
+  const order = [
+    { key: 'fría', label: 'Fría', kelvin: 6500, hex: '#A2C2E1' },
+    { key: 'neutra', label: 'Neutra', kelvin: 4000, hex: '#FFF8DC' },
+    { key: 'cálida', label: 'Cálida', kelvin: 2700, hex: '#FFD700' },
+    { key: 'súper cálida', label: 'Súper cálida', kelvin: 3000, hex: '#FF8C00' },
+  ];
+
+  // Determinar cuáles de las 4 posiciones están presentes en el producto
+  const normalizedToneNames = tones.map((t) => (t.name || '').toLowerCase().trim());
+  const present = order.map((o) => normalizedToneNames.includes(o.key));
+
+  // Solo mostrar si hay al menos 2 tonos para que tenga sentido la barra
+  const presentCount = present.filter(Boolean).length;
+  if (presentCount < 2) return null;
+
+  // Construir gradiente basado en los colores presentes
+  const presentStops = order
+    .filter((_, i) => present[i])
+    .map((o) => o.hex);
+
+  const gradient = presentStops.length > 1
+    ? `linear-gradient(to right, ${presentStops.join(', ')})`
+    : `linear-gradient(to right, ${presentStops[0]}, ${presentStops[0]})`;
+
+  return (
+    <div className="light-temp-bar-wrapper">
+      {/* Nombres arriba */}
+      <div className="light-temp-bar-labels">
+        {order.map((o, i) => {
+          if (!present[i]) return null;
+          return (
+            <div key={o.key} className="light-temp-bar-label-col">
+              <span className="light-temp-bar-name">{o.label}</span>
+            </div>
+          );
+        })}
+      </div>
+      {/* Barra de colores */}
+      <div className="light-temp-bar-track" style={{ background: gradient }} />
+      {/* Kelvin abajo */}
+      <div className="light-temp-bar-kelvins">
+        {order.map((o, i) => {
+          if (!present[i]) return null;
+          return (
+            <div key={o.key} className="light-temp-bar-kelvin-col">
+              <span className="light-temp-bar-kelvin-val">{o.kelvin}K</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+const getImageUrl = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  return `${R2_BASE_URL}/${path}`;
+};
+
+// Helper: convierte Kelvin a un color RGB aproximado para el gradiente de fondo
+function kelvinToColor(k) {
+  if (!k || k < 1000) return 'rgb(255,255,255)';
+  let r, g, b;
+  // Aproximación simplificada basada en el planckiano
+  const temp = k / 100;
+  if (temp <= 66) {
+    r = 255;
+    g = 99.4708025861 * Math.log(temp) - 161.1195681661;
+    if (temp <= 19) b = 0;
+    else b = 138.5177312231 * Math.log(temp - 10) - 305.0447927307;
+  } else {
+    r = 329.698727446 * Math.pow(temp - 60, -0.1332047592);
+    g = 288.1221695283 * Math.pow(temp - 60, -0.0755148492);
+    b = 255;
+  }
+  return `rgb(${Math.max(0, Math.min(255, Math.round(r)))}, ${Math.max(0, Math.min(255, Math.round(g)))}, ${Math.max(0, Math.min(255, Math.round(b)))})`;
+}
+
+// Mapeo fijo de nombres de tono a Kelvin y color representativo (estándar GSG)
+function getToneInfo(toneName) {
+  const normalized = (toneName || '').toLowerCase().trim();
+  const map = {
+    'cálida': { kelvin: 2700, hex: '#FFD700' },
+    'calida': { kelvin: 2700, hex: '#FFD700' },
+    'súper cálida': { kelvin: 3000, hex: '#FF8C00' },
+    'super calida': { kelvin: 3000, hex: '#FF8C00' },
+    'neutra': { kelvin: 4000, hex: '#FFF8DC' },
+    'fría': { kelvin: 6500, hex: '#A2C2E1' },
+    'fria': { kelvin: 6500, hex: '#A2C2E1' },
+  };
+  return map[normalized] || { kelvin: null, hex: '#e5e5e5' };
+}
+
 export default function ProductDetailClient({ product }) {
   const pathname = usePathname();
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
@@ -132,7 +233,7 @@ export default function ProductDetailClient({ product }) {
           <div className="product-gallery">
             <div className="gallery-main-image">
               <img
-                src={currentImage.path}
+                src={getImageUrl(currentImage.path)}
                 alt={currentImage.alt_text || product.name}
               />
             </div>
@@ -148,7 +249,7 @@ export default function ProductDetailClient({ product }) {
                     }`}
                   >
                     <img
-                      src={img.path}
+                      src={getImageUrl(img.path)}
                       alt={img.alt_text || `Vista ${index + 1}`}
                     />
                   </button>
@@ -262,16 +363,7 @@ export default function ProductDetailClient({ product }) {
                     {selectedVariant.name}
                   </p>
                 </div>
-                <div className="light-tones-grid">
-                  {selectedVariant.lightTones.map((tone) => (
-                    <div key={tone.id} className="light-tone-item">
-                      <p className="light-tone-name">{tone.name}</p>
-                      {tone.kelvin && (
-                        <p className="light-tone-kelvin">{tone.kelvin}K</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <LightTemperatureBar tones={selectedVariant.lightTones} />
               </section>
             )}
 
@@ -312,7 +404,7 @@ export default function ProductDetailClient({ product }) {
                         {config.voltage && (
                           <div className="spec-row">
                             <span className="spec-label">Voltaje</span>
-                            <span className="spec-value">{config.voltage}</span>
+                            <span className="spec-value">{config.voltage}V</span>
                           </div>
                         )}
                         {config.length_cm && config.width_cm && (
@@ -364,7 +456,7 @@ export default function ProductDetailClient({ product }) {
                           <div className="spec-row">
                             <span className="spec-label">Diámetro</span>
                             <span className="spec-value">
-                              {config.diameter_description}
+                              {config.diameter_description}mm
                             </span>
                           </div>
                         )}

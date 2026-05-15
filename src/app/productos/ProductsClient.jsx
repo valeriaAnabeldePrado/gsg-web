@@ -5,6 +5,14 @@ import Image from 'next/image';
 import { NoResults } from '@/components/productos/product-no-result';
 import ProfileComparisonTable from '@/components/products/ProfileComparisonTable';
 
+const R2_BASE_URL = 'https://pub-991b1e142013489ca0b64e1e314c7386.r2.dev';
+
+const getImageUrl = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  return `${R2_BASE_URL}/${path}`;
+};
+
 export default function ProductsClient({
   initialProducts,
   categoria,
@@ -238,14 +246,14 @@ export default function ProductsClient({
       // Para perfiles LED, usar imágenes de tipo 'gallery'
       if (product.media && Array.isArray(product.media)) {
         const galleryImages = product.media.filter((m) => m.kind === 'gallery');
-        images.push(...galleryImages.map((img) => img.path));
+        images.push(...galleryImages.map((img) => getImageUrl(img.path)));
       }
     } else {
       // Para productos normales
       // Imágenes del producto general
       if (product.media && Array.isArray(product.media)) {
         const coverImages = product.media.filter((m) => m.kind === 'cover');
-        images.push(...coverImages.map((img) => img.path));
+        images.push(...coverImages.map((img) => getImageUrl(img.path)));
       }
 
       // Imágenes de las variantes
@@ -256,9 +264,10 @@ export default function ProductsClient({
               (m) => m.kind === 'cover',
             );
             variantCovers.forEach((img) => {
+              const url = getImageUrl(img.path);
               // Evitar duplicados
-              if (!images.includes(img.path)) {
-                images.push(img.path);
+              if (!images.includes(url)) {
+                images.push(url);
               }
             });
           }
@@ -524,7 +533,6 @@ function ProductGridItem({ product, images, link }) {
           fill
           className="object-cover"
         />
-        {/* Indicadores de imágenes */}
         {images.length > 1 && (
           <div className="image-indicators">
             {images.map((_, index) => (

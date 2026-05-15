@@ -191,9 +191,8 @@
 /* Products Grid */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2px;
-  background: #f0f0f0;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
 }
 
 @media (max-width: 1200px) {
@@ -205,6 +204,7 @@
 @media (max-width: 768px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 }
 
@@ -216,68 +216,58 @@
 
 /* Product Grid Item */
 .product-grid-item {
-  position: relative;
-  aspect-ratio: 1;
   background: white;
+  border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   display: flex;
   flex-direction: column;
+  border: 1px solid #ebebeb;
 }
 
 .product-grid-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* Product Image */
 .product-grid-image {
   position: relative;
   width: 100%;
-  height: 100%;
-  background: white;
+  aspect-ratio: 1;
+  background: #f4f4f4;
   overflow: hidden;
 }
 
 .product-grid-image img {
-  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .product-grid-item:hover .product-grid-image img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 /* Product Info */
 .product-grid-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.4s ease;
-}
-
-.product-grid-item:hover .product-grid-info {
-  opacity: 1;
-  transform: translateY(0);
+  padding: 0.875rem 1rem;
+  border-top: 1px solid #f0f0f0;
 }
 
 .product-grid-name {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
-  color: white;
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
+  color: #1a1a1a;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-grid-code {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+  color: #999;
   font-family: monospace;
   text-transform: uppercase;
   letter-spacing: 0.05em;

@@ -150,7 +150,7 @@
 .form-group-floating {
   position: relative;
   padding-top: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   transition: border-color 0.3s ease;
 }
 
@@ -178,7 +178,7 @@
   top: 0;
   left: 0;
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.75);
   font-weight: 300;
   pointer-events: none;
   transform-origin: left top;

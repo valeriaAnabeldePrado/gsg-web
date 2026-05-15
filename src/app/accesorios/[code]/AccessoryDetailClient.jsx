@@ -32,6 +32,13 @@ export default function AccessoryDetailClient({ accessory }) {
 
   const currentImage = allImages[selectedImageIndex];
 
+  // Ficha técnica PDF
+  const datasheet = accessory.media?.find((m) => m.kind === 'datasheet');
+
+  // Calcular potencia según amperaje
+  const power12V = accessory.amperage ? Math.round(accessory.amperage * 12) : null;
+  const power24V = accessory.amperage ? Math.round(accessory.amperage * 24) : null;
+
   // Helper function to get full image URL
   const getImageUrl = (path) => {
     if (!path) return '';
@@ -68,6 +75,24 @@ export default function AccessoryDetailClient({ accessory }) {
               <h3 className="font-bold text-lg mb-4">
                 Especificaciones Técnicas
               </h3>
+              {accessory.amperage && (
+                <div className="flex justify-between items-center border-b border-gray-200 pb-3">
+                  <span className="text-gray-600">Amperaje Máximo</span>
+                  <span className="font-semibold text-gray-900">
+                    {accessory.amperage} A
+                  </span>
+                </div>
+              )}
+              {(power12V || power24V) && (
+                <div className="flex justify-between items-center border-b border-gray-200 pb-3">
+                  <span className="text-gray-600">Potencia Calculada</span>
+                  <span className="font-semibold text-gray-900">
+                    {power12V && `${power12V}W @ 12V`}
+                    {power12V && power24V && ' / '}
+                    {power24V && `${power24V}W @ 24V`}
+                  </span>
+                </div>
+              )}
               {accessory.watt && (
                 <div className="flex justify-between items-center border-b border-gray-200 pb-3">
                   <span className="text-gray-600">Potencia</span>
@@ -90,6 +115,21 @@ export default function AccessoryDetailClient({ accessory }) {
                   <span className="font-semibold text-gray-900">
                     {accessory.voltageMin}V - {accessory.voltageMax}V
                   </span>
+                </div>
+              )}
+              {datasheet && (
+                <div className="pt-2">
+                  <a
+                    href={datasheet.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                    </svg>
+                    Descargar Ficha Técnica (PDF)
+                  </a>
                 </div>
               )}
             </div>

@@ -40,7 +40,7 @@ const FooterM = () => {
     {
       icon: <Clock size={18} />,
       label: 'Horario',
-      value: 'Lunes a viernes · 9:00 a 18:00 hs',
+      value: 'Lunes a viernes · 8:00 a 12:30hs y 13:00 a 17:00hs',
     },
     {
       icon: <MapPin size={18} />,

@@ -129,14 +129,14 @@ const Contacto = () => {
               </a>
             </div>
             <div>
-              <span className="info-label">Redes</span>
+              <span className="info-label">Instagram</span>
               <a
-                href="https://instagram.com/gsgdesign"
+                href="https://www.instagram.com/gsgdesignsrl/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="info-value"
               >
-                @gsgdesign
+                @gsgdesignsrl
               </a>
             </div>
           </div>

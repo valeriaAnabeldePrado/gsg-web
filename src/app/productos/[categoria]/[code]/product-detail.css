@@ -302,11 +302,62 @@
   color: #999;
 }
 
+/* === LIGHT TEMPERATURE BAR === */
+.light-temp-bar-wrapper {
+  margin-top: 1rem;
+  padding: 1.5rem 0;
+}
+
+.light-temp-bar-track {
+  height: 12px;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.6rem 0;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.light-temp-bar-labels,
+.light-temp-bar-kelvins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.light-temp-bar-label-col,
+.light-temp-bar-kelvin-col {
+  flex: 1;
+  text-align: center;
+}
+
+.light-temp-bar-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.light-temp-bar-kelvin-val {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+}
+
 /* === SPECIFICATIONS === */
 .specs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
+}
+
+.specs-grid .spec-card {
+  flex: 1 1 320px;
+  max-width: 420px;
 }
 
 .spec-card {
