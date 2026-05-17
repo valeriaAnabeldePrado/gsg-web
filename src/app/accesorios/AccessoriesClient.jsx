@@ -10,7 +10,10 @@ const ACCESSORY_TYPES = [
   'Dimmers',
   'Conectores',
   'Sensores',
+  'Cargadores',
 ];
+
+const tipoBadgeColor = 'bg-gray-100 text-gray-700';
 
 export default function AccessoriesClient({ initialAccessories }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -269,19 +272,54 @@ export default function AccessoriesClient({ initialAccessories }) {
               <Link
                 key={accessory.id}
                 href={`/accesorios/${accessory.code}`}
-                className="product-grid-item"
+                className="product-grid-item group"
               >
                 <div className="product-grid-image">
                   <Image
                     src={getAccessoryImage(accessory)}
                     alt={accessory.name}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
+                  {accessory.tipo && (
+                    <span className={`absolute top-2 left-2 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${tipoBadgeColor}`}>
+                      {accessory.tipo}
+                    </span>
+                  )}
                 </div>
                 <div className="product-grid-info">
                   <h3 className="product-grid-name">{accessory.name}</h3>
                   <p className="product-grid-code">{accessory.code}</p>
+                  {/* Specs mini */}
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {accessory.watt && (
+                      <span className="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                        {accessory.watt}W
+                      </span>
+                    )}
+                    {accessory.amperage && (
+                      <span className="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                        {accessory.amperage}A
+                      </span>
+                    )}
+                    {accessory.voltageLabel && (
+                      <span className="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                        {accessory.voltageLabel}
+                      </span>
+                    )}
+                  </div>
+                  {accessory.lightTones?.length > 0 && (
+                    <div className="mt-1.5 flex flex-wrap gap-1">
+                      {accessory.lightTones.slice(0, 3).map((tone) => (
+                        <span key={tone.id} className="text-[10px] text-gray-400">
+                           {tone.name}{tone.kelvin ? ` (${tone.kelvin}K)` : ''}
+                         </span>
+                       ))}
+                       {accessory.lightTones.length > 3 && (
+                         <span className="text-[10px] text-gray-400">+{accessory.lightTones.length - 3}</span>
+                      )}
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}

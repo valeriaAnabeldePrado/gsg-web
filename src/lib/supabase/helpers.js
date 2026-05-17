@@ -440,6 +440,8 @@ const ACCESSORY_SELECT = `
   voltage_label,
   voltage_min,
   voltage_max,
+  specs,
+  notes,
   created_at,
   accessory_finishes (
     finish:finishes (
@@ -488,6 +490,8 @@ function normalizeAccessory(raw) {
     voltageLabel: raw.voltage_label,
     voltageMin: raw.voltage_min,
     voltageMax: raw.voltage_max,
+    specs: raw.specs || {},
+    notes: raw.notes || null,
     createdAt: raw.created_at,
     finishes: raw.accessory_finishes?.map((af) => af.finish) || [],
     lightTones: raw.accessory_light_tones?.map((alt) => alt.light_tone) || [],
