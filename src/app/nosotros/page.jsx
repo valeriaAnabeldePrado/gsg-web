@@ -344,7 +344,7 @@ const Nosotros = () => {
           {/* Block 3: Manufacture */}
           <div className="value-block">
             <div className="value-img-wrapper">
-              <Image src="/gsg/hall.png" alt="Producción Nacional" fill />
+              <Image src="/industria-argentina.webp" alt="Industria Argentina" fill />
             </div>
             <div className="value-content">
               <span className="value-kicker">Manufactura</span>
