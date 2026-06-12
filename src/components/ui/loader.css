@@ -1,0 +1,54 @@
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity 0.8s ease;
+}
+
+.loader-overlay.loader-hiding {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.loader-logo {
+  animation: loader-fade-in 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes loader-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loader-bar {
+  width: 120px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #ffffff;
+  animation: loader-progress 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes loader-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}

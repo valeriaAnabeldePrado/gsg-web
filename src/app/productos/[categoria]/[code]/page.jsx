@@ -2,6 +2,8 @@ import { getProductByCode } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 import ProductDetailClient from './ProductDetailClient';
 
+export const revalidate = 0;
+
 // Server Component - se ejecuta en el servidor
 export default async function ProductPage({ params }) {
   // Esperar a que params se resuelva

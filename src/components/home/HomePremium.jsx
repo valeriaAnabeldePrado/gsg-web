@@ -155,51 +155,51 @@ const LeafIcon = () => (
 const featuredProducts = [
   {
     id: 1,
-    name: 'Perfiles LED Premium',
+    name: 'Perfiles LED',
     category: 'Perfiles',
-    image: '/gsg/portadas/perfiles.png',
+    image: '/home/card-perfiles.webp',
     link: '/productos?categoria=Perfiles',
   },
   {
     id: 2,
     name: 'Luminarias de Techo',
     category: 'Techo',
-    image: '/gsg/portadas/techo.png',
+    image: '/home/card-techo.webp',
     link: '/productos?categoria=Techo',
   },
   {
     id: 3,
     name: 'Luminarias Colgantes',
     category: 'Colgantes',
-    image: '/gsg/portadas/colgantes.png',
+    image: '/home/card-colgantes.webp',
     link: '/productos?categoria=colgantes',
   },
   {
     id: 4,
     name: 'Luminarias de Pared',
     category: 'Pared',
-    image: '/gsg/portadas/pared.png',
+    image: '/home/card-pared.webp',
     link: '/productos?categoria=pared',
   },
   {
     id: 5,
     name: 'Iluminación Exterior',
     category: 'Exterior',
-    image: '/gsg/portadas/exterior.png',
+    image: '/home/card-exterior.webp',
     link: '/productos?categoria=exterior',
   },
   {
     id: 6,
     name: 'Luminarias de Pie',
     category: 'Pie',
-    image: '/gsg/portadas/pie.png',
+    image: '/home/card-pie.webp',
     link: '/productos?categoria=pie',
   },
   {
     id: 7,
-    name: 'Tiras LED COB',
+    name: 'Tiras LED',
     category: 'Tiras LED',
-    image: '/gsg/fotos_blanco/led/led-cob-cct.jpg',
+    image: '/home/card-tiras-led.webp',
     link: '/led',
   },
   {
@@ -253,29 +253,35 @@ const features = [
 const heroSlides = [
   {
     id: 1,
-    image: '/gsg/STK-H.png',
-    title: 'Iluminación Arquitectónica',
-    subtitle: 'Diseño y funcionalidad en perfecta armonía',
+    image: '/home/hero1.webp',
+    label: '130+ DISTRIBUIDORES',
+    title: 'Espacios que inspiran',
+    subtitle: 'Luminarias LED de fabricación argentina',
+    cta: { text: 'ENCONTRAR DISTRIBUIDOR', href: '/distribuidores' },
   },
   {
     id: 2,
-    image: '/gsg/portadas/colgantes.png',
-    title: 'Diseño y Elegancia',
-    subtitle: 'Luminarias que definen tu estilo',
+    image: '/home/hero2.webp',
+    label: 'LÍNEA PROFESIONAL',
+    title: 'Iluminación Arquitectónica',
+    subtitle: 'Soluciones LED diseñadas para integrarse de forma precisa en proyectos corporativos, comerciales y arquitectónicos.',
+    cta: { text: 'VER PROYECTOS', href: '/productos' },
   },
   {
     id: 3,
-    image: '/gsg/hallH.png',
-    title: 'Espacios que Inspiran',
-    subtitle: 'Transformamos ambientes con tecnología LED',
+    image: '/home/hero3.webp',
+    label: 'COLECCIÓN ALABASTRO',
+    title: 'Diseño y Materialidad',
+    subtitle: 'Piezas lumínicas que combinan tecnología LED, materiales nobles y una estética contemporánea para proyectos de alto nivel.',
+    cta: { text: 'DESCUBRIR COLECCIÓN', href: '/productos' },
   },
 ];
 
 const stats = [
-  { number: '15+', label: 'Años de experiencia' },
-  { number: '100+', label: 'Distribuidores' },
-  { number: '50k+', label: 'Proyectos realizados' },
-  { number: '200+', label: 'Productos únicos' },
+  { number: '12', label: 'Años de experiencia' },
+  { number: '133', label: 'Distribuidores' },
+  { number: '24', label: 'Provincias' },
+  { number: '100%', label: 'Fabricación e importación propia' },
 ];
 
 export default function HomePremium() {
@@ -312,7 +318,7 @@ export default function HomePremium() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
   }, []);
 
@@ -575,6 +581,13 @@ export default function HomePremium() {
       },
     );
 
+    // Label fade in
+    gsap.fromTo(
+      '.hero-label',
+      { opacity: 0, y: -10 },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+    );
+
     // Subtítulo con fade in suave y subida
     gsap.fromTo(
       '.hero-subtitle',
@@ -591,6 +604,13 @@ export default function HomePremium() {
         delay: 0.4,
         ease: 'power3.out',
       },
+    );
+
+    // CTA fade in
+    gsap.fromTo(
+      '.hero-slide-cta',
+      { opacity: 0, y: 15 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.6, ease: 'power3.out' },
     );
   }, [mounted, currentSlide]);
 
@@ -619,20 +639,20 @@ export default function HomePremium() {
         ))}
 
         <div className="hero-content">
+          <span className="hero-label">{heroSlides[currentSlide].label}</span>
+
           <h1 className="hero-title" ref={titleRef}>
             {heroSlides[currentSlide].title}
           </h1>
 
           <p className="hero-subtitle">{heroSlides[currentSlide].subtitle}</p>
 
-          {/* <div className="hero-cta-group">
-            <Link href="/productos" className="btn-glow primary-cta">
-              Ver Catálogo
-            </Link>
-            <Link href="/contacto" className="btn-outline secondary-cta">
-              Contactar
-            </Link>
-          </div> */}
+          <Link
+            href={heroSlides[currentSlide].cta.href}
+            className="hero-slide-cta"
+          >
+            {heroSlides[currentSlide].cta.text} <ArrowRightIcon />
+          </Link>
 
           <div className="hero-dots">
             {heroSlides.map((_, index) => (
@@ -645,10 +665,6 @@ export default function HomePremium() {
           </div>
         </div>
 
-        <div className="scroll-indicator">
-          <span>Scroll</span>
-          <div className="scroll-line"></div>
-        </div>
       </section>
 
       {/* STATS STRIP */}
@@ -669,18 +685,11 @@ export default function HomePremium() {
           <div className="about-content">
             <span className="section-label">Nuestra Empresa</span>
             <h2 className="about-title">
-              Innovación constante en iluminación LED
+              Soluciones LED para proyectos profesionales
             </h2>
             <p className="about-text">
-              Somos una empresa innovadora y en constante movimiento. Buscamos
-              día a día tecnologías y procesos que nos permitan crear luminarias
-              con un diseño diferencial, eficiencia superior y durabilidad
-              excepcional.
-            </p>
-            <p className="about-text">
-              Con más de 15 años en el mercado, nos hemos consolidado como
-              referentes en soluciones de iluminación profesional, combinando
-              tecnología de vanguardia con un servicio personalizado.
+              Más de 12 años desarrollando soluciones de iluminación para
+              distribuidores, comercios y proyectos en todo el país.
             </p>
             <Link href="/nosotros" className="btn-glow">
               Conocer más
@@ -691,22 +700,11 @@ export default function HomePremium() {
             <div className="tech-visual-container">
               <div className="tech-main-image">
                 <Image
-                  src="/lectus.png"
-                  alt="Tecnología LED de Vanguardia"
+                  src="/home/empresa.webp"
+                  alt="Fabricación propia GSG"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
-              </div>
-              <div className="tech-glass-card">
-                <div className="tech-stat">
-                  <span className="tech-value">50k+</span>
-                  <span className="tech-label">Horas de Vida Útil</span>
-                </div>
-                <div className="tech-divider"></div>
-                <div className="tech-stat">
-                  <span className="tech-value">CRI&gt;90</span>
-                  <span className="tech-label">Alta Fidelidad de Color</span>
-                </div>
               </div>
             </div>
           </div>
@@ -716,100 +714,35 @@ export default function HomePremium() {
       {/* PRODUCTS SHOWCASE */}
       <section className="home-products-showcase" ref={productsRef}>
         <div className="home-products-header">
-          <h2>Nuestros Productos</h2>
-          <p>Descubre soluciones de iluminación para cada proyecto</p>
-          <div className="home-products-nav">
-            <button
-              className={`home-products-nav-btn ${!canScrollLeft ? 'disabled' : ''}`}
-              onClick={() => scrollProducts('left')}
-              disabled={!canScrollLeft}
-              aria-label="Anterior"
+          <h2>Nuestras Líneas</h2>
+          <p>Soluciones de iluminación para cada proyecto</p>
+        </div>
+
+        <div className="home-products-grid">
+          {featuredProducts.map((product) => (
+            <Link
+              href={product.link}
+              key={product.id}
+              className="home-product-card"
             >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-            <button
-              className={`home-products-nav-btn ${!canScrollRight ? 'disabled' : ''}`}
-              onClick={() => scrollProducts('right')}
-              disabled={!canScrollRight}
-              aria-label="Siguiente"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div
-          className="home-products-scroll-container"
-          ref={productsScrollRef}
-          onScroll={checkScrollButtons}
-        >
-          <div className="home-products-grid">
-            {featuredProducts.map((product) => (
-              <Link
-                href={product.link}
-                key={product.id}
-                className="home-product-card"
-              >
-                <div className="home-product-image">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="home-product-info">
-                  <span className="home-product-category">
-                    {product.category}
-                  </span>
-                  <h3 className="home-product-name">{product.name}</h3>
-                  <span className="home-product-link">
-                    Ver más <ArrowRightIcon />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURES SECTION */}
-      <section className="features-section" ref={featuresRef}>
-        <div className="features-header">
-          <span className="section-label">Why GSG?</span>
-          <h2>Excelencia en cada detalle</h2>
-        </div>
-
-        <div className="features-container">
-          {features.map((feature, index) => (
-            <div key={index} className="feature-item">
-              <div className="feature-header">
-                <span className="feature-number">{feature.number}</span>
-                <div className="feature-icon">{feature.icon}</div>
+              <div className="home-product-image">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <div className="feature-content">
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-text">{feature.text}</p>
+              <div className="home-product-info">
+                <span className="home-product-category">
+                  {product.category}
+                </span>
+                <h3 className="home-product-name">{product.name}</h3>
+                <span className="home-product-link">
+                  Ver más <ArrowRightIcon />
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -819,23 +752,21 @@ export default function HomePremium() {
         <div className="inspiration-container">
           <div className="inspiration-image">
             <Image
-              src="/gsg/hallH.png"
-              alt="Inspiración Lumínica"
+              src="/home/ilu-experiencia.webp"
+              alt="La iluminación como experiencia"
               fill
               className="object-cover"
             />
           </div>
           <div className="inspiration-content">
-            <span className="section-label">Inspiración</span>
-            <h2 className="inspiration-title">La luz como materia prima</h2>
+            <span className="section-label">NUESTRA VISIÓN</span>
+            <h2 className="inspiration-title">La iluminación como experiencia</h2>
             <p className="inspiration-text">
-              Entendemos la luz no solo como una herramienta funcional, sino
-              como un elemento capaz de moldear emociones y definir la atmósfera
-              de cada espacio. Nuestros diseños buscan el equilibrio perfecto
-              entre técnica y poesía visual.
+              Desarrollamos soluciones LED que combinan diseño, funcionalidad y
+              tecnología para proyectos residenciales y comerciales.
             </p>
-            <Link href="/productos" className="btn-link">
-              Descubrir Colecciones
+            <Link href="/nosotros" className="btn-link">
+              CONOCER MÁS
             </Link>
           </div>
         </div>
@@ -845,16 +776,15 @@ export default function HomePremium() {
       <section className="design-section">
         <div className="design-container">
           <div className="design-content">
-            <span className="section-label">Proyectos</span>
-            <h2 className="design-title">Arquitectura y Luz</h2>
+            <span className="section-label">PROYECTOS PROFESIONALES</span>
+            <h2 className="design-title">Soluciones LED para obras y comercios</h2>
             <p className="design-text">
-              Colaboramos estrechamente con arquitectos y diseñadores para
-              integrar la iluminación como parte fundamental de la obra. Cada
-              proyecto es un nuevo desafío para innovar y crear atmósferas
-              únicas.
+              Trabajamos junto a distribuidores, estudios y empresas desarrollando
+              soluciones de iluminación para proyectos residenciales, comerciales
+              y corporativos.
             </p>
-            <Link href="/contacto" className="btn-link">
-              Iniciar Proyecto
+            <Link href="/productos" className="btn-link">
+              VER PRODUCTOS
             </Link>
           </div>
           <div className="design-image">
@@ -870,66 +800,104 @@ export default function HomePremium() {
 
       {/* CTA SECTION */}
       <section className="cta-section">
-        <div className="cta-content">
-          <h2 className="cta-title">¿Listo para transformar tu espacio?</h2>
-          <p className="cta-text">
-            Nuestro equipo de expertos está listo para asesorarte en tu próximo
-            proyecto de iluminación. Contáctanos y descubre cómo podemos
-            ayudarte.
-          </p>
-          <div className="hero-cta-group">
-            <Link href="/contacto" className="btn-glow">
-              Solicitar Asesoría
-            </Link>
-            <Link href="/distribuidores" className="btn-outline">
-              Encontrar Distribuidor
-            </Link>
+        <div className="cta-bg">
+          <Image
+            src="/home/cta-final.webp"
+            alt="Iluminación profesional"
+            fill
+            className="object-cover"
+          />
+          <div className="cta-overlay" />
+        </div>
+
+        <div className="cta-inner">
+          <div className="cta-main">
+            <span className="section-label" style={{ color: 'rgba(245,180,100,0.9)' }}>
+              ILUMINACIÓN PROFESIONAL
+            </span>
+            <h2 className="cta-title">
+              Iluminación profesional<br />para cada proyecto
+            </h2>
+            <p className="cta-text">
+              Más de 12 años desarrollando soluciones de iluminación LED para
+              distribuidores, comercios y proyectos en todo el país.
+            </p>
+            <div className="cta-buttons">
+              <Link href="/contacto" className="btn-glow">
+                CONTACTAR EQUIPO
+              </Link>
+              <Link href="/distribuidores" className="btn-outline">
+                ENCONTRAR DISTRIBUIDOR
+              </Link>
+            </div>
+          </div>
+
+          <div className="cta-features">
+            {[
+              { title: 'Calidad profesional', text: 'Productos de alta performance y garantía real.' },
+              { title: 'Stock permanente', text: 'Disponibilidad inmediata para tus proyectos.' },
+              { title: 'Asesoramiento técnico', text: 'Acompañamiento profesional en cada etapa.' },
+              { title: 'Cobertura nacional', text: 'Red de distribuidores en todo el país.' },
+            ].map((item, i) => (
+              <div key={i} className="cta-feature">
+                <span className="cta-feature-title">{item.title}</span>
+                <span className="cta-feature-text">{item.text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
       {/* CATALOG SECTION */}
       <section className="catalog-section">
-        <div className="catalog-container">
-          <div className="catalog-content">
-            <span className="catalog-label">Catálogo Digital</span>
-            <h2 className="catalog-title">
-              Descargá nuestro catálogo completo
-            </h2>
-            <p className="catalog-description">
-              Accedé a toda nuestra línea de productos con especificaciones
-              técnicas detalladas, dimensiones y aplicaciones profesionales.
-            </p>
+        <div className="catalog-bg">
+          <Image
+            src="/home/catalogo-2024.webp"
+            alt="Catálogo GSG 2024"
+            fill
+            className="object-cover"
+          />
+          <div className="catalog-overlay" />
+        </div>
 
-            <div className="catalog-features">
-              <div className="catalog-feature">
-                <CheckCircleIcon />
-                <span>Especificaciones técnicas completas</span>
-              </div>
-              <div className="catalog-feature">
-                <CheckCircleIcon />
-                <span>Imágenes y renders de alta calidad</span>
-              </div>
-              <div className="catalog-feature">
-                <CheckCircleIcon />
-                <span>Guía de aplicaciones y montaje</span>
-              </div>
-            </div>
+        <div className="catalog-inner">
+          <span className="catalog-label">CATÁLOGO DIGITAL</span>
+          <h2 className="catalog-title">
+            Descargá nuestro<br />catálogo completo
+          </h2>
+          <p className="catalog-description">
+            Accedé a toda nuestra línea de productos con especificaciones
+            técnicas detalladas, dimensiones y aplicaciones profesionales.
+          </p>
 
-            <div className="catalog-actions">
-              <button
-                className="btn-download"
-                onClick={() =>
-                  window.open(
-                    'https://drive.google.com/file/d/1-5Pz9clY2-odo61hT5UDpTiUfy_kmrDg/view?usp=sharing',
-                    '_blank',
-                  )
-                }
-              >
-                <DownloadIcon />
-                Descargar Catálogo
-              </button>
-              <span className="catalog-note">PDF • 15 MB</span>
+          <div className="catalog-features">
+            <div className="catalog-feature">
+              <CheckCircleIcon />
+              <span>Especificaciones técnicas completas</span>
             </div>
+            <div className="catalog-feature">
+              <CheckCircleIcon />
+              <span>Imágenes y renders de alta calidad</span>
+            </div>
+            <div className="catalog-feature">
+              <CheckCircleIcon />
+              <span>Guía de aplicaciones y montaje</span>
+            </div>
+          </div>
+
+          <div className="catalog-actions">
+            <button
+              className="btn-download"
+              onClick={() =>
+                window.open(
+                  'https://drive.google.com/file/d/1-5Pz9clY2-odo61hT5UDpTiUfy_kmrDg/view?usp=sharing',
+                  '_blank',
+                )
+              }
+            >
+              <DownloadIcon />
+              DESCARGAR CATÁLOGO
+            </button>
+            <span className="catalog-note">PDF • 15 MB</span>
           </div>
         </div>
       </section>

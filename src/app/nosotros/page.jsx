@@ -188,44 +188,47 @@ const Nosotros = () => {
       {/* 1. HERO (Atelier) */}
       <section className="atelier-hero">
         <div className="atelier-hero-img">
-          <Image src="/gsg/STK-H.png" alt="GSG High Tech Stock" fill priority />
+          <Image src="/nosotros-1.webp" alt="GSG Fabricación Argentina" fill priority />
         </div>
         <div className="atelier-hero-content">
-          <span className="atelier-label">GSG Architectural Lighting</span>
+          <span className="atelier-label">DESDE 2013 · FABRICACIÓN ARGENTINA</span>
           <h1 className="atelier-title">
             <div className="text-reveal-line">
-              <span>Diseño.</span>
+              <span>Fabricamos soluciones</span>
             </div>
             <div className="text-reveal-line">
-              <span>Identidad.</span>
-            </div>
-            <div className="text-reveal-line">
-              <span>Luz.</span>
+              <span>de iluminación.</span>
             </div>
           </h1>
+          <p className="atelier-hero-sub">
+            Perfiles LED, sistemas lineales y luminarias para arquitectura,
+            mobiliario y proyectos profesionales.
+          </p>
+          <Link href="#nosotros-intro" className="atelier-hero-btn">
+            Conoce GSG
+          </Link>
         </div>
       </section>
 
       {/* 2. INTRO (Atelier) */}
-      <section className="atelier-intro">
+      <section className="atelier-intro" id="nosotros-intro">
         <div className="container-fluid intro-grid">
           <div>
             <h2 className="intro-lead">
-              Transformamos el aluminio y la luz en herramientas para la
-              arquitectura contemporánea.
+              Diseñamos sistemas de iluminación que se integran a la arquitectura.
             </h2>
           </div>
           <div>
             <p className="intro-desc">
-              Desde 2013, nuestra planta en Buenos Aires ha sido un laboratorio
-              de experimentación. No solo fabricamos luminarias; desarrollamos
-              sistemas que se integran silenciosamente en el espacio o se
-              convierten en protagonistas, según lo dicte el proyecto.
+              Desde 2013 transformamos aluminio y luz en herramientas para la
+              arquitectura contemporánea. Diseñamos y fabricamos sistemas de
+              iluminación que dialogan con el espacio, aportando identidad,
+              precisión y tecnología.
             </p>
             <p className="intro-desc">
-              Controlamos cada etapa del proceso: desde la extrusión del perfil
-              hasta la electrónica final, garantizando una calidad que solo la
-              industria nacional bien hecha puede ofrecer.
+              La integración entre diseño, ingeniería y manufactura nos permite
+              controlar cada detalle del proceso, desde el perfil de aluminio
+              hasta la luminaria terminada.
             </p>
           </div>
         </div>
@@ -239,18 +242,18 @@ const Nosotros = () => {
             <div className="strip-col strip-col-1">
               <div>
                 <div className="strip-image-box">
-                  <Image src="/gsg/PIN.png" alt="Diseño Minimalista" fill />
+                  <Image src="/nosotros-arquitectura.webp" alt="Arquitectura" fill />
                 </div>
                 <div className="strip-info">
-                  <span>Serie PIN</span>
+                  <span>ARQUITECTURA</span>
                 </div>
               </div>
               <div style={{ marginTop: '10vh' }}>
                 <div className="strip-image-box">
-                  <Image src="/gsg/p02.png" alt="Sistema P02" fill />
+                  <Image src="/nosotros-integracion.webp" alt="Integración" fill />
                 </div>
                 <div className="strip-info">
-                  <span>Sistema P02</span>
+                  <span>INTEGRACIÓN</span>
                 </div>
               </div>
             </div>
@@ -258,22 +261,18 @@ const Nosotros = () => {
             <div className="strip-col strip-col-2" style={{ paddingTop: '0' }}>
               <div>
                 <div className="strip-image-box">
-                  <Image src="/gsg/hallH.png" alt="Nuestra Planta" fill />
+                  <Image src="/nosotros-materialidad.webp" alt="Materialidad" fill />
                 </div>
                 <div className="strip-info">
-                  <span>Headquarters</span>
+                  <span>MATERIALIDAD</span>
                 </div>
               </div>
               <div style={{ marginTop: '10vh' }}>
                 <div className="strip-image-box">
-                  <Image
-                    src="/gsg/tex.png"
-                    alt="Texturas y Materialidad"
-                    fill
-                  />
+                  <Image src="/nosotros-manufactura.webp" alt="Manufactura" fill />
                 </div>
                 <div className="strip-info">
-                  <span>Materialidad</span>
+                  <span>MANUFACTURA</span>
                 </div>
               </div>
             </div>
@@ -284,22 +283,18 @@ const Nosotros = () => {
             >
               <div>
                 <div className="strip-image-box">
-                  <Image src="/gsg/pga.png" alt="Detalle de Perfil" fill />
+                  <Image src="/nosotros-precision.webp" alt="Precisión" fill />
                 </div>
                 <div className="strip-info">
-                  <span>PGA Detail</span>
+                  <span>PRECISIÓN</span>
                 </div>
               </div>
               <div style={{ marginTop: '10vh' }}>
                 <div className="strip-image-box">
-                  <Image
-                    src="/gsg/bod-170.png"
-                    alt="Procesos de Fabrica"
-                    fill
-                  />
+                  <Image src="/nosotros-proyectos.webp" alt="Proyectos" fill />
                 </div>
                 <div className="strip-info">
-                  <span>Manufactura</span>
+                  <span>PROYECTOS</span>
                 </div>
               </div>
             </div>
@@ -316,13 +311,12 @@ const Nosotros = () => {
               <Image src="/gsg/Pne.png" alt="Personalización Flexibles" fill />
             </div>
             <div className="value-content">
-              <span className="value-kicker">Personalización</span>
-              <h3 className="value-headline">Diseño a tu medida.</h3>
+              <span className="value-kicker">PERSONALIZACIÓN</span>
+              <h3 className="value-headline">Soluciones sin límites.</h3>
               <p className="value-description">
-                Cada proyecto arquitectónico es único. Adaptamos longitudes,
-                colores y ópticas de nuestros sistemas lineales para cumplir
-                exactamente con tu visión, sin los límites de productos estándar
-                rígidos.
+                Cada proyecto presenta desafíos únicos. Adaptamos medidas,
+                terminaciones, ópticas y configuraciones para desarrollar
+                sistemas que respondan exactamente a cada necesidad.
               </p>
             </div>
           </div>
@@ -331,19 +325,18 @@ const Nosotros = () => {
           <div className="value-block reverse">
             <div className="value-img-wrapper">
               <Image
-                src="/gsg/kro-500.png"
-                alt="Tecnología de Vanguardia"
+                src="/ingenieria-precision.webp"
+                alt="Ingeniería de Precisión"
                 fill
               />
             </div>
             <div className="value-content">
-              <span className="value-kicker">Tecnología</span>
-              <h3 className="value-headline">Ingeniería de precisión.</h3>
+              <span className="value-kicker">INGENIERÍA DE PRECISIÓN</span>
+              <h3 className="value-headline">Un sistema. Un resultado.</h3>
               <p className="value-description">
-                Calidad de luz superior. Utilizamos componentes de líderes
-                mundiales como Philips y Tridonic, junto con disipadores de
-                aluminio calculados térmicamente para garantizar una vida útil
-                que supera los estándares de la industria.
+                Perfiles, ópticas, electrónica y terminaciones desarrolladas
+                para trabajar como un único sistema, logrando máxima eficiencia
+                y una integración perfecta en la arquitectura.
               </p>
             </div>
           </div>
@@ -367,20 +360,40 @@ const Nosotros = () => {
         </div>
       </section>
 
-      {/* 5. FACTORY (Atelier) */}
+      {/* 5. SHOWROOM */}
       <section className="factory-section">
         <div className="factory-bg">
-          <Image src="/gsg/p01-tr.png" alt="Visita Nuestra Fábrica" fill />
+          <Image src="/nosotros-showroom.webp" alt="Showroom GSG" fill />
         </div>
         <div className="factory-overlay">
           <h2 className="factory-title">
-            Ven a conocer
+            Conocé nuestro
             <br />
-            nuestra fábrica.
+            showroom.
           </h2>
+          <p className="factory-subtitle">
+            Coordiná una visita para descubrir nuestras soluciones de iluminación aplicadas.
+          </p>
           <Link href="/contacto" className="factory-btn">
-            Agendar Visita
+            Solicitar Visita
           </Link>
+        </div>
+      </section>
+
+      {/* 6. CTA FINAL */}
+      <section className="nosotros-cta-section">
+        <div className="nosotros-cta-inner">
+          <h2 className="nosotros-cta-title">
+            ¿Tenés un proyecto o buscás un distribuidor?
+          </h2>
+          <div className="nosotros-cta-btns">
+            <Link href="/contacto" className="nosotros-cta-btn nosotros-cta-btn--primary">
+              Solicitar Asesoramiento
+            </Link>
+            <Link href="/distribuidores" className="nosotros-cta-btn nosotros-cta-btn--outline">
+              Encontrar Distribuidor
+            </Link>
+          </div>
         </div>
       </section>
 
