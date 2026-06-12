@@ -143,13 +143,10 @@ export default function AccessoriesClient({ initialAccessories }) {
     );
   };
 
-  // Obtener imagen del accesorio
+  // Obtener imagen del accesorio — misma lógica que AccessoryDetailClient
   const getAccessoryImage = (accessory) => {
-    if (accessory.media && accessory.media.length > 0) {
-      const coverImage = accessory.media.find((m) => m.kind === 'gallery' || m.kind === 'tech');
-      if (coverImage) return getImageUrl(coverImage.path);
-      return getImageUrl(accessory.media[0].path);
-    }
+    const mediaImages = (accessory.media || []).filter((m) => m.kind === 'gallery' || m.kind === 'tech');
+    if (mediaImages.length > 0) return getImageUrl(mediaImages[0].path);
     if (accessory.photoUrl) return getImageUrl(accessory.photoUrl);
     return '/gsg/no-image.svg';
   };
