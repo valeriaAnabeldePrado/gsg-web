@@ -789,8 +789,8 @@ export default function HomePremium() {
           </div>
           <div className="design-image">
             <Image
-              src="/gsg/hex-s.png"
-              alt="Arquitectura y Luz"
+              src="/proyectos-profesionales.webp"
+              alt="Proyectos Profesionales"
               fill
               className="object-cover"
             />
