@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import './product-detail.css';
+import '../../product-detail.css';
 import ProfileComparisonTable from '@/components/products/ProfileComparisonTable';
 import { trackEvent } from '@/lib/analytics';
 
@@ -226,9 +226,9 @@ export default function ProductDetailClient({ product }) {
 
   return (
     <div className="product-detail-page">
-      {/* HERO SECTION */}
-      <section className="product-hero">
-        <div className="product-hero-container">
+      {/* PRODUCT BODY: gallery + info */}
+      <section className="product-body">
+        <div className="product-body-container">
           {/* GALLERY */}
           <div className="product-gallery">
             <div className="gallery-main-image">
@@ -237,16 +237,13 @@ export default function ProductDetailClient({ product }) {
                 alt={currentImage.alt_text || product.name}
               />
             </div>
-
             {variantImages.length > 1 && (
               <div className="gallery-thumbnails">
                 {variantImages.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImageIndex(index)}
-                    className={`gallery-thumbnail ${
-                      selectedImageIndex === index ? 'active' : ''
-                    }`}
+                    className={`gallery-thumbnail ${selectedImageIndex === index ? 'active' : ''}`}
                   >
                     <img
                       src={getImageUrl(img.path)}
@@ -276,38 +273,23 @@ export default function ProductDetailClient({ product }) {
                     <button
                       key={variant.id}
                       onClick={() => handleVariantChange(index)}
-                      className={`variant-option ${
-                        selectedVariantIndex === index ? 'active' : ''
-                      }`}
+                      className={`variant-option ${selectedVariantIndex === index ? 'active' : ''}`}
                     >
                       <div className="variant-info">
                         <h4>{variant.name}</h4>
-                        <span className="variant-code">
-                          {variant.variantCode}
-                        </span>
+                        <span className="variant-code">{variant.variantCode}</span>
                         <div className="variant-features">
                           {variant.includesLed && (
                             <span className="variant-badge">LED incluido</span>
                           )}
                           {variant.includesDriver && (
-                            <span className="variant-badge">
-                              Driver incluido
-                            </span>
+                            <span className="variant-badge">Driver incluido</span>
                           )}
                         </div>
                       </div>
                       {selectedVariantIndex === index && (
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       )}
                     </button>
