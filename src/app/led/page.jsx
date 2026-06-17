@@ -1,72 +1,47 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import './ledSection.css';
-import { IMG_URL } from '@/utils/constants';
-import ImageSkeleton from '@/components/loader/ImageSkeleton';
-import BrandLoader from '@/components/loader/BrandLoader';
-import { ProductCard } from '@/components/ui/ProductCard';
-import { ProductSkeletonList } from '@/components/ui/ProductSkeleton';
+import React from 'react';
+import './led-rolls.css';
+import {
+  listLedRollFamilies,
+  getLedRollFilterOptions,
+} from '@/lib/supabase/led-roll-sdk';
+import LedRollsClient from './LedRollsClient';
 
-const Productos = () => {
-  const [leds, setLeds] = useState([]);
-  const [description, setDescription] = useState([]);
-  const [loader, setLoader] = useState(true);
-  const [imageLoadStates, setImageLoadStates] = useState({});
+// Deshabilitar caché para que siempre se ejecute en el servidor
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await fetch(`/api/led`);
-      const data = await res.json();
-      const todosLosModelos = data.led.flatMap((acc) => acc.modelos);
-      const desc = data.led[0].descripcion;
-      setDescription(desc);
-      setLeds(todosLosModelos);
-      setLoader(false);
-    };
-
-    fetchProducts();
-  }, []);
-
-  const handleImageLoad = (imageId) => {
-    setImageLoadStates((prev) => ({
-      ...prev,
-      [imageId]: true,
-    }));
-  };
-
-  const handleImageError = (imageId) => {
-    setImageLoadStates((prev) => ({
-      ...prev,
-      [imageId]: true,
-    }));
-  };
-
-  return (
-    <>
-      <div className="w-full wrapper-cont">
-        <section className="flex items-center justify-between flex-wrap w-full responsive-container">
-          <div className="p-text-product-description p-8 text-center w-full items-center flex justify-center flex-col-reverse ">
-            <h3 className="md:w-10/12 ">{description}</h3>
-            <h2 className="h2-hero-title text-center">Leds</h2>
-          </div>
-          {!loader ? (
-            leds.map((el, i) => (
-              <ProductCard
-                key={`${i}_${el.id}`}
-                type="led"
-                id={el.id}
-                title={el.subnombre}
-              />
-            ))
-          ) : (
-            <ProductSkeletonList count={6} />
-          )}
-        </section>
-      </div>
-    </>
-  );
+export const metadata = {
+  title: 'Tiras LED - GSG Iluminación',
+  description:
+    'Catálogo completo de tiras LED profesionales. COB, SMD y más con diferentes potencias, tonos y protecciones IP.',
 };
 
-export default Productos;
+// Server Component - se ejecuta en el servidor
+export default async function LedPage() {
+  let families = [];
+  let filterOptions = null;
+
+  try {
+    // Obtener familias de LED rolls con sus variantes
+    const result = await listLedRollFamilies({
+      page: 1,
+      pageSize: 100,
+      includeVariants: true,
+    });
+    families = result.data;
+
+    // Obtener opciones para filtros
+    filterOptions = await getLedRollFilterOptions();
+  } catch (error) {
+    console.error('Error fetching LED roll families:', error);
+  }
+
+  return (
+    <div className="led-rolls-page">
+      <LedRollsClient
+        initialFamilies={families}
+        filterOptions={filterOptions}
+      />
+    </div>
+  );
+}

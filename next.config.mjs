@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true,
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       {
@@ -19,6 +21,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'via.placeholder.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pub-991b1e142013489ca0b64e1e314c7386.r2.dev',
       },
     ],
   },

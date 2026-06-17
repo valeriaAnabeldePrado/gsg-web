@@ -29,7 +29,12 @@
 .cont-h2-arrow {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
+}
+.cont-btn-descarga {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (width <= 1450px) {
   .cont-catalogo {

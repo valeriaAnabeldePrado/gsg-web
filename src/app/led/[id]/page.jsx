@@ -1,59 +1,33 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import Measure from './measure';
 import Image from 'next/image';
-// import '../../productosSection.css';
+import {
+  getLedRollFamilyById,
+  getFamilyCoverImage,
+  formatVariantDisplay,
+} from '@/lib/supabase/led-roll-sdk';
+import { notFound } from 'next/navigation';
+import LedDetailClient from './LedDetailClient';
 
-export default function page({ params }) {
-  const [led, setLed] = useState([]);
-  const [loader, setLoader] = useState(true);
-  const { id } = params;
+// Deshabilitar caché para que siempre se ejecute en el servidor
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await fetch(`/api/led`);
-      const data = await res.json();
-      const todosLosModelos = data.led.flatMap((acc) => acc.modelos);
-      const filteredData = todosLosModelos.filter((el) => el.id === id);
-      setLed(filteredData[0]);
-      setLoader(false);
-    };
+// Server Component - se ejecuta en el servidor
+export default async function LedDetailPage({ params }) {
+  const { id } = await params;
 
-    fetchProducts();
-  }, []);
+  let family = null;
 
-  return (
-    <>
-      {led ? (
-        <div className="p-6 md:p-10 flex gap-10 flex-col container-producto ">
-          <section className="flex flex-wrap gap-10 padding-container-top">
-            <div className="flex-1 min-w-72 flex flex-col">
-              <h3 className="h2-page-product">{led.subnombre}</h3>
-              <p className="p-text-product-description">{led.description}</p>
-            </div>
-            <div className="flex-1 min-w-72 relative aspect-square rounded-lg overflow-hidden">
-              <Image
-                fill
-                src={`https://images.smartcloudstudio.com/gsg/fotos_blanco/led/${led.id}.jpg`}
-                alt={led.id}
-                className="object-cover"
-              />
-            </div>
-          </section>
-          <section>
-            <section className="flex flex-contain">
-              <h3 className="h2-page-product mb-5">Caracteristicas</h3>
-            </section>
-            <div className="flex gap-4 flex-col">
-              <h2 className=" p-text-product  text-p">Descripcion tecnica</h2>
-              <Measure product={led} />
-            </div>
-          </section>
-        </div>
-      ) : (
-        <h1>cargando...</h1>
-      )}
-    </>
-  );
+  try {
+    // Obtener la familia de LED roll por ID desde Supabase
+    family = await getLedRollFamilyById(parseInt(id));
+
+    if (!family) {
+      notFound();
+    }
+  } catch (error) {
+    console.error('Error fetching LED roll family:', error);
+    notFound();
+  }
+
+  return <LedDetailClient family={family} />;
 }

@@ -1,5 +1,4 @@
 export const productTitle = [
-  'Todos',
   'Exterior',
   'Pie',
   'Perfiles',
