@@ -25,13 +25,12 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <head>
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-DWR0LF6SVP"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
