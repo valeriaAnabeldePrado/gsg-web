@@ -1,10 +1,10 @@
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
+import Script from 'next/script';
 import './globals.css';
 import MenuNav from '@/components/navMenu/menuNav';
 import GTM from '@/components/tag';
 import Clarity from '@/components/Clarity';
-import Head from 'next/head';
 import SmoothScroll from '@/components/ui/SmoothScroll';
 import Loader from '@/components/ui/Loader';
 import { Analytics } from '@vercel/analytics/next';
@@ -23,32 +23,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-607559145"
-        ></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-607559145');
-          `}
-        </script>
-        <script
+      <head>
+        <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-DWR0LF6SVP"
-        ></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-DWR0LF6SVP');
-          `}
-        </script>
-      </Head>
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-DWR0LF6SVP');
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <Loader />
         <Suspense fallback={null}>
