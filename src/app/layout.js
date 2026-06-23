@@ -36,6 +36,18 @@ export default function RootLayout({ children }) {
             gtag('config', 'AW-607559145');
           `}
         </script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-DWR0LF6SVP"
+        ></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DWR0LF6SVP');
+          `}
+        </script>
       </Head>
       <body className={inter.className}>
         <Loader />
