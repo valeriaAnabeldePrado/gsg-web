@@ -22,8 +22,11 @@ export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange }) {
   };
 
   const handleViewDistributors = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('wa_provincia', selectedProvince);
+    }
     onClose();
-    router.push(`/distribuidores?provincia=${encodeURIComponent(selectedProvince)}`);
+    router.push('/distribuidores');
   };
 
   return (
