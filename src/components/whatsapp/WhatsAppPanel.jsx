@@ -23,7 +23,7 @@ export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange }) {
 
   const handleViewDistributors = () => {
     onClose();
-    router.push('/distribuidores');
+    router.push(`/distribuidores?provincia=${encodeURIComponent(selectedProvince)}`);
   };
 
   return (

@@ -4,9 +4,9 @@ import React, { useState, useMemo, useRef } from 'react';
 import { NoResults } from '@/components/productos/product-no-result';
 import './distribuidores-premium.css';
 
-export default function DistribuidoresClient({ initialDistribuidores }) {
+export default function DistribuidoresClient({ initialDistribuidores, initialProvincia = 'Todas' }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedProvincia, setSelectedProvincia] = useState('Todas');
+  const [selectedProvincia, setSelectedProvincia] = useState(initialProvincia);
   const mainContentRef = useRef(null);
 
   // Scroll al top de la lista cuando cambia la provincia

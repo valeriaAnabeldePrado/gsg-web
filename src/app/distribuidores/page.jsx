@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 // Server Component - se ejecuta en el servidor
-export default async function DistribuidoresPage() {
+export default async function DistribuidoresPage({ searchParams }) {
   let distribuidores = {};
 
   try {
@@ -57,7 +57,7 @@ export default async function DistribuidoresPage() {
       </div>
 
       {/* Lista de Distribuidores - Client Component con datos del servidor */}
-      <DistribuidoresClient initialDistribuidores={distribuidores} />
+      <DistribuidoresClient initialDistribuidores={distribuidores} initialProvincia={searchParams?.provincia || 'Todas'} />
 
       {/* Mapa Section */}
       <MapSection />
