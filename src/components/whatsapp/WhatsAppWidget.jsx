@@ -29,7 +29,7 @@ export default function WhatsAppWidget() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Abrir chat de WhatsApp"
-        className="fixed bottom-4 right-4 w-14 h-14 rounded-full flex items-center justify-center z-50 transition-transform hover:scale-110 active:scale-95"
+        className="fixed bottom-20 right-4 w-14 h-14 rounded-full flex items-center justify-center z-50 transition-transform hover:scale-110 active:scale-95"
         style={{
           background: '#25D366',
           boxShadow: '0 4px 16px rgba(37,211,102,0.5)',

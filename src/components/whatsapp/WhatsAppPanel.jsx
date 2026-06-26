@@ -28,7 +28,7 @@ export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange }) {
 
   return (
     <div
-      className="fixed bottom-24 right-4 z-40 w-[320px] rounded-2xl overflow-hidden"
+      className="fixed bottom-36 right-4 z-40 w-[320px] rounded-2xl overflow-hidden"
       style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.18)' }}
     >
       {/* Header */}
