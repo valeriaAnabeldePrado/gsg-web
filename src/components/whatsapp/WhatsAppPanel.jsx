@@ -69,11 +69,11 @@ export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange }) {
 
             <div className="space-y-2">
               {[
-                { label: 'Tengo un negocio y quiero conocer GSG', onClick: handleOption1, icon: '🏪' },
-                { label: 'Ya soy cliente de GSG', onClick: handleOption2, icon: '🛒' },
-                { label: 'Soy arquitecto o diseñador de interiores', onClick: () => onStepChange('provinces'), icon: '📐' },
-                { label: 'Busco un punto de venta cerca mío', onClick: () => onStepChange('provinces'), icon: '📍' },
-              ].map(({ label, onClick, icon }) => (
+                { label: 'Tengo un negocio y quiero conocer GSG', onClick: handleOption1 },
+                { label: 'Ya soy cliente de GSG', onClick: handleOption2 },
+                { label: 'Soy arquitecto o diseñador de interiores', onClick: () => onStepChange('provinces') },
+                { label: 'Busco un punto de venta cerca mío', onClick: () => onStepChange('provinces') },
+              ].map(({ label, onClick }) => (
                 <button
                   key={label}
                   onClick={onClick}
@@ -93,7 +93,6 @@ export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange }) {
                     e.currentTarget.style.background = 'white';
                   }}
                 >
-                  <span className="text-base">{icon}</span>
                   <span className="flex-1">{label}</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 flex-shrink-0 opacity-40">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
