@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import ProvinceSelector from './ProvinceSelector';
 import { WHATSAPP_CONTACTS, getWhatsAppLink } from '@/lib/whatsapp/constants';
 
-export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange }) {
+export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange, isDistribuidores }) {
   const router = useRouter();
   const [selectedProvince, setSelectedProvince] = useState('');
 
@@ -31,7 +31,7 @@ export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange }) {
 
   return (
     <div
-      className="fixed bottom-36 right-4 z-40 w-[320px] rounded-2xl overflow-hidden"
+      className={`fixed ${isDistribuidores ? 'bottom-36' : 'bottom-20'} right-4 z-40 w-[320px] rounded-2xl overflow-hidden`}
       style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.18)' }}
     >
       {/* Header */}

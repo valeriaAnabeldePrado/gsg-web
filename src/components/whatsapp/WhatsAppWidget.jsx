@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import WhatsAppPanel from './WhatsAppPanel';
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState('initial');
+  const pathname = usePathname();
+  const isDistribuidores = pathname === '/distribuidores';
 
   const handleClose = () => {
     setIsOpen(false);
@@ -23,13 +26,14 @@ export default function WhatsAppWidget() {
         step={step}
         onClose={handleClose}
         onStepChange={handleStepChange}
+        isDistribuidores={isDistribuidores}
       />
 
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Abrir chat de WhatsApp"
-        className="fixed bottom-20 right-4 w-14 h-14 rounded-full flex items-center justify-center z-50 transition-transform hover:scale-110 active:scale-95"
+        className={`fixed ${isDistribuidores ? 'bottom-20' : 'bottom-4'} right-4 w-14 h-14 rounded-full flex items-center justify-center z-50 transition-all hover:scale-110 active:scale-95`}
         style={{
           background: '#25D366',
           boxShadow: '0 4px 16px rgba(37,211,102,0.5)',
