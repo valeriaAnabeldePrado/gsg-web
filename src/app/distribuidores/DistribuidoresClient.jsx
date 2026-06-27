@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { NoResults } from '@/components/productos/product-no-result';
 import './distribuidores-premium.css';
 
@@ -8,6 +8,17 @@ export default function DistribuidoresClient({ initialDistribuidores }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProvincia, setSelectedProvincia] = useState('Todas');
   const mainContentRef = useRef(null);
+
+  useEffect(() => {
+    const waProv = sessionStorage.getItem('wa_provincia');
+    if (waProv) {
+      const match = Object.keys(initialDistribuidores).find(
+        p => p.toLowerCase() === waProv.toLowerCase()
+      );
+      if (match) setSelectedProvincia(match);
+      sessionStorage.removeItem('wa_provincia');
+    }
+  }, [initialDistribuidores]);
 
   // Scroll al top de la lista cuando cambia la provincia
   const handleProvinciaChange = (provincia) => {

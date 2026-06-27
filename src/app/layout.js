@@ -8,6 +8,7 @@ import Clarity from '@/components/Clarity';
 import SmoothScroll from '@/components/ui/SmoothScroll';
 import Loader from '@/components/ui/Loader';
 import { Analytics } from '@vercel/analytics/next';
+import WhatsAppWidget from '@/components/whatsapp/WhatsAppWidget';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
         <GTM />
         <Clarity />
         <Analytics />
+        <WhatsAppWidget />
         <MenuNav />
         {children}
       </body>
