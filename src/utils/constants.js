@@ -5,6 +5,7 @@ export const productTitle = [
   'Techo',
   'Pared',
   'Colgantes',
+  'Alabastro',
 ];
 
 export const IMG_URL = 'https://images.smartcloudstudio.com/gsg';

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import AlabastroBanner from '@/components/home/AlabastroBanner';
 import '@/app/home/home-premium.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -204,6 +205,13 @@ const featuredProducts = [
   },
   {
     id: 8,
+    name: 'Colección Alabastro',
+    category: 'Alabastro',
+    image: '/alabastro2.png',
+    link: '/productos?categoria=Alabastro',
+  },
+  {
+    id: 9,
     name: 'Accesorios',
     category: 'Complementos',
     image: '/gsg/portadas/accesorios.png',
@@ -273,7 +281,7 @@ const heroSlides = [
     label: 'COLECCIÓN ALABASTRO',
     title: 'Diseño y Materialidad',
     subtitle: 'Piezas lumínicas que combinan tecnología LED, materiales nobles y una estética contemporánea para proyectos de alto nivel.',
-    cta: { text: 'DESCUBRIR COLECCIÓN', href: '/productos' },
+    cta: { text: 'DESCUBRIR COLECCIÓN', href: '/productos?categoria=alabastro' },
   },
 ];
 
@@ -710,6 +718,9 @@ export default function HomePremium() {
           </div>
         </div>
       </section>
+
+      {/* ALABASTRO BANNER */}
+      <AlabastroBanner />
 
       {/* PRODUCTS SHOWCASE */}
       <section className="home-products-showcase" ref={productsRef}>
