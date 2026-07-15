@@ -118,7 +118,7 @@ export default function AlabastroBanner() {
         <div className="alabastro-image-wrap" ref={imageRef}>
           <div className="alabastro-image-inner">
             <Image
-              src="/alabastro.png"
+              src="/alabastro2.png"
               alt="Colección Alabastro"
               fill
               className="object-cover"
