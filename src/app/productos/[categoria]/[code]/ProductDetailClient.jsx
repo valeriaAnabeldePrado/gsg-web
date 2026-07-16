@@ -369,13 +369,13 @@ export default function ProductDetailClient({ product }) {
                         <div className="spec-sku">{config.sku}</div>
                       )}
                       <div className="spec-details">
-                        {config.watt && (
+                        {Number(config.watt) > 0 && (
                           <div className="spec-row">
                             <span className="spec-label">Potencia</span>
                             <span className="spec-value">{config.watt}W</span>
                           </div>
                         )}
-                        {config.lumens && (
+                        {Number(config.lumens) > 0 && (
                           <div className="spec-row">
                             <span className="spec-label">Flujo luminoso</span>
                             <span className="spec-value">
