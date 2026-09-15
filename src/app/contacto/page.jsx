@@ -120,7 +120,7 @@ const Contacto = () => {
             <div>
               <span className="info-label">Ubicación</span>
               <a
-                href="https://goo.gl/maps/..."
+                href="https://www.google.com/maps/search/?api=1&query=GSG+design%2C+Albari%C3%B1o+1775%2C+C1440DEW+Cdad.+Aut%C3%B3noma+de+Buenos+Aires"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="info-value"

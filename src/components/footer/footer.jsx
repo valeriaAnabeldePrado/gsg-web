@@ -46,6 +46,8 @@ const FooterM = () => {
       icon: <MapPin size={18} />,
       label: 'Ubicación',
       value: 'CABA, Argentina',
+      href: 'https://www.google.com/maps/search/?api=1&query=GSG+design%2C+Albari%C3%B1o+1775%2C+C1440DEW+Cdad.+Aut%C3%B3noma+de+Buenos+Aires',
+      external: true,
     },
   ];
 
@@ -110,7 +112,13 @@ const FooterM = () => {
               <li key={detail.label} className="footer-contact-item">
                 <span className="footer-contact-icon">{detail.icon}</span>
                 {detail.href ? (
-                  <a href={detail.href} aria-label={detail.label}>
+                  <a
+                    href={detail.href}
+                    aria-label={detail.label}
+                    {...(detail.external
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                  >
                     {detail.value}
                   </a>
                 ) : (
@@ -160,6 +168,19 @@ const FooterM = () => {
           className={`footer-bottom-text ${isHome ? 'footer-bottom-text--light' : ''}`}
         >
           © {currentYear} GSG Design. Hecho en Argentina.
+        </span>
+        <span
+          className={`footer-credit ${isHome ? 'footer-bottom-text--light' : ''}`}
+        >
+          Diseño y desarrollo por{' '}
+          <a
+            href="https://www.smartcloudstudio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-credit-link"
+          >
+            Smart Cloud Studio
+          </a>
         </span>
         <div className="footer-bottom-links">
           <Link href="/contacto" className="footer-bottom-link">
