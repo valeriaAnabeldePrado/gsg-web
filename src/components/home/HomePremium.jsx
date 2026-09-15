@@ -262,7 +262,7 @@ const heroSlides = [
   {
     id: 1,
     image: '/home/hero1.webp',
-    label: '130+ DISTRIBUIDORES',
+    label: '190+ DISTRIBUIDORES',
     title: 'Espacios que inspiran',
     subtitle: 'Luminarias LED de fabricación argentina',
     cta: { text: 'ENCONTRAR DISTRIBUIDOR', href: '/distribuidores' },
@@ -287,7 +287,7 @@ const heroSlides = [
 
 const stats = [
   { number: '12', label: 'Años de experiencia' },
-  { number: '133', label: 'Distribuidores' },
+  { number: '190', label: 'Distribuidores' },
   { number: '24', label: 'Provincias' },
   { number: '100%', label: 'Fabricación e importación propia' },
 ];

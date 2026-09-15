@@ -248,6 +248,31 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+.footer-credit {
+  font-size: 0.85rem;
+  color: #6a6a6d;
+  font-weight: 400;
+}
+
+.footer-credit-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.footer-credit-link:hover {
+  color: var(--color-fuente-roja, #f53e16);
+  border-bottom-color: currentColor;
+}
+
+.container-footer.footer--home .footer-credit-link:hover {
+  color: #f66a40;
+}
+
 .footer-bottom-links {
   display: flex;
   align-items: center;
