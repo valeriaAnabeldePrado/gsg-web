@@ -14,10 +14,10 @@ function LightTemperatureBar({ tones }) {
 
   // Orden fijo de frío a súper cálido
   const order = [
-    { key: 'fría', label: 'Fría', kelvin: 6500, hex: '#A2C2E1' },
+    { key: 'fría', label: 'Fría', kelvin: 6000, hex: '#A2C2E1' },
     { key: 'neutra', label: 'Neutra', kelvin: 4000, hex: '#FFF8DC' },
-    { key: 'cálida', label: 'Cálida', kelvin: 2700, hex: '#FF8C00' },
-    { key: 'súper cálida', label: 'Súper cálida', kelvin: 3000, hex: '#FFD700' },
+    { key: 'cálida', label: 'Cálida', kelvin: 3000, hex: '#FFD700' },
+    { key: 'súper cálida', label: 'Súper cálida', kelvin: 2700, hex: '#FF8C00' },
   ];
 
   // Determinar cuáles de las 4 posiciones están presentes en el producto
@@ -96,13 +96,13 @@ function kelvinToColor(k) {
 function getToneInfo(toneName) {
   const normalized = (toneName || '').toLowerCase().trim();
   const map = {
-    'cálida': { kelvin: 2700, hex: '#FF8C00' },
-    'calida': { kelvin: 2700, hex: '#FF8C00' },
-    'súper cálida': { kelvin: 3000, hex: '#FFD700' },
-    'super calida': { kelvin: 3000, hex: '#FFD700' },
+    'cálida': { kelvin: 3000, hex: '#FFD700' },
+    'calida': { kelvin: 3000, hex: '#FFD700' },
+    'súper cálida': { kelvin: 2700, hex: '#FF8C00' },
+    'super calida': { kelvin: 2700, hex: '#FF8C00' },
     'neutra': { kelvin: 4000, hex: '#FFF8DC' },
-    'fría': { kelvin: 6500, hex: '#A2C2E1' },
-    'fria': { kelvin: 6500, hex: '#A2C2E1' },
+    'fría': { kelvin: 6000, hex: '#A2C2E1' },
+    'fria': { kelvin: 6000, hex: '#A2C2E1' },
   };
   return map[normalized] || { kelvin: null, hex: '#e5e5e5' };
 }
