@@ -752,3 +752,119 @@ export async function getLedRollByCode(code) {
 
   return normalizeLedRoll(data);
 }
+
+// ============================================================
+// Fuentes LED (power supplies)
+// ============================================================
+
+const POWER_SUPPLY_SELECT = `
+  id,
+  code,
+  name,
+  series,
+  description,
+  power_w,
+  ip_rating,
+  length_mm,
+  width_mm,
+  height_mm,
+  warranty_years,
+  connection,
+  dimmable,
+  dimming_notes,
+  notes,
+  photo_url,
+  display_order,
+  power_supply_models (
+    id,
+    code,
+    input_v_min,
+    input_v_max,
+    input_label,
+    output_v,
+    current_a,
+    display_order
+  ),
+  power_supply_media (
+    id,
+    path,
+    kind,
+    alt_text,
+    display_order
+  )
+`;
+
+/**
+ * Normaliza una fuente de Supabase
+ */
+function normalizePowerSupply(raw) {
+  if (!raw) return null;
+
+  return {
+    id: raw.id,
+    code: raw.code,
+    name: raw.name,
+    series: raw.series || null,
+    description: raw.description || null,
+    powerW: raw.power_w,
+    ipRating: raw.ip_rating || null,
+    lengthMm: raw.length_mm,
+    widthMm: raw.width_mm,
+    heightMm: raw.height_mm,
+    warrantyYears: raw.warranty_years,
+    connection: raw.connection || null,
+    dimmable: !!raw.dimmable,
+    dimmingNotes: raw.dimming_notes || null,
+    notes: raw.notes || null,
+    photoUrl: raw.photo_url || null,
+    models: [...(raw.power_supply_models || [])].sort(
+      (a, b) => a.display_order - b.display_order || a.output_v - b.output_v,
+    ),
+    media: [...(raw.power_supply_media || [])].sort(
+      (a, b) => a.display_order - b.display_order,
+    ),
+  };
+}
+
+/**
+ * Lista las fuentes activas
+ * @returns {Promise<{data: Array, total: number}>}
+ */
+export async function listPowerSupplies() {
+  const { data, error, count } = await supabase
+    .from('power_supplies')
+    .select(POWER_SUPPLY_SELECT, { count: 'exact' })
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+    .order('power_w', { ascending: true });
+
+  throwIfError(error, 'listPowerSupplies');
+
+  return {
+    data: (data || []).map(normalizePowerSupply),
+    total: count || 0,
+  };
+}
+
+/**
+ * Obtiene una fuente activa por su código
+ * @param {string} code - Código de la familia (ej: GSG-36WHH)
+ * @returns {Promise<Object|null>} Fuente encontrada o null
+ */
+export async function getPowerSupplyByCode(code) {
+  const { data, error } = await supabase
+    .from('power_supplies')
+    .select(POWER_SUPPLY_SELECT)
+    .ilike('code', code)
+    .eq('is_active', true)
+    .single();
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null; // No encontrado
+    }
+    throwIfError(error, 'getPowerSupplyByCode');
+  }
+
+  return normalizePowerSupply(data);
+}

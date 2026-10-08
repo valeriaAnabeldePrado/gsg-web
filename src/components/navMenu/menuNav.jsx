@@ -157,6 +157,13 @@ const MenuNav = () => {
                               Accesorios
                             </Link>
                             <Link
+                              href="/fuentes"
+                              className="dropdown-link"
+                              onClick={handleCategoryClick}
+                            >
+                              Fuentes
+                            </Link>
+                            <Link
                               href="/productos"
                               className="dropdown-link highlight"
                               onClick={handleCategoryClick}
@@ -246,6 +253,13 @@ const MenuNav = () => {
                         onClick={handleCategoryClick}
                       >
                         Accesorios
+                      </Link>
+                      <Link
+                        href="/fuentes"
+                        className="mobile-dropdown-item highlight"
+                        onClick={handleCategoryClick}
+                      >
+                        Fuentes LED
                       </Link>
                     </div>
                   </div>
