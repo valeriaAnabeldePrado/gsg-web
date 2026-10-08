@@ -55,6 +55,7 @@ const FooterM = () => {
     { label: 'Productos', href: '/productos' },
     { label: 'LED', href: '/led' },
     { label: 'Accesorios', href: '/accesorios' },
+    { label: 'Fuentes LED', href: '/fuentes' },
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Distribuidores', href: '/distribuidores' },
     { label: 'Contacto', href: '/contacto' },

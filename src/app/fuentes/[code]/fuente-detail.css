@@ -1,0 +1,322 @@
+/* ========================================
+   FUENTES LED - FICHA
+   Sin etiquetas en mayúsculas: la jerarquía la dan tamaño y peso.
+   ======================================== */
+
+.ps-info {
+  --ps-ink: #1a1a1a;
+  --ps-muted: #6b6b6b;
+  --ps-line: #e5e5e5;
+  --ps-surface: #f5f5f5;
+  --ps-accent: #d63512;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 680px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ps-title {
+  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ps-ink);
+  margin-bottom: 1rem;
+}
+
+.ps-lead {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--ps-muted);
+  margin-bottom: 2.5rem;
+  max-width: 34em;
+}
+
+/* --- Voltaje --- */
+.ps-voltages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.ps-voltage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1.25rem 1.5rem 1.4rem;
+  background: #fff;
+  border: 1px solid var(--ps-line);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.ps-voltage:hover {
+  border-color: #bdbdbd;
+}
+
+.ps-voltage.is-active {
+  border-color: var(--ps-accent);
+  box-shadow: inset 0 0 0 1px var(--ps-accent);
+}
+
+.ps-voltage:focus-visible {
+  outline: 2px solid var(--ps-accent);
+  outline-offset: 2px;
+}
+
+.ps-voltage-value {
+  font-size: 2.75rem;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ps-ink);
+}
+
+.ps-voltage-unit {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.ps-voltage.is-active .ps-voltage-value {
+  color: var(--ps-accent);
+}
+
+.ps-voltage-current {
+  font-size: 0.95rem;
+  color: var(--ps-ink);
+}
+
+.ps-voltage-code {
+  font-size: 0.85rem;
+  color: var(--ps-muted);
+}
+
+.ps-model-note {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ps-muted);
+  max-width: 36em;
+}
+
+/* --- Potencia y calculadora --- */
+.ps-power {
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  background: var(--ps-surface);
+}
+
+.ps-power-figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ps-power-figures p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ps-power-figures strong {
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ps-ink);
+}
+
+.ps-power-figures span {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--ps-muted);
+}
+
+.ps-calc {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ps-ink);
+}
+
+.ps-calc-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.ps-calc-answer {
+  margin-top: 0.4rem;
+  color: var(--ps-muted);
+}
+
+.ps-calc-answer:has(strong) {
+  color: var(--ps-ink);
+}
+
+.ps-calc-result {
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.ps-calc-field {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  color: var(--ps-muted);
+}
+
+.ps-calc-field input {
+  width: 4.5rem;
+  padding: 0.15rem 0.25rem;
+  font: inherit;
+  font-size: 1.1rem;
+  color: var(--ps-ink);
+  text-align: center;
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid var(--ps-ink);
+  -moz-appearance: textfield;
+}
+
+.ps-calc-field input::-webkit-outer-spin-button,
+.ps-calc-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ps-calc-field input:focus-visible {
+  outline: 2px solid var(--ps-accent);
+  outline-offset: 2px;
+}
+
+.ps-calc-result {
+  color: var(--ps-accent);
+}
+
+/* --- Especificaciones --- */
+.ps-specs {
+  margin-top: 2.5rem;
+}
+
+.ps-spec {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--ps-line);
+}
+
+.ps-spec:first-child {
+  border-top: 1px solid var(--ps-line);
+}
+
+.ps-spec dt {
+  font-size: 0.95rem;
+  color: var(--ps-muted);
+}
+
+.ps-spec dd {
+  font-size: 1rem;
+  color: var(--ps-ink);
+}
+
+.ps-spec dd span {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ps-muted);
+}
+
+.ps-downloads {
+  margin-top: 2rem;
+}
+
+.ps-download {
+  font-size: 0.95rem;
+  color: var(--ps-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.ps-download:hover {
+  color: #d63512;
+}
+
+/* --- Regulación DIP --- */
+.ps-dimming {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 4rem;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.ps-dimming h2 {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.ps-dimming p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #6b6b6b;
+  max-width: 30em;
+}
+
+.ps-dimming-images img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .ps-info {
+    max-width: none;
+  }
+
+  .ps-dimming {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ps-power {
+    padding: 1.25rem;
+  }
+
+  .ps-spec {
+    grid-template-columns: 7rem 1fr;
+  }
+
+  .ps-spec dd span {
+    display: block;
+    margin-left: 0;
+  }
+
+  .ps-dimming {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-voltage {
+    transition: none;
+  }
+}
