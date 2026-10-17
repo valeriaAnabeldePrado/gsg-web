@@ -10,12 +10,17 @@ import {
   groupVariantsBy,
 } from '@/lib/supabase/led-roll-sdk';
 import './led-detail.css';
+import { FAMILIES } from '@/lib/analytics';
+import { useTrackProductView } from '@/components/analytics/useTrackProductView';
 
 export default function LedDetailClient({ family }) {
   const [selectedVariant, setSelectedVariant] = useState(
     family.variants?.[0] || null,
   );
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  // Las familias de rollos no tienen código propio: se identifican por id
+  useTrackProductView({ family: FAMILIES.ROLLOS, code: family.id, name: family.name, category: 'Rollos LED' });
 
   const coverImage = getFamilyCoverImage(family);
   const galleryImages = getFamilyGalleryImages(family);

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getDownloadPage } from '@/lib/supabase';
 import { formatFileSize } from '@/lib/format';
+import TrackView from '@/components/analytics/TrackView';
+import TrackedLink from '@/components/analytics/TrackedLink';
 
 // Se llega escaneando el QR pegado en el equipo: siempre datos frescos
 export const dynamic = 'force-dynamic';
@@ -52,6 +54,8 @@ export default async function DescargasPage({ params }) {
         <Unavailable />
       ) : (
         <div className="mx-auto max-w-2xl">
+          {/* Puede venir de un QR o de un enlace compartido: no se asume escaneo */}
+          <TrackView event="view_download_page" metadata={{ location: 'download_page', slug: result.page.slug }} />
           <h1 className="text-2xl md:text-3xl font-light text-gray-800">{result.page.title}</h1>
           {result.page.description && (
             <p className="text-gray-500 mt-2 whitespace-pre-line">{result.page.description}</p>
@@ -63,7 +67,15 @@ export default async function DescargasPage({ params }) {
             <ul className="mt-8 space-y-3">
               {result.files.map((file) => (
                 <li key={file.id}>
-                  <a
+                  <TrackedLink
+                    event="document_click"
+                    metadata={{
+                      location: 'download_page',
+                      slug: result.page.slug,
+                      doc_type: 'download_page_file',
+                      target_id: String(file.id),
+                      doc_label: file.title,
+                    }}
                     href={file.url}
                     target="_blank"
                     rel="noopener"
@@ -78,7 +90,7 @@ export default async function DescargasPage({ params }) {
                       ) : null}
                     </span>
                     <span className="shrink-0 text-sm font-medium text-gray-900">Descargar</span>
-                  </a>
+                  </TrackedLink>
                 </li>
               ))}
             </ul>

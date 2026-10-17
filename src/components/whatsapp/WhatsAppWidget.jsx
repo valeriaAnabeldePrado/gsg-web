@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import WhatsAppPanel from './WhatsAppPanel';
+import { EVENTS, trackClick } from '@/lib/analytics';
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,12 @@ export default function WhatsAppWidget() {
 
       {/* Floating Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (!isOpen) {
+            trackClick(EVENTS.WHATSAPP_WIDGET_OPEN, { attributeToPage: true, metadata: { location: 'floating_widget' } });
+          }
+          setIsOpen(!isOpen);
+        }}
         aria-label="Abrir chat de WhatsApp"
         className={`fixed ${isDistribuidores ? 'bottom-20' : 'bottom-4'} right-4 w-14 h-14 rounded-full flex items-center justify-center z-50 transition-all hover:scale-110 active:scale-95`}
         style={{

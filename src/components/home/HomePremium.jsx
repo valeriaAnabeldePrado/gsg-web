@@ -7,6 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import AlabastroBanner from '@/components/home/AlabastroBanner';
 import '@/app/home/home-premium.css';
+import { EVENTS, trackClick } from '@/lib/analytics';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -898,12 +899,15 @@ export default function HomePremium() {
           <div className="catalog-actions">
             <button
               className="btn-download"
-              onClick={() =>
+              onClick={() => {
                 window.open(
                   'https://drive.google.com/file/d/1-5Pz9clY2-odo61hT5UDpTiUfy_kmrDg/view?usp=sharing',
                   '_blank',
-                )
-              }
+                );
+                trackClick(EVENTS.CATALOG_CLICK, {
+                  metadata: { location: 'home_catalog_section', target_id: 'catalogo-general' },
+                });
+              }}
             >
               <DownloadIcon />
               DESCARGAR CATÁLOGO
