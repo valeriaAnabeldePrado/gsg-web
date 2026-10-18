@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import '../../product-detail.css';
 import ProfileComparisonTable from '@/components/products/ProfileComparisonTable';
-import { trackEvent } from '@/lib/analytics';
+import { EVENTS, FAMILIES, trackClick } from '@/lib/analytics';
+import { fileIdFromPath } from '@/lib/analytics-core';
+import { useTrackProductView } from '@/components/analytics/useTrackProductView';
 
 const R2_BASE_URL = 'https://pub-991b1e142013489ca0b64e1e314c7386.r2.dev';
 
@@ -111,28 +113,20 @@ export default function ProductDetailClient({ product }) {
   const pathname = usePathname();
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const lastTrackedProduct = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  // Analytics
-  useEffect(() => {
-    if (product && lastTrackedProduct.current !== product.code) {
-      lastTrackedProduct.current = product.code;
-
-      trackEvent('view_product', {
-        code: product.code, // Ajusta si la propiedad se llama diferente
-        name: product.name,
-        category: product.category?.name || product.category,
-        metadata: {
-          viewedAt: new Date().toISOString(), // Fecha y hora local del cliente
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        },
-      });
-    }
-  }, [product]);
+  // Analytics: vista de la ficha (familia luminarias)
+  useTrackProductView(
+    product && {
+      family: FAMILIES.LUMINARIAS,
+      code: product.code,
+      name: product.name,
+      category: product.category?.name || product.category,
+    },
+  );
 
   // Comunicar al layout que el contenido ha cargado
   useEffect(() => {
@@ -517,6 +511,17 @@ export default function ProductDetailClient({ product }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="download-card"
+                    onClick={() =>
+                      trackClick(EVENTS.DOCUMENT_CLICK, {
+                        attributeToPage: true,
+                        metadata: {
+                          location: 'product_detail',
+                          doc_type: file.kind,
+                          target_id: String(file.id ?? fileIdFromPath(file.path)),
+                          doc_label: file.title || (file.kind === 'datasheet' ? 'Ficha técnica' : 'Especificaciones'),
+                        },
+                      })
+                    }
                   >
                     <div className="download-icon">
                       <svg

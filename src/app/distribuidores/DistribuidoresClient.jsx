@@ -3,6 +3,20 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { NoResults } from '@/components/productos/product-no-result';
 import './distribuidores-premium.css';
+import { EVENTS, trackClick } from '@/lib/analytics';
+
+// Solo id y nombre del distribuidor: nunca el teléfono
+function trackDistributor(distribuidor, action) {
+  trackClick(EVENTS.DISTRIBUTOR_CONTACT_CLICK, {
+    metadata: {
+      location: 'distributors_list',
+      action,
+      target_id: String(distribuidor.id),
+      distributor_name: distribuidor.name,
+      province: distribuidor.province || '',
+    },
+  });
+}
 
 export default function DistribuidoresClient({ initialDistribuidores }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -125,7 +139,11 @@ export default function DistribuidoresClient({ initialDistribuidores }) {
                 </div>
                 <div className="distribuidor-actions">
                   {distribuidor.phone && (
-                    <a href={`tel:${distribuidor.phone}`} className="action-link">
+                    <a
+                      href={`tel:${distribuidor.phone}`}
+                      className="action-link"
+                      onClick={() => trackDistributor(distribuidor, 'phone')}
+                    >
                       Llamar
                     </a>
                   )}
@@ -135,6 +153,7 @@ export default function DistribuidoresClient({ initialDistribuidores }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="action-link"
+                      onClick={() => trackDistributor(distribuidor, 'maps')}
                     >
                       Ver Mapa
                     </a>

@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import '../../product-detail.css';
+import { EVENTS, FAMILIES, trackClick } from '@/lib/analytics';
+import { fileIdFromPath } from '@/lib/analytics-core';
+import { useTrackProductView } from '@/components/analytics/useTrackProductView';
 
 const R2_BASE_URL = 'https://pub-991b1e142013489ca0b64e1e314c7386.r2.dev';
 
@@ -13,6 +16,8 @@ const getImageUrl = (path) => {
 
 export default function LedProfileDetailClient({ profile }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  useTrackProductView({ family: FAMILIES.PERFILES, code: profile.code, name: profile.name, category: 'Perfiles LED' });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -223,6 +228,18 @@ export default function LedProfileDetailClient({ profile }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="download-card"
+              
+                onClick={() =>
+                  trackClick(EVENTS.DOCUMENT_CLICK, {
+                    attributeToPage: true,
+                    metadata: {
+                      location: 'product_detail',
+                      doc_type: pdf.kind,
+                      target_id: String(pdf.id ?? fileIdFromPath(pdf.path)),
+                      doc_label: pdf.title || (pdf.kind === 'datasheet' ? 'Ficha técnica' : 'Documento'),
+                    },
+                  })
+                }
               >
                 <div className="download-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

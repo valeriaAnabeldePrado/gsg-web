@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import '../../productos/product-detail.css';
 import './fuente-detail.css';
+import { EVENTS, FAMILIES, trackClick } from '@/lib/analytics';
+import { fileIdFromPath } from '@/lib/analytics-core';
+import { useTrackProductView } from '@/components/analytics/useTrackProductView';
 
 const R2_BASE_URL = 'https://pub-991b1e142013489ca0b64e1e314c7386.r2.dev';
 
@@ -32,6 +35,8 @@ export default function PowerSupplyDetailClient({ powerSupply: ps }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedModelId, setSelectedModelId] = useState(ps.models[0]?.id ?? null);
   const [stripWattsPerMeter, setStripWattsPerMeter] = useState('');
+
+  useTrackProductView({ family: FAMILIES.FUENTES, code: ps.code, name: ps.name, category: ps.series || 'Fuentes LED' });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -212,6 +217,18 @@ export default function PowerSupplyDetailClient({ powerSupply: ps }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ps-download"
+                  
+                    onClick={() =>
+                      trackClick(EVENTS.DOCUMENT_CLICK, {
+                        attributeToPage: true,
+                        metadata: {
+                          location: 'product_detail',
+                          doc_type: pdf.kind,
+                          target_id: String(pdf.id ?? fileIdFromPath(pdf.path)),
+                          doc_label: 'Ficha técnica',
+                        },
+                      })
+                    }
                   >
                     Descargar ficha técnica (PDF)
                   </a>

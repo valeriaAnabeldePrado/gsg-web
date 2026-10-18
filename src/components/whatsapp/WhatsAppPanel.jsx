@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ProvinceSelector from './ProvinceSelector';
 import { WHATSAPP_CONTACTS, getWhatsAppLink } from '@/lib/whatsapp/constants';
+import { EVENTS, trackClick } from '@/lib/analytics';
 
 export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange, isDistribuidores }) {
   const router = useRouter();
@@ -11,15 +12,19 @@ export default function WhatsAppPanel({ isOpen, step, onClose, onStepChange, isD
 
   if (!isOpen) return null;
 
-  const handleOption1 = () => {
-    const link = getWhatsAppLink(WHATSAPP_CONTACTS.ezequiel.number, WHATSAPP_CONTACTS.ezequiel.message);
+  // reason: identificador estable del motivo de contacto (no se guarda el número ni el mensaje)
+  const openWhatsApp = (contact, reason) => {
+    const link = getWhatsAppLink(contact.number, contact.message);
     window.open(link, '_blank', 'noopener,noreferrer');
+    trackClick(EVENTS.WHATSAPP_CLICK, {
+      attributeToPage: true,
+      metadata: { location: 'floating_widget', reason, target_id: reason },
+    });
   };
 
-  const handleOption2 = () => {
-    const link = getWhatsAppLink(WHATSAPP_CONTACTS.tomas.number, WHATSAPP_CONTACTS.tomas.message);
-    window.open(link, '_blank', 'noopener,noreferrer');
-  };
+  const handleOption1 = () => openWhatsApp(WHATSAPP_CONTACTS.ezequiel, 'business_inquiry');
+
+  const handleOption2 = () => openWhatsApp(WHATSAPP_CONTACTS.tomas, 'existing_customer');
 
   const handleViewDistributors = () => {
     if (typeof window !== 'undefined') {

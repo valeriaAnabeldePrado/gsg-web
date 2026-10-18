@@ -868,3 +868,39 @@ export async function getPowerSupplyByCode(code) {
 
   return normalizePowerSupply(data);
 }
+
+// ============================================
+// PÁGINAS DE DESCARGAS (QR)
+// ============================================
+
+/**
+ * Obtiene una página de descargas por slug (activa o no: la página decide qué mostrar)
+ * @param {string} slug - ej: fuentes
+ * @returns {Promise<{page: Object, files: Object[]}|null>}
+ */
+export async function getDownloadPage(slug) {
+  const { data, error } = await supabase
+    .from('download_pages')
+    .select('slug, title, description, is_active, download_files ( id, title, path, size_bytes, display_order )')
+    .eq('slug', slug)
+    .single();
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null; // No encontrada
+    }
+    throwIfError(error, 'getDownloadPage');
+  }
+
+  return {
+    page: {
+      slug: data.slug,
+      title: data.title,
+      description: data.description,
+      isActive: data.is_active,
+    },
+    files: [...(data.download_files || [])]
+      .sort((a, b) => a.display_order - b.display_order || a.id - b.id)
+      .map((f) => ({ id: f.id, title: f.title, url: f.path, sizeBytes: f.size_bytes })),
+  };
+}
