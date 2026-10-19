@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useForm } from 'react-hook-form';
+import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import './contact-premium.css';
 
@@ -238,6 +239,10 @@ const Contacto = () => {
                     </svg>
                   </div>
                 </button>
+                <p className="form-privacy-note">
+                  Usamos tus datos solo para responder tu consulta.{' '}
+                  <Link href="/privacidad">Política de privacidad</Link>
+                </p>
               </div>
             </form>
           )}

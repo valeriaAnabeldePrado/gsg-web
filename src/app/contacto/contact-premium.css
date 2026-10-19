@@ -211,6 +211,17 @@
   text-align: right; /* Right aligned for modern feel */
 }
 
+.form-privacy-note {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.form-privacy-note a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .btn-magnetic {
   display: inline-flex;
   align-items: center;

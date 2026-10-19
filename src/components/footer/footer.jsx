@@ -190,6 +190,9 @@ const FooterM = () => {
           <Link href="/distribuidores" className="footer-bottom-link">
             Encontrar distribuidor
           </Link>
+          <Link href="/privacidad" className="footer-bottom-link">
+            Privacidad
+          </Link>
         </div>
       </div>
     </footer>
