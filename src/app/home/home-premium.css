@@ -529,20 +529,23 @@
 
 .home-products-showcase .home-products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
   background: #f0f0f0;
+}
+
+/* 10 cards en 4 columnas: las 2 últimas (Accesorios y Fuentes) completan la fila */
+.home-products-showcase .home-product-card:nth-last-child(-n + 2) {
+  grid-column: span 2;
 }
 
 @media (max-width: 900px) {
   .home-products-showcase .home-products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (max-width: 600px) {
-  .home-products-showcase .home-product-card:last-child {
-    grid-column: span 2;
+  .home-products-showcase .home-product-card:nth-last-child(-n + 2) {
+    grid-column: auto;
   }
 }
 
