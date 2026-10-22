@@ -218,6 +218,13 @@ const featuredProducts = [
     image: '/gsg/portadas/accesorios.png',
     link: '/accesorios',
   },
+  {
+    id: 10,
+    name: 'Fuentes de Alimentación LED',
+    category: 'Fuentes',
+    image: '/home/card-fuentes.webp',
+    link: '/fuentes',
+  },
 ];
 
 const features = [
